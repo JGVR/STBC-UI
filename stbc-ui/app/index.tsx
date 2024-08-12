@@ -1,9 +1,6 @@
-import {Text, ScrollView} from 'react-native'
+// /app/index.tsx
+import { Redirect } from 'expo-router';
 
-export default function HomeScreen(){
-    return (
-        <ScrollView>
-            <Text>My First Page</Text>
-        </ScrollView>
-    );
+export default function Index() {
+    return <Redirect href="/home" />;
 }
