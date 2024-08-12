@@ -1,11 +1,7 @@
-import {Text, ScrollView} from 'react-native';
-import {Link} from 'expo-router';
+import ThumbnailNavigationCard from '@/components/ThumbnailNavigationCard';
 
 export default function HomeScreen(){
     return (
-        <ScrollView>
-            <Text>My First Page</Text>
-            <Link href="/home/details">Go To Details</Link>
-        </ScrollView>
+        <ThumbnailNavigationCard title="Home" imageDetail={require('@/assets/icon.png')}/>
     );
 }
