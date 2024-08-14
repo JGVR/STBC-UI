@@ -1,11 +1,9 @@
 import ThumbnailNavigationCard from '@/components/ThumbnailNavigationCard';
-import { ScrollView, View, Text } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import {styled} from 'nativewind';
 
 export default function HomeScreen(){
-    const StyledView = styled(View);
-    const StyledText = styled(Text);
-
+    const StyledScrollView = styled(ScrollView);
     const navigationCards = [
         {
             title: "Home",
@@ -14,20 +12,16 @@ export default function HomeScreen(){
         {
             title: "Detail",
             imageDetail: require('@/assets/icon.png')
-        }
+        },
+        {
+            title: "Detail2",
+            imageDetail: require('@/assets/icon.png')
+        },
     ];
 
     return (
-        <ScrollView>
-            <StyledView className="flex-1 flex-wrap flex-row justify-between">
-                {
-                    navigationCards.map((card, index) => {
-                        return (
-                            <ThumbnailNavigationCard key={index} title={card.title} imageDetail={card.imageDetail}/>
-                        );
-                    })
-                }
-            </StyledView>
-        </ScrollView>
+        <StyledScrollView className='h-full w-full bg-gray-700'>
+            <ThumbnailNavigationCard navigationCards={navigationCards}/>
+        </StyledScrollView>
     );
 }
