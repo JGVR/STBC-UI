@@ -6,15 +6,27 @@ export default function HomeScreen(){
     const StyledScrollView = styled(ScrollView);
     const navigationCards = [
         {
-            title: "Home",
+            title: "First Time Visitor",
             imageDetail: require('@/assets/icon.png')
         },
         {
-            title: "Detail",
+            title: "How To Be Saved",
             imageDetail: require('@/assets/icon.png')
         },
         {
-            title: "Detail2",
+            title: "Live",
+            imageDetail: require('@/assets/icon.png')
+        },
+        {
+            title: "Daily Devotions",
+            imageDetail: require('@/assets/icon.png')
+        },
+        {
+            title: "About",
+            imageDetail: require('@/assets/icon.png')
+        },
+        {
+            title: "Contact Us",
             imageDetail: require('@/assets/icon.png')
         },
     ];

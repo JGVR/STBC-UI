@@ -12,7 +12,7 @@ export default function ImageButton(props: {title: string, imageDetail: any}){
             <Pressable>
                 <StyledView className='flex-row justify-center flex-wrap'>
                     <StyledImage className="w-full h-56 border-black border-1 flex-none rounded" source={props.imageDetail}/>
-                    <StyledText className="absolute top-24 text-lg italic">
+                    <StyledText className="absolute top-24 text-lg italic text-center w-26">
                         {props.title}
                     </StyledText>
                 </StyledView>
