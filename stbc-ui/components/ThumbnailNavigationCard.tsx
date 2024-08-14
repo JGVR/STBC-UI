@@ -1,15 +1,11 @@
-import {Text, ScrollView, Image, View} from 'react-native';
+import {ScrollView} from 'react-native';
+import ImageButton from '@/components/ImageButton';
+
 
 export default function ThumbnailNavigationCard(props: {title: string, imageDetail: any}){
-    const title = props.title;
-    const imageUrl = props.imageDetail;
-
     return (
         <ScrollView>
-            <View>
-                <Text>{title}</Text>
-                <Image source={imageUrl}></Image>
-            </View>
+            <ImageButton title={props.title} imageDetail={props.imageDetail}/>
         </ScrollView>
     );
 }
