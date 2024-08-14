@@ -18,6 +18,5 @@ export default function ImageButton(props: {title: string, imageDetail: any}){
                 </StyledView>
             </Pressable>
         </Link>
-        
     );
 }
