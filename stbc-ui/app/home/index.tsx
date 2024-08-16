@@ -11,7 +11,7 @@ export default function HomeScreen(){
         },
         {
             title: "How To Be Saved",
-            imageDetail: require('@/assets/icon.png')
+            imageDetail: require('@/assets/HowToBeSaved.png')
         },
         {
             title: "Live",
@@ -32,7 +32,7 @@ export default function HomeScreen(){
     ];
 
     return (
-        <StyledScrollView className='h-full w-full bg-gray-700'>
+        <StyledScrollView className='h-full w-full bg-gray-800'>
             <ThumbnailNavigationCard navigationCards={navigationCards}/>
         </StyledScrollView>
     );
