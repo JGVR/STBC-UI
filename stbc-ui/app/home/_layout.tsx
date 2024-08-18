@@ -16,6 +16,10 @@ export default function HomeLayout(){
                 headerTitle: "How To Be Saved",
                 headerBackTitle: "Home"
             }}/>
+            <Stack.Screen name="about" options={{
+                headerTitle: "About",
+                headerBackTitle: "Home"
+            }}/>
         </Stack>
     );
 }
