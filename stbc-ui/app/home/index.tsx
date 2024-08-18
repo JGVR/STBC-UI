@@ -1,6 +1,7 @@
 import ThumbnailNavigationCard from '@/components/ThumbnailNavigationCard';
 import { ScrollView, View } from 'react-native';
 import {styled} from 'nativewind';
+import YoutubeVideoPlayer from '@/components/YoutubeVideoPlayer';
 
 export default function HomeScreen(){
     const StyledScrollView = styled(ScrollView);
@@ -34,6 +35,7 @@ export default function HomeScreen(){
     return (
         <StyledScrollView className='h-full w-full bg-gray-800'>
             <ThumbnailNavigationCard navigationCards={navigationCards}/>
+            <YoutubeVideoPlayer/>
         </StyledScrollView>
     );
 }
