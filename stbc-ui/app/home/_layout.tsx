@@ -12,7 +12,10 @@ export default function HomeLayout(){
             <Stack.Screen name="index" options={{
                 headerTitle: () => <HomeScreenHeader title={headerDetails.title} imageDetail={headerDetails.imageDetail}/>
             }}/>
-            <Stack.Screen name="details"/>
+            <Stack.Screen name="howToBeSaved" options={{
+                headerTitle: "How To Be Saved",
+                headerBackTitle: "Home"
+            }}/>
         </Stack>
     );
 }

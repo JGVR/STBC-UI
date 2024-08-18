@@ -8,7 +8,7 @@ const StyledView = styled(View)
 
 export default function ImageButton(props: {title: string, imageDetail: any}){
     return (
-        <Link href="/home/details" className='max-w-[46%] h-56 bg-black m-2' asChild>
+        <Link href="/home/howToBeSaved" className='max-w-[46%] h-56 bg-black m-2' asChild>
             <Pressable>
                 <StyledView className='flex-row justify-center flex-wrap'>
                     <StyledImage className="w-full h-56 border-black border-1 flex-none rounded opacity-70" source={props.imageDetail}/>

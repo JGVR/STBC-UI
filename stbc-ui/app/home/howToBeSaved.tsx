@@ -4,7 +4,7 @@ import { styled } from 'nativewind';
 const StyledView = styled(View);
 const StyledText = styled(Text);
 
-export default function DetailScreen() {
+export default function HowToBeSavedScreen() {
     return (
         <StyledView className="bg-blue-500 h-full">
             <StyledView className='flex-row justify-between flex-wrap mt-4'>
