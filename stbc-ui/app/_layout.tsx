@@ -1,37 +1,18 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import { useEffect } from 'react';
-import 'react-native-reanimated';
+import { Tabs } from "expo-router";
+import FontAwesome from '@expo/vector-icons/FontAwesome';
 
-import { useColorScheme } from '@/hooks/useColorScheme';
-
-// Prevent the splash screen from auto-hiding before asset loading is complete.
-SplashScreen.preventAutoHideAsync();
-
-export default function RootLayout() {
-  const colorScheme = useColorScheme();
-  const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-  });
-
-  useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [loaded]);
-
-  if (!loaded) {
-    return null;
-  }
-
-  return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-    </ThemeProvider>
+export default function Layout(){
+  return(
+    <Tabs initialRouteName="home">
+      <Tabs.Screen name="index" options={{href:null}}/>
+      <Tabs.Screen name="home" options={{
+        title: "Home",
+        tabBarLabelStyle: { fontSize: 12 }, // Adjusts label font size if needed
+        tabBarActiveTintColor: 'blue',  // Color of the tab when active
+        tabBarInactiveTintColor: 'black', // Color of the tab when inactive
+        tabBarIcon: ({color}) => <FontAwesome size={28} name="home" color="black"/>, 
+        headerShown:false
+      }}/>
+    </Tabs>
   );
 }
