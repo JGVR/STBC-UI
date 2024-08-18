@@ -17,15 +17,3 @@ export default function ThumbnailNavigationCard(props: {navigationCards: {title:
         </StyledView>
     );
 }
-
-/*return ( navigationCards.map((card, index) => {
-        return (
-            <ThumbnailNavigationCard key={index} title={card.title} imageDetail={card.imageDetail}/>
-        );
-    );
-    })
-    return (
-        <StyledView className="flex-row flex-wrap justify-content">
-            <ImageButton title={props.title} imageDetail={props.imageDetail}/>
-        </StyledView>
-    );*/

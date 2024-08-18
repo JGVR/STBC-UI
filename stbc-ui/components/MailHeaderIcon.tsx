@@ -7,7 +7,7 @@ const StyledView = styled(View);
 export default function MailHeaderIcon(){
     return (
         <StyledView className='absolute left-[85%] top-[20%]'>
-            <Ionicons name="mail-sharp" size={30} color="blue" />
+            <Ionicons name="mail-sharp" size={30} color="black" />
         </StyledView>
     );
 }

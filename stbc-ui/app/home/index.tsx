@@ -8,7 +8,7 @@ export default function HomeScreen(){
     const navigationCards = [
         {
             title: "First Time Visitor",
-            imageDetail: require('@/assets/icon.png')
+            imageDetail: require('@/assets/getPluggedIn.png')
         },
         {
             title: "How To Be Saved",
@@ -16,11 +16,11 @@ export default function HomeScreen(){
         },
         {
             title: "Live",
-            imageDetail: require('@/assets/icon.png')
+            imageDetail: require('@/assets/give.png')
         },
         {
             title: "Daily Devotions",
-            imageDetail: require('@/assets/icon.png')
+            imageDetail: require('@/assets/calendar.png')
         },
         {
             title: "About",
