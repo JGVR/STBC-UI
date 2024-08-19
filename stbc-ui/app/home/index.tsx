@@ -1,5 +1,5 @@
 import ThumbnailNavigationCard from '@/components/ThumbnailNavigationCard';
-import { ScrollView, View } from 'react-native';
+import { ScrollView} from 'react-native';
 import {styled} from 'nativewind';
 import YoutubeVideoPlayer from '@/components/YoutubeVideoPlayer';
 
@@ -24,7 +24,7 @@ export default function HomeScreen(){
         {
             title: "Daily Devotions",
             imageDetail: require('@/assets/calendar.png'),
-            screenUrl: "/home/howToBeSaved"
+            screenUrl: "/home/dailyDevotions"
         },
         {
             title: "About",

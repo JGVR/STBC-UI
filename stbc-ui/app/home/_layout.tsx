@@ -20,6 +20,10 @@ export default function HomeLayout(){
                 headerTitle: "About",
                 headerBackTitle: "Home"
             }}/>
+            <Stack.Screen name="dailyDevotions" options={{
+                headerTitle: "Daily Devotions",
+                headerBackTitle: "Home"
+            }}/>
         </Stack>
     );
 }
