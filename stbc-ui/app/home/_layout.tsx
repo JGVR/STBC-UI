@@ -1,5 +1,6 @@
 import {Stack} from 'expo-router';
-import HomeScreenHeader from '@/components/HomeScreenHeader';
+import HomeScreenHeader from '@/components/headers/HomeScreenHeader';
+import GeneralScreenHeader from '@/components/headers/GeneralScreenHeader';
 
 const headerDetails = {
     title: "STBC",
@@ -21,7 +22,7 @@ export default function HomeLayout(){
                 headerBackTitle: "Home"
             }}/>
             <Stack.Screen name="dailyDevotions" options={{
-                headerTitle: "Daily Devotions",
+                headerTitle: () => <GeneralScreenHeader title="Daily Devotions"/>,
                 headerBackTitle: "Home"
             }}/>
         </Stack>
