@@ -2,6 +2,7 @@ import ThumbnailNavigationCard from '@/components/ThumbnailNavigationCard';
 import { ScrollView} from 'react-native';
 import {styled} from 'nativewind';
 import YoutubeVideoPlayer from '@/components/YoutubeVideoPlayer';
+import { createContext } from 'react';
 
 export default function HomeScreen(){
     const StyledScrollView = styled(ScrollView);

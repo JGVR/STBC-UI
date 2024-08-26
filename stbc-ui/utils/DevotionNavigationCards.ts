@@ -66,13 +66,13 @@ const navigationCards = [
         imageDetail: require('@/assets/icon.png'),
         screenUrl: "/home/about",
         imageLayout: {
-            width: "w-80",
+            width: "w-8",
             height: "h-56",
             border: "border-1",
-            left: "left-[50%]",
             top: "",
             bottom: "",
-            right: ""
+            left: "",
+            right: "",
         },
         textLayout: {
             position: "absolute",

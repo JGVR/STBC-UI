@@ -1,12 +1,14 @@
 import {Pressable, View, Text, Image} from 'react-native';
 import {styled} from 'nativewind';
-import {Link} from 'expo-router';
+import {Link, useRouter} from 'expo-router';
 
 const StyledText = styled(Text);
 const StyledImage= styled(Image);
-const StyledView = styled(View)
+const StyledView = styled(View);
 
 export default function ImageButton(props: {title: string, imageDetail: any, screenUrl: string, imageLayout: {width: string, height: string, border: string, top: string, bottom: string, left: string, right: string}, textLayout: {width: string, height: string, position: string, top: string, bottom: string, right: string, left: string, textSize: string, textColor:string}}){
+
+    const router = useRouter();
     return (
         <Link href={props.screenUrl} className='max-w-[46%] h-56 m-2' asChild>
             <Pressable>

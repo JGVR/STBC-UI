@@ -16,7 +16,7 @@ const mailHeaderLayout = {
 export default function GeneralScreenHeader(props: {title: string}){
     return(
         <StyledView className="w-full h-full">
-            <StyledView className='flex-row left-14'>
+            <StyledView className='flex-row left-10'>
                 <StyledText className="text-black text-lg italic font-bold">{props.title}</StyledText>
                 <MailHeaderIcon layoutDetails={mailHeaderLayout}/>
             </StyledView>

@@ -22,8 +22,7 @@ export default function HomeLayout(){
                 headerBackTitle: "Home"
             }}/>
             <Stack.Screen name="dailyDevotions" options={{
-                headerTitle: () => <GeneralScreenHeader title="Daily Devotions"/>,
-                headerBackTitle: "Home"
+                headerShown: false
             }}/>
         </Stack>
     );
