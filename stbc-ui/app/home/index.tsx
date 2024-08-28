@@ -7,9 +7,9 @@ import { createContext } from 'react';
 export default function HomeScreen(){
     const StyledScrollView = styled(ScrollView);
     const imageLayout = {
-        width: "w-full",
-        height: "h-56",
-        border: "border-1",
+        width: "w-48",
+        height: "h-48",
+        border: "",
         top: "",
         bottom: "",
         left: "",
@@ -17,7 +17,7 @@ export default function HomeScreen(){
     }
     const textLayout = {
         position: "absolute",
-        top: "top-24",
+        top: "top-20",
         bottom: "",
         left: "",
         right: "",
@@ -73,8 +73,8 @@ export default function HomeScreen(){
 
     return (
         <StyledScrollView className='h-full w-full bg-gray-800'>
-            <ThumbnailNavigationCard navigationCards={navigationCards}/>
             <YoutubeVideoPlayer/>
+            <ThumbnailNavigationCard navigationCards={navigationCards}/>
         </StyledScrollView>
     );
 }

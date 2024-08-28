@@ -22,11 +22,11 @@ const buttonLayout = {
 
 export default function BgImageScreenHeader(props: {router: any, buttonTitle: string}){
     return(
-        <StyledView className="w-full h-56 rounded-b-2xl overflow-hidden">
-            <StyledBgImg className="h-full w-full opacity-60" source={require('@/assets/cross.jpeg')}>
+        <StyledView className="w-full h-72">
+            <StyledBgImg className="h-56 w-full opacity-60 z-10" source={require('@/assets/cross.jpeg')}>
                 <BackButton title={props.buttonTitle} iconLayout={iconLayout} buttonLayout={buttonLayout}/>
                 <StyledText className="text-2xl text-teal-600 m-3 italic font-bold top-12 text-center">"The Right Attention To Contention"</StyledText>
-                <StyledText className=" text-teal-600 m-3 italic font-bold top-[25%] text-left">By Pastor Ancel Presnell</StyledText>
+                <StyledText className=" text-teal-600 m-3 italic font-bold top-[20%] text-left">By Pastor Ancel Presnell</StyledText>
             </StyledBgImg>
         </StyledView>
     );

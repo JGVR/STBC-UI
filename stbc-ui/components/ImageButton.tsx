@@ -10,7 +10,7 @@ export default function ImageButton(props: {title: string, imageDetail: any, scr
 
     const router = useRouter();
     return (
-        <Link href={props.screenUrl} className='max-w-[46%] h-56 m-2' asChild>
+        <Link href={props.screenUrl} className='max-w-[46%] h-48 m-2' asChild>
             <Pressable>
                 <StyledView className='flex-row justify-center flex-wrap'>
                     <StyledImage 
@@ -21,7 +21,7 @@ export default function ImageButton(props: {title: string, imageDetail: any, scr
                                     ${props.imageLayout.bottom} 
                                     ${props.imageLayout.left} 
                                     ${props.imageLayout.right} 
-                                    flex-none rounded opacity-70`
+                                    flex-none rounded-2xl opacity-70 border border-slate-300`
                                 } 
                         source={props.imageDetail}
                     />

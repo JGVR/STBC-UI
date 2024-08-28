@@ -3,9 +3,9 @@ import {styled} from 'nativewind';
 import ThumbnailNavigationCard from '@/components/ThumbnailNavigationCard';
 
 const imageLayout = {
-    width: "w-full",
-    height: "h-56",
-    border: "border-1",
+    width: "w-48",
+    height: "h-48",
+    border: "",
     top: "",
     bottom: "",
     left: "",
@@ -13,7 +13,7 @@ const imageLayout = {
 }
 const textLayout = {
     position: "absolute",
-    top: "top-24",
+    top: "top-20",
     bottom: "",
     left: "",
     right: "",
@@ -71,16 +71,16 @@ const navigationCards = [
         screenUrl: "/home/dailyDevotions/devotions",
         imageLayout: {
             width: "w-80",
-            height: "h-56",
-            border: "border-1",
+            height: "h-48",
+            border: "",
             top: "",
             bottom: "",
-            left: "left-[50%]",
+            left: "left-[55%]",
             right: "",
         },
         textLayout: {
             position: "absolute",
-            top: "top-24",
+            top: "top-20",
             bottom: "",
             left: "left-[90%]",
             right: "",
