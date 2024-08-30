@@ -1,6 +1,6 @@
 import {View, Text} from "react-native";
 import {styled} from 'nativewind';
-import ScreenSection from "@/utils/sections";
+import ScreenSection from "@/utils/Sections";
 
 const StyledView = styled(View);
 const StyledText = styled(Text);

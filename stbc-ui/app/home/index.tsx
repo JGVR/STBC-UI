@@ -2,7 +2,6 @@ import ThumbnailNavigationCard from '@/components/ThumbnailNavigationCard';
 import { ScrollView} from 'react-native';
 import {styled} from 'nativewind';
 import YoutubeVideoPlayer from '@/components/YoutubeVideoPlayer';
-import { createContext } from 'react';
 
 export default function HomeScreen(){
     const StyledScrollView = styled(ScrollView);
@@ -32,47 +31,53 @@ export default function HomeScreen(){
             imageDetail: require('@/assets/getPluggedIn.png'),
             screenUrl: "/home/howToBeSaved",
             imageLayout: imageLayout,
-            textLayout: textLayout
+            textLayout: textLayout,
+            isCompleted: true
         },
         {
             title: "How To Be Saved",
             imageDetail: require('@/assets/HowToBeSaved.png'),
             screenUrl: "/home/howToBeSaved",
             imageLayout: imageLayout,
-            textLayout: textLayout
+            textLayout: textLayout,
+            isCompleted: true
         },
         {
             title: "Live",
             imageDetail: require('@/assets/give.png'),
             screenUrl: "/home/howToBeSaved",
             imageLayout: imageLayout,
-            textLayout: textLayout
+            textLayout: textLayout,
+            isCompleted: true
         },
         {
             title: "Daily Devotions",
             imageDetail: require('@/assets/calendar.png'),
             screenUrl: "/home/dailyDevotions",
             imageLayout: imageLayout,
-            textLayout: textLayout
+            textLayout: textLayout,
+            isCompleted: false
         },
         {
             title: "About",
             imageDetail: require('@/assets/icon.png'),
             screenUrl: "/home/about",
             imageLayout: imageLayout,
-            textLayout: textLayout
+            textLayout: textLayout,
+            isCompleted: true
         },
         {
             title: "Contact Us",
             imageDetail: require('@/assets/icon.png'),
             screenUrl: "/home/howToBeSaved",
             imageLayout: imageLayout,
-            textLayout: textLayout
+            textLayout: textLayout,
+            isCompleted: false
         },
     ];
 
     return (
-        <StyledScrollView className='h-full w-full bg-gray-800'>
+        <StyledScrollView className='h-full w-full bg-sky-950'>
             <YoutubeVideoPlayer/>
             <ThumbnailNavigationCard navigationCards={navigationCards}/>
         </StyledScrollView>

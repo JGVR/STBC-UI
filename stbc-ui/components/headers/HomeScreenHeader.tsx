@@ -11,7 +11,7 @@ const mailHeaderLayout = {
     bottom: "bottom-0",
     left: "left-[85%]",
     right: "right-0",
-    color: "black"
+    color: "#075985"
 }
 
 export default function HomeScreenHeader(props: {title: string, imageDetail: any}){
@@ -21,7 +21,7 @@ export default function HomeScreenHeader(props: {title: string, imageDetail: any
                 <StyledImage className='h-10 w-10' source={props.imageDetail}/>
             </StyledView>
             <StyledView className='absolute top-[20%] left-[12%] w-[15%]'>
-                <StyledText className="text-black text-lg italic font-bold">{props.title}</StyledText>
+                <StyledText className="text-sky-800 text-lg italic font-bold">{props.title}</StyledText>
             </StyledView>
             <MailHeaderIcon layoutDetails={mailHeaderLayout}/>
         </StyledView>

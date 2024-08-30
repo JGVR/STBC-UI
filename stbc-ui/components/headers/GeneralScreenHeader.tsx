@@ -10,14 +10,14 @@ const mailHeaderLayout = {
     left: "left-24",
     right: "",
     bottom: "",
-    color: "black"
+    color: "#075985"
 }
 
 export default function GeneralScreenHeader(props: {title: string}){
     return(
         <StyledView className="w-full h-full">
             <StyledView className='flex-row left-10'>
-                <StyledText className="text-black text-lg italic font-bold">{props.title}</StyledText>
+                <StyledText className="text-sky-800 text-lg italic font-bold">{props.title}</StyledText>
                 <MailHeaderIcon layoutDetails={mailHeaderLayout}/>
             </StyledView>
         </StyledView>

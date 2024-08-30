@@ -12,14 +12,14 @@ const iconLayout = {
     right: "right-2",
     bottom: "",
     left: "",
-    color: "#0D9488"
+    color: "#075985"
 };
 const buttonLayout = {
     top: "top-0",
     right: "right-5",
     bottom: "",
     left: "",
-    color: "#0D9488"
+    color: "#075985"
 };
 
 
