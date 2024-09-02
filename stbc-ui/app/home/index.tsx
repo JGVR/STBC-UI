@@ -31,55 +31,49 @@ export default function HomeScreen(){
             imageDetail: require('@/assets/getPluggedIn.png'),
             screenUrl: "/home/howToBeSaved",
             imageLayout: imageLayout,
-            textLayout: textLayout,
-            isCompleted: true
+            textLayout: textLayout
         },
         {
             title: "How To Be Saved",
             imageDetail: require('@/assets/HowToBeSaved.png'),
             screenUrl: "/home/howToBeSaved",
             imageLayout: imageLayout,
-            textLayout: textLayout,
-            isCompleted: true
+            textLayout: textLayout
         },
         {
             title: "Live",
             imageDetail: require('@/assets/give.png'),
             screenUrl: "/home/howToBeSaved",
             imageLayout: imageLayout,
-            textLayout: textLayout,
-            isCompleted: true
+            textLayout: textLayout
         },
         {
             title: "Daily Devotions",
             imageDetail: require('@/assets/calendar.png'),
             screenUrl: "/home/dailyDevotions",
             imageLayout: imageLayout,
-            textLayout: textLayout,
-            isCompleted: false
+            textLayout: textLayout
         },
         {
             title: "About",
             imageDetail: require('@/assets/icon.png'),
             screenUrl: "/home/about",
             imageLayout: imageLayout,
-            textLayout: textLayout,
-            isCompleted: true
+            textLayout: textLayout
         },
         {
             title: "Contact Us",
             imageDetail: require('@/assets/icon.png'),
             screenUrl: "/home/howToBeSaved",
             imageLayout: imageLayout,
-            textLayout: textLayout,
-            isCompleted: false
-        },
+            textLayout: textLayout
+        }
     ];
 
     return (
         <StyledScrollView className='h-full w-full bg-sky-950'>
             <YoutubeVideoPlayer/>
-            <ThumbnailNavigationCard navigationCards={navigationCards}/>
+            <ThumbnailNavigationCard navigationCards={navigationCards} isCompleted={true}/>
         </StyledScrollView>
     );
 }

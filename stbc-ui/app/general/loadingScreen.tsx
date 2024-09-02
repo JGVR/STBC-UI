@@ -11,14 +11,13 @@ export default function LoadingScreen(){
     useEffect(() => {
         // Spin animation setup
         const spin = Animated.loop(
-        Animated.timing(spinAnim, {
-            toValue: 1,
-            duration: 1500, // Duration of one spin in milliseconds
-            easing: Easing.linear, // Easing function
-            useNativeDriver: true, // Use native driver for better performance
-        })
+            Animated.timing(spinAnim, {
+                toValue: 1,
+                duration: 1500, // Duration of one spin in milliseconds
+                easing: Easing.linear, // Easing function
+                useNativeDriver: true, // Use native driver for better performance
+            })
         );
-
         spin.start(); // Start the animation
 
         return () => spin.stop(); // Stop the animation when the component is unmounted

@@ -96,10 +96,16 @@ const StyledView = styled(ScrollView);
 
 export default function DailyDevotionsScreen(){
     const [isCompleted, setIsCompleted] = useState(true);
+    const [devotions, setDevotions] = useState([])
+    const url = "http://localhost:8000/find/?type=devotion"
+    
+    useEffect( () => {
+        setIsCompleted(true);
+    }, [])
 
     return(
         <StyledView className='h-full w-full bg-sky-950'>
-            <ThumbnailNavigationCard navigationCards={navigationCards}/>
+            <ThumbnailNavigationCard navigationCards={navigationCards} isCompleted={isCompleted}/>
         </StyledView>
     );
 }

@@ -1,6 +1,5 @@
 import {Stack} from 'expo-router';
 import HomeScreenHeader from '@/components/headers/HomeScreenHeader';
-import GeneralScreenHeader from '@/components/headers/GeneralScreenHeader';
 
 const headerDetails = {
     title: "STBC",

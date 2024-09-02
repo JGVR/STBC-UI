@@ -12,8 +12,8 @@ export default function Layout(){
         tabBarInactiveTintColor: 'black', // Color of the tab when inactive
         tabBarIcon: ({color}) => <FontAwesome size={28} name="home" color="black"/>, 
         headerShown:false
-      }}>
-      </Tabs.Screen>
+      }}/>
+      <Tabs.Screen name="general" options={{href:null, headerShown: false}}/>
     </Tabs>
   );
 }
