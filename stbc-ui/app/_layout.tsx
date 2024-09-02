@@ -13,7 +13,6 @@ export default function Layout(){
         tabBarIcon: ({color}) => <FontAwesome size={28} name="home" color="black"/>, 
         headerShown:false
       }}/>
-      <Tabs.Screen name="general" options={{href:null, headerShown: false}}/>
     </Tabs>
   );
 }

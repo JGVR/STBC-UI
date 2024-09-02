@@ -1,7 +1,6 @@
-import {ScrollView} from 'react-native';
+import {ScrollView, Text} from 'react-native';
 import {styled} from 'nativewind';
 import ThumbnailNavigationCard from '@/components/ThumbnailNavigationCard';
-import { useEffect, useState } from 'react';
 
 const imageLayout = {
     width: "w-48",
@@ -95,17 +94,9 @@ const navigationCards = [
 const StyledView = styled(ScrollView);
 
 export default function DailyDevotionsScreen(){
-    const [isCompleted, setIsCompleted] = useState(true);
-    const [devotions, setDevotions] = useState([])
-    const url = "http://localhost:8000/find/?type=devotion"
-    
-    useEffect( () => {
-        setIsCompleted(true);
-    }, [])
-
     return(
         <StyledView className='h-full w-full bg-sky-950'>
-            <ThumbnailNavigationCard navigationCards={navigationCards} isCompleted={isCompleted}/>
+            <ThumbnailNavigationCard navigationCards={navigationCards}/>
         </StyledView>
     );
 }

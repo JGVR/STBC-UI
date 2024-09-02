@@ -1,6 +1,6 @@
 import { ScrollView} from "react-native";
 import { styled } from "nativewind";
-import ScreenSection from "@/utils/Sections";
+import ScreenSection from "@/utils/sections";
 import ScreenBody from "@/components/ScreenBody";
 
 const StyledScrollView = styled(ScrollView);

@@ -73,7 +73,7 @@ export default function HomeScreen(){
     return (
         <StyledScrollView className='h-full w-full bg-sky-950'>
             <YoutubeVideoPlayer/>
-            <ThumbnailNavigationCard navigationCards={navigationCards} isCompleted={true}/>
+            <ThumbnailNavigationCard navigationCards={navigationCards}/>
         </StyledScrollView>
     );
 }
