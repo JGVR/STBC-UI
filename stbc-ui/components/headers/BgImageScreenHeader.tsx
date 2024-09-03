@@ -46,7 +46,7 @@ export default function BgImageScreenHeader(props: {router: any, buttonTitle: st
 
     return(
         <StyledView className="w-full h-72">
-            <StyledBgImg className="h-56 w-full opacity-60 z-10" source={require('@/assets/cross.jpeg')}>
+            <StyledBgImg className="h-64 w-full opacity-60 z-10" source={require('@/assets/cross.jpeg')}>
                 <BackButton title={props.buttonTitle} iconLayout={iconLayout} buttonLayout={buttonLayout}/>
                 <StyledText className="text-2xl text-sky-800 m-3 italic font-bold top-12 text-center">
                     {devotions.length > 0 ? devotions[1]["title"] : ""}

@@ -2,7 +2,8 @@ import {View, Text, ScrollView} from 'react-native';
 import {styled} from 'nativewind';
 import { useEffect, useState } from 'react';
 import LoadingScreen from '@/components/loadingScreen';
-import { useLocalSearchParams } from 'expo-router';
+import { useLocalSearchParams, useRouter } from 'expo-router';
+import BgImageScreenHeader from '@/components/headers/BgImageScreenHeader';
 
 const StyledView = styled(View);
 const StyledScrollView = styled(ScrollView);
@@ -13,6 +14,7 @@ export default function DevotionScreen(){
     const [devotions, setDevotions] = useState([]);
     const url = "http://172.20.10.2:8000/find?type=devotion&churchId=1";
     const {day} = useLocalSearchParams();
+    const router = useRouter();
     
     useEffect(() => {
         fetch(url).then(
@@ -34,10 +36,11 @@ export default function DevotionScreen(){
 
     if(isCompleted){
         return(
-            <StyledView className='mt-56 h-[100%] border rounded-2xl overflow-hidden z-50'>
-                <StyledScrollView className="w-full h-full bg-sky-950">
+            <StyledView className='h-[100%]'>
+                <BgImageScreenHeader router={router} buttonTitle='Devotions'/>
+                <StyledScrollView className="w-full h-80 bg-sky-950 border rounded-tr-2xl rounded-tl-2xl overflow-hidden">
                     <StyledView className="w-full">
-                        <StyledText className="text-white mt-6 ml-2 mr-2 mb-60 text-center italic font-bold text-lg">
+                        <StyledText className="text-white m-2 text-center italic font-bold text-lg">
                             {`${devotions[1]["message"]}`}
                         </StyledText>
                     </StyledView>
