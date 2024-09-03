@@ -26,35 +26,35 @@ const navigationCards = [
     {
         title: "Monday",
         imageDetail: require('@/assets/icon.png'),
-        screenUrl: "/home/dailyDevotions/devotions",
+        screenUrl: "/home/dailyDevotions/monday",
         imageLayout: imageLayout,
         textLayout: textLayout
     },
     {
         title: "Tuesday",
         imageDetail: require('@/assets/icon.png'),
-        screenUrl: "/home/dailyDevotions/devotions",
+        screenUrl: "/home/dailyDevotions/tuesday",
         imageLayout: imageLayout,
         textLayout: textLayout
     },
     {
         title: "Wednesday",
         imageDetail: require('@/assets/icon.png'),
-        screenUrl: "/home/dailyDevotions/devotions",
+        screenUrl: "/home/dailyDevotions/wednesday",
         imageLayout: imageLayout,
         textLayout: textLayout
     },
     {
         title: "Thursday",
         imageDetail: require('@/assets/icon.png'),
-        screenUrl: "/home/dailyDevotions/devotions",
+        screenUrl: "/home/dailyDevotions/thursday",
         imageLayout: imageLayout,
         textLayout: textLayout
     },
     {
         title: "Friday",
         imageDetail: require('@/assets/icon.png'),
-        screenUrl: "/home/dailyDevotions/devotions",
+        screenUrl: "/home/dailyDevotions/friday",
         imageLayout: imageLayout,
         textLayout: textLayout
     },
@@ -68,7 +68,7 @@ const navigationCards = [
     {
         title: "Sunday",
         imageDetail: require('@/assets/icon.png'),
-        screenUrl: "/home/dailyDevotions/devotions",
+        screenUrl: "/home/dailyDevotions/sunday",
         imageLayout: {
             width: "w-80",
             height: "h-48",

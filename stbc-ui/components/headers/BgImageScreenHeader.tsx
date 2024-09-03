@@ -24,7 +24,7 @@ const buttonLayout = {
 export default function BgImageScreenHeader(props: {router: any, buttonTitle: string}){
     const [isCompleted, setIsCompleted] = useState(false);
     const [devotions, setDevotions] = useState([])
-    const url = "http://10.0.0.133:8000/find?type=devotion&churchId=1"
+    const url = "http://172.20.10.2:8000/find?type=devotion&churchId=1"
     
     useEffect(() => {
         fetch(url).then(

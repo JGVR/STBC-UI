@@ -30,7 +30,7 @@ export default function DailyDevotionsLayout(){
                 headerTitle: () => <GeneralScreenHeader title={headerDetails.title}/>,
                 headerLeft: () => <BackButton title="Home" iconLayout={iconLayout} buttonLayout={buttonLayout}/>
             }}/>
-            <Stack.Screen name="devotions" options={{
+            <Stack.Screen name="[day]" options={{
                 header: () => <BgImageScreenHeader router={router} buttonTitle='Devotions'/>,
                 headerTransparent: true
             }}/>
