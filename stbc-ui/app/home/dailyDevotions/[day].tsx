@@ -37,7 +37,6 @@ export default function DevotionScreen(){
             <StyledView className='mt-56 h-[100%] border rounded-2xl overflow-hidden z-50'>
                 <StyledScrollView className="w-full h-full bg-sky-950">
                     <StyledView className="w-full">
-                        <StyledText className='bg-red-500'>{day}</StyledText>
                         <StyledText className="text-white mt-6 ml-2 mr-2 mb-60 text-center italic font-bold text-lg">
                             {`${devotions[1]["message"]}`}
                         </StyledText>
