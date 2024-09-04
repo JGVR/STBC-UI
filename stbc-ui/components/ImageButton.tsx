@@ -1,15 +1,56 @@
-import {Pressable, View, Text, Image} from 'react-native';
+import {Pressable, View, Text, Image, Linking} from 'react-native';
 import {styled} from 'nativewind';
 import {Link} from 'expo-router';
+import ComponentLayout from '@/utils/ComponentLayout';
 
 const StyledText = styled(Text);
 const StyledImage= styled(Image);
 const StyledView = styled(View);
+const StyledPressable = styled(Pressable);
 
-export default function ImageButton(props: {title: string, imageDetail: any, screenUrl: string, imageLayout: {width: string, height: string, border: string, top: string, bottom: string, left: string, right: string}, textLayout: {width: string, height: string, position: string, top: string, bottom: string, right: string, left: string, textSize: string, textColor:string}}){
+export default function ImageButton(props: {title: string, imageDetail: any, url: string, isOutgoingUrl: boolean, imageLayout: ComponentLayout, textLayout: ComponentLayout}){
 
-    return (
-        <Link href={props.screenUrl} className="max-w-[45%] m-2" asChild>
+    if(props.isOutgoingUrl){
+        const handlePress = () => {
+            Linking.openURL(props.url);
+        };
+        return(
+            <StyledPressable className="max-w-[45%] m-2" onPress={handlePress}>
+                    <StyledView className='flex-row justify-center flex-wrap'>
+                        <StyledImage 
+                            className={`${props.imageLayout.width} 
+                                        ${props.imageLayout.height} 
+                                        ${props.imageLayout.border} 
+                                        ${props.imageLayout.top} 
+                                        ${props.imageLayout.bottom} 
+                                        ${props.imageLayout.left} 
+                                        ${props.imageLayout.right} 
+                                        flex-none rounded-2xl opacity-70 border border-slate-300`
+                                        } 
+                            source={props.imageDetail}
+                        />
+                        <StyledText 
+                            className={`
+                                        ${props.textLayout.position} 
+                                        ${props.textLayout.top} 
+                                        ${props.textLayout.bottom} 
+                                        ${props.textLayout.left} 
+                                        ${props.textLayout.right} 
+                                        ${props.textLayout.width} 
+                                        ${props.textLayout.height} 
+                                        ${props.textLayout.size} 
+                                        ${props.textLayout.color} 
+                                        italic text-center font-bold`
+                                    }>
+                            {props.title}
+                        </StyledText>
+                    </StyledView>
+            </StyledPressable>
+        );
+    }
+
+    return(
+        <Link href={props.url} className="max-w-[45%] m-2" asChild>
             <Pressable>
                 <StyledView className='flex-row justify-center flex-wrap'>
                     <StyledImage 
@@ -33,8 +74,8 @@ export default function ImageButton(props: {title: string, imageDetail: any, scr
                                     ${props.textLayout.right} 
                                     ${props.textLayout.width} 
                                     ${props.textLayout.height} 
-                                    ${props.textLayout.textSize} 
-                                    ${props.textLayout.textColor} 
+                                    ${props.textLayout.size} 
+                                    ${props.textLayout.color} 
                                     italic text-center font-bold`
                                 }>
                         {props.title}

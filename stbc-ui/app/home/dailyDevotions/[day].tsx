@@ -16,6 +16,7 @@ export default function DevotionScreen(){
     const {day} = useLocalSearchParams();
     const router = useRouter();
     
+    //Extract the correct devotion from STBC-Api
     useEffect(() => {
         fetch(url).then(
             response => {
@@ -48,6 +49,7 @@ export default function DevotionScreen(){
             </StyledView>
         );
     }
+
     return(
         <LoadingScreen/>
     );

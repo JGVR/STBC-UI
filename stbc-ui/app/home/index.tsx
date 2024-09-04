@@ -2,71 +2,61 @@ import ThumbnailNavigationCard from '@/components/ThumbnailNavigationCard';
 import { ScrollView} from 'react-native';
 import {styled} from 'nativewind';
 import YoutubeVideoPlayer from '@/components/YoutubeVideoPlayer';
+import ComponentLayout from '@/utils/ComponentLayout';
 
 export default function HomeScreen(){
     const StyledScrollView = styled(ScrollView);
-    const imageLayout = {
-        width: "w-48",
-        height: "h-48",
-        border: "",
-        top: "",
-        bottom: "",
-        left: "",
-        right: "",
-    }
-    const textLayout = {
-        position: "absolute",
-        top: "top-20",
-        bottom: "",
-        left: "",
-        right: "",
-        width: "w-26",
-        height: "",
-        textSize: "text-lg",
-        textColor: "text-white"
-    }
+    const imageLayout = new ComponentLayout({height:"h-48", width:"w-48"});
+    const textLayout = new ComponentLayout({height: "", width: "w-26", position: "absolute", top: "top-20", size: "text-lg", color: "text-white"});
+
     const navigationCards = [
         {
             title: "First Time Visitor",
             imageDetail: require('@/assets/getPluggedIn.png'),
-            screenUrl: "/home/howToBeSaved",
+            url: "https://docs.google.com/forms/d/e/1FAIpQLSdoZK_3Zdw9EsiPCCVqHF8j9TYiCOVu4Dhfpb4qGQwiBCYfpw/viewform?pli=1",
             imageLayout: imageLayout,
-            textLayout: textLayout
+            textLayout: textLayout,
+            isOutgoingUrl: true
         },
         {
             title: "How To Be Saved",
             imageDetail: require('@/assets/HowToBeSaved.png'),
-            screenUrl: "/home/howToBeSaved",
+            url: "/home/howToBeSaved",
             imageLayout: imageLayout,
-            textLayout: textLayout
+            textLayout: textLayout,
+            isOutgoingUrl: false
         },
         {
             title: "Live",
             imageDetail: require('@/assets/give.png'),
-            screenUrl: "/home/howToBeSaved",
+            url: "/home/howToBeSaved",
             imageLayout: imageLayout,
-            textLayout: textLayout
+            textLayout: textLayout,
+            isOutgoingUrl: false
         },
         {
             title: "Daily Devotions",
             imageDetail: require('@/assets/calendar.png'),
-            screenUrl: "/home/dailyDevotions",
+            url: "/home/dailyDevotions",
             imageLayout: imageLayout,
-            textLayout: textLayout
+            textLayout: textLayout,
+            isOutgoingUrl: false
         },
         {
             title: "About",
             imageDetail: require('@/assets/icon.png'),
-            screenUrl: "/home/about",
+            url: "/home/about",
             imageLayout: imageLayout,
-            textLayout: textLayout
+            textLayout: textLayout,
+            isOutgoingUrl: false
         },
         {
             title: "Contact Us",
             imageDetail: require('@/assets/icon.png'),
-            screenUrl: "/home/howToBeSaved",
+            url: "/home/howToBeSaved",
             imageLayout: imageLayout,
-            textLayout: textLayout
+            textLayout: textLayout,
+            isOutgoingUrl: false
         }
     ];
 

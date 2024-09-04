@@ -1,94 +1,67 @@
 import {ScrollView, Text} from 'react-native';
 import {styled} from 'nativewind';
 import ThumbnailNavigationCard from '@/components/ThumbnailNavigationCard';
+import ComponentLayout from '@/utils/ComponentLayout';
 
-const imageLayout = {
-    width: "w-48",
-    height: "h-48",
-    border: "",
-    top: "",
-    bottom: "",
-    left: "",
-    right: "",
-}
-const textLayout = {
-    position: "absolute",
-    top: "top-20",
-    bottom: "",
-    left: "",
-    right: "",
-    width: "w-26",
-    height: "",
-    textSize: "text-lg",
-    textColor: "text-white"
-}
+const imageLayout = new ComponentLayout({height:"h-48", width:"w-48"});
+const textLayout = new ComponentLayout({height: "", width: "w-26", position: "absolute", top: "top-20", size: "text-lg", color: "text-white"});
+
 const navigationCards = [
     {
         title: "Monday",
         imageDetail: require('@/assets/icon.png'),
-        screenUrl: "/home/dailyDevotions/monday",
+        url: "/home/dailyDevotions/monday",
         imageLayout: imageLayout,
-        textLayout: textLayout
+        textLayout: textLayout,
+        isOutgoingUrl: false
     },
     {
         title: "Tuesday",
         imageDetail: require('@/assets/icon.png'),
-        screenUrl: "/home/dailyDevotions/tuesday",
+        url: "/home/dailyDevotions/tuesday",
         imageLayout: imageLayout,
-        textLayout: textLayout
+        textLayout: textLayout,
+        isOutgoingUrl: false
     },
     {
         title: "Wednesday",
         imageDetail: require('@/assets/icon.png'),
-        screenUrl: "/home/dailyDevotions/wednesday",
+        url: "/home/dailyDevotions/wednesday",
         imageLayout: imageLayout,
-        textLayout: textLayout
+        textLayout: textLayout,
+        isOutgoingUrl: false
     },
     {
         title: "Thursday",
         imageDetail: require('@/assets/icon.png'),
-        screenUrl: "/home/dailyDevotions/thursday",
+        url: "/home/dailyDevotions/thursday",
         imageLayout: imageLayout,
-        textLayout: textLayout
+        textLayout: textLayout,
+        isOutgoingUrl: false
     },
     {
         title: "Friday",
         imageDetail: require('@/assets/icon.png'),
-        screenUrl: "/home/dailyDevotions/friday",
+        url: "/home/dailyDevotions/friday",
         imageLayout: imageLayout,
-        textLayout: textLayout
+        textLayout: textLayout,
+        isOutgoingUrl: false
     },
     {
         title: "Saturday",
         imageDetail: require('@/assets/icon.png'),
-        screenUrl: "/home/about",
+        url: "/home/about",
         imageLayout: imageLayout,
-        textLayout: textLayout
+        textLayout: textLayout,
+        isOutgoingUrl: false
     },
     {
         title: "Sunday",
         imageDetail: require('@/assets/icon.png'),
-        screenUrl: "/home/dailyDevotions/sunday",
-        imageLayout: {
-            width: "w-80",
-            height: "h-48",
-            border: "",
-            top: "",
-            bottom: "",
-            left: "left-[55%]",
-            right: "",
-        },
-        textLayout: {
-            position: "absolute",
-            top: "top-20",
-            bottom: "",
-            left: "left-[90%]",
-            right: "",
-            width: "w-26",
-            height: "",
-            textSize: "text-lg",
-            textColor: "text-white"
-        }
+        url: "/home/dailyDevotions/sunday",
+        isOutgoingUrl: false,
+        imageLayout: new ComponentLayout({height: "h-48", width: "w-80", left: "left-[55%]"}),
+        textLayout: new ComponentLayout({height: "", width: "w-26", position: "absolute", top: "top-20", left: "left-[90%]", size: "text-lg", color: "text-white"})
     }
 ]
 const StyledView = styled(ScrollView);
