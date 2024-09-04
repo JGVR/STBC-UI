@@ -7,52 +7,30 @@ const StyledView = styled(View);
 const StyledText = styled(Text);
 const StyledBgImg = styled(ImageBackground);
 const iconLayout = {
-    top: "top-12",
+    top: "top-14",
     left: "left-3",
     right: "",
     bottom: "",
     color: "#075985"
 }
 const buttonLayout = {
-    top: "top-10",
+    top: "top-12",
     left: "",
     right: "right-[5%]",
     bottom: "",
     color: "#075985"
 }
 
-export default function BgImageScreenHeader(props: {router: any, buttonTitle: string}){
-    const [isCompleted, setIsCompleted] = useState(false);
-    const [devotions, setDevotions] = useState([])
-    const url = "http://172.20.10.2:8000/find?type=devotion&churchId=1"
-    
-    useEffect(() => {
-        fetch(url).then(
-            response => {
-                if(!response.ok){
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            }
-        ).then(data => {
-            setDevotions(data);
-            setIsCompleted(true);
-        })
-        .catch(error => {
-            console.error(`Something went wrong with the API request ${error}`);
-            setIsCompleted(false);
-        })
-    }, [])
-
+export default function BgImageScreenHeader(props: {router: any, buttonTitle: string, headerTitle: string, headerOptionalMsg: string|null}){
     return(
-        <StyledView className="w-full h-72">
+        <StyledView className="w-full h-60">
             <StyledBgImg className="h-64 w-full opacity-60 z-10" source={require('@/assets/cross.jpeg')}>
                 <BackButton title={props.buttonTitle} iconLayout={iconLayout} buttonLayout={buttonLayout}/>
-                <StyledText className="text-2xl text-sky-800 m-3 italic font-bold top-12 text-center">
-                    {devotions.length > 0 ? devotions[1]["title"] : ""}
+                <StyledText className="text-2xl text-sky-800 m-3 italic font-bold top-16 text-center">
+                    {props.headerTitle}
                 </StyledText>
-                <StyledText className=" text-sky-800 m-3 italic font-bold top-[20%] text-left">
-                    {devotions.length > 0 ? devotions[1]["memberId"] : ""}
+                <StyledText className=" text-sky-800 m-3 italic font-bold top-[25%] text-left">
+                    {props.headerOptionalMsg}
                 </StyledText>
             </StyledBgImg>
         </StyledView>
