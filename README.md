@@ -1,2 +1,3 @@
-# STBC-UI
-Repo for Strong Tower Baptist Church UI
+## Libraries Used:
+- npm install react-native-youtube-iframe
+- npm install react-native-webview
