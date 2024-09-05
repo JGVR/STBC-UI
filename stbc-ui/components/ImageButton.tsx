@@ -1,22 +1,91 @@
-import {Pressable, View, Text, Image} from 'react-native';
+import {Pressable, View, Text, Image, Linking} from 'react-native';
 import {styled} from 'nativewind';
 import {Link} from 'expo-router';
+import ComponentLayout from '@/utils/ComponentLayout';
 
 const StyledText = styled(Text);
 const StyledImage= styled(Image);
-const StyledView = styled(View)
+const StyledView = styled(View);
+const StyledPressable = styled(Pressable);
 
-export default function ImageButton(props: {title: string, imageDetail: any}){
-    return (
-        <Link href="/home/howToBeSaved" className='max-w-[46%] h-56 m-2' asChild>
+export default function ImageButton(props: {title: string, imageDetail: any, url: string, isOutgoingUrl: boolean, imageLayout: ComponentLayout, textLayout: ComponentLayout}){
+
+    if(props.isOutgoingUrl){
+        const handlePress = async () => {
+            try{
+                await Linking.openURL(props.url);
+            }catch(error){
+                console.error(`Something went wrong: ${error}`)
+            }
+        };
+        return(
+            <StyledPressable className="max-w-[45%] m-2" onPress={handlePress}>
+                    <StyledView className='flex-row justify-center flex-wrap'>
+                        <StyledImage 
+                            className={`${props.imageLayout.width} 
+                                        ${props.imageLayout.height} 
+                                        ${props.imageLayout.border} 
+                                        ${props.imageLayout.top} 
+                                        ${props.imageLayout.bottom} 
+                                        ${props.imageLayout.left} 
+                                        ${props.imageLayout.right} 
+                                        flex-none rounded-2xl opacity-70 border border-slate-300`
+                                        } 
+                            source={props.imageDetail}
+                        />
+                        <StyledText 
+                            className={`
+                                        ${props.textLayout.position} 
+                                        ${props.textLayout.top} 
+                                        ${props.textLayout.bottom} 
+                                        ${props.textLayout.left} 
+                                        ${props.textLayout.right} 
+                                        ${props.textLayout.width} 
+                                        ${props.textLayout.height} 
+                                        ${props.textLayout.size} 
+                                        ${props.textLayout.color} 
+                                        italic text-center font-bold`
+                                    }>
+                            {props.title}
+                        </StyledText>
+                    </StyledView>
+            </StyledPressable>
+        );
+    }
+
+    return(
+        <Link href={props.url} className="max-w-[45%] m-2" asChild>
             <Pressable>
                 <StyledView className='flex-row justify-center flex-wrap'>
-                    <StyledImage className="w-full h-56 border-1 flex-none rounded opacity-70" source={props.imageDetail}/>
-                    <StyledText className="absolute top-24 text-lg italic text-center w-26 text-white font-bold">
+                    <StyledImage 
+                        className={`${props.imageLayout.width} 
+                                    ${props.imageLayout.height} 
+                                    ${props.imageLayout.border} 
+                                    ${props.imageLayout.top} 
+                                    ${props.imageLayout.bottom} 
+                                    ${props.imageLayout.left} 
+                                    ${props.imageLayout.right} 
+                                    flex-none rounded-2xl opacity-70 border border-slate-300`
+                                    } 
+                        source={props.imageDetail}
+                    />
+                    <StyledText 
+                        className={`
+                                    ${props.textLayout.position}
+                                    ${props.textLayout.top}   
+                                    ${props.textLayout.bottom} 
+                                    ${props.textLayout.left} 
+                                    ${props.textLayout.right} 
+                                    ${props.textLayout.width} 
+                                    ${props.textLayout.height} 
+                                    ${props.textLayout.size} 
+                                    ${props.textLayout.color} 
+                                    italic text-center font-bold`
+                                }>
                         {props.title}
                     </StyledText>
                 </StyledView>
             </Pressable>
-        </Link> 
+        </Link>
     );
 }

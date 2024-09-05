@@ -6,7 +6,7 @@ const StyledView = styled(View);
 
 export default function YoutubeVideoPlayer(){
     return (
-        <StyledView className="m-4">
+        <StyledView className="w-full h-60 bg-white">
             <YoutubePlayer height={300} videoId='CvHBOeoX3pI' play={false}/>
         </StyledView>
     );
