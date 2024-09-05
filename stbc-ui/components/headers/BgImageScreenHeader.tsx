@@ -1,31 +1,28 @@
 import { ImageBackground, Text, View} from "react-native";
 import {styled } from 'nativewind';
 import BackButton from "../buttons/BackButton";
-import { useEffect, useState } from 'react';
+import ComponentLayout from "@/utils/ComponentLayout";
 
 const StyledView = styled(View);
 const StyledText = styled(Text);
 const StyledBgImg = styled(ImageBackground);
-const iconLayout = {
-    top: "top-14",
-    left: "left-3",
-    right: "",
-    bottom: "",
-    color: "#0E4749"
-}
-const buttonLayout = {
-    top: "top-12",
-    left: "",
-    right: "right-[5%]",
-    bottom: "",
-    color: "#0E4749"
-}
 
-export default function BgImageScreenHeader(props: {router: any, buttonTitle: string, headerTitle: string, headerOptionalMsg: string|null}){
+export default function BgImageScreenHeader(props: {router: any, buttonTitle: string, headerTitle: string, headerOptionalMsg: string|null, backButtonLayout: ComponentLayout|any, backIconLayout: ComponentLayout|any, backButtonShown: boolean, imageLayout: ComponentLayout}){
     return(
         <StyledView className="w-full h-60">
-            <StyledBgImg className="h-64 w-full opacity-60 z-10" source={require('@/assets/cross.jpeg')}>
-                <BackButton title={props.buttonTitle} iconLayout={iconLayout} buttonLayout={buttonLayout}/>
+            <StyledBgImg className={
+                    `${props.imageLayout.height} 
+                     ${props.imageLayout.width} 
+                     ${props.imageLayout.position} 
+                     ${props.imageLayout.top} 
+                     ${props.imageLayout.bottom} 
+                     ${props.imageLayout.left} 
+                     ${props.imageLayout.right} 
+                     ${props.imageLayout.size}
+                     ${props.imageLayout.border}
+                     opacity-60 z-10`
+                } source={require('@/assets/cross.jpeg')}>
+                {props.backButtonShown ? <BackButton title={props.buttonTitle} iconLayout={props.backIconLayout} buttonLayout={props.backButtonLayout}/> : null}
                 <StyledText className="text-2xl text-midnight-green m-3 italic font-bold top-16 text-center">
                     {props.headerTitle}
                 </StyledText>
