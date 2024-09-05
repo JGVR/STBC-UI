@@ -1,41 +1,23 @@
-import {Stack, router} from 'expo-router';
-import BackButton from '@/components/buttons/BackButton';
+import {Stack} from 'expo-router';
 import GeneralScreenHeader from '@/components/headers/GeneralScreenHeader';
-import BgImageScreenHeader from '@/components/headers/BgImageScreenHeader';
-import { View } from 'react-native';
-import { styled } from 'nativewind';
+import ComponentLayout from '@/utils/ComponentLayout';
 
 const headerDetails = {
     title: "Daily Devotions",
     imageDetail: require("@/assets/favicon.png")
 };
-const iconLayout = {
-    top: "top-2",
-    right: "right-2",
-    bottom: "",
-    left: "",
-    color: "#075985"
-};
-const buttonLayout = {
-    top: "top-0",
-    right: "right-5",
-    bottom: "",
-    left: "",
-    color: "#075985"
-};
-const StyledView = styled(View);
-
+const iconLayout = new ComponentLayout({height:"", width:"", top:"top-[12.5%]", left: "left-3", color:"#0E4749"});
+const buttonLayout = new ComponentLayout({height:"", width:"", top:"top-[10.8%]", color:"#0E4749"});
+const titleLayout = new ComponentLayout({height:"", width:"", left:"left-36", top:"top-4"});
+const mailIconLayout = new ComponentLayout({height:"", width:"", left:"left-24", color:"#0E4749"});
 
 export default function DailyDevotionsLayout(){
     return (
         <Stack>
             <Stack.Screen name="index" options={{
-                headerTitle: () => <GeneralScreenHeader title={headerDetails.title}/>,
-                headerLeft: () => <BackButton title="Home" iconLayout={iconLayout} buttonLayout={buttonLayout}/>
+                header: () => <GeneralScreenHeader title={headerDetails.title} backButtonLayout={buttonLayout} backIconLayout={iconLayout} titleLayout={titleLayout} mailIconLayout={mailIconLayout}/>,
             }}/>
             <Stack.Screen name="[day]" options={{
-                //header: () => <BgImageScreenHeader router={router} buttonTitle='Devotions'/>,
-                //headerTransparent: true
                 headerShown: false
             }}/>
         </Stack>

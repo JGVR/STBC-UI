@@ -2,11 +2,12 @@ import {Button, View} from 'react-native';
 import {styled} from 'nativewind';
 import { useRouter } from 'expo-router';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import ComponentLayout from '@/utils/ComponentLayout';
 
 const StyledView = styled(View);
 const StyledButton = styled(Button);
 
-export default function BackButton(props: {title: string, iconLayout:{top: string, right:string, left: string, bottom:string, color:string}, buttonLayout:{top: string, right: string, left:string, bottom: string, color:string}}){
+export default function BackButton(props: {title: string, iconLayout: ComponentLayout, buttonLayout: ComponentLayout}){
     const router = useRouter();
 
     return (

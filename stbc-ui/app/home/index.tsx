@@ -21,10 +21,10 @@ export default function HomeScreen(){
         {
             title: "How To Be Saved",
             imageDetail: require('@/assets/HowToBeSaved.png'),
-            url: "/home/howToBeSaved",
+            url: "https://www.strongtowerbaptist.org/how-to-be-saved/",
             imageLayout: imageLayout,
             textLayout: textLayout,
-            isOutgoingUrl: false
+            isOutgoingUrl: true
         },
         {
             title: "Live",
@@ -53,15 +53,15 @@ export default function HomeScreen(){
         {
             title: "Contact Us",
             imageDetail: require('@/assets/icon.png'),
-            url: "/home/howToBeSaved",
+            url: "https://www.strongtowerbaptist.org/visit-us/",
             imageLayout: imageLayout,
             textLayout: textLayout,
-            isOutgoingUrl: false
+            isOutgoingUrl: true
         }
     ];
 
     return (
-        <StyledScrollView className='h-full w-full bg-sky-950'>
+        <StyledScrollView className='h-full w-full bg-dark-green'>
             <YoutubeVideoPlayer/>
             <ThumbnailNavigationCard navigationCards={navigationCards}/>
         </StyledScrollView>

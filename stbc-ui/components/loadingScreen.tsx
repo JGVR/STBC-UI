@@ -29,7 +29,7 @@ export default function LoadingScreen(){
       });
 
     return(
-        <StyledView className="h-full w-full bg-sky-950">
+        <StyledView className="h-full w-full bg-dark-green">
             <StyledView className="absolute left-[40%] top-[40%]">
                 <Animated.View style={{ transform: [{ rotate }] }}>
                     <FontAwesome name="spinner" size={100} color="white" />

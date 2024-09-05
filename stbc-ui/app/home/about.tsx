@@ -60,7 +60,7 @@ const bodySections = [
 
 export default function AboutScreen(){
     return(
-        <StyledScrollView className="w-full h-full bg-gray-800">
+        <StyledScrollView className="w-full h-full bg-dark-green">
             <ScreenBody sections={bodySections}/>
         </StyledScrollView>
     );

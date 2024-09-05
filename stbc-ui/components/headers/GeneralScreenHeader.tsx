@@ -1,24 +1,19 @@
 import {View, Text} from 'react-native';
 import {styled} from 'nativewind';
 import MailHeaderIcon from './MailHeaderIcon';
+import BackButton from '../buttons/BackButton';
+import ComponentLayout from '@/utils/ComponentLayout';
 
 const StyledView = styled(View);
 const StyledText = styled(Text);
-const mailHeaderLayout = {
-    position: "",
-    top: "",
-    left: "left-24",
-    right: "",
-    bottom: "",
-    color: "#075985"
-}
 
-export default function GeneralScreenHeader(props: {title: string}){
+export default function GeneralScreenHeader(props: {title: string, backButtonLayout: ComponentLayout, backIconLayout: ComponentLayout, titleLayout: ComponentLayout, mailIconLayout: ComponentLayout}){
     return(
-        <StyledView className="w-full h-full">
-            <StyledView className='flex-row left-10'>
-                <StyledText className="text-sky-800 text-lg italic font-bold">{props.title}</StyledText>
-                <MailHeaderIcon layoutDetails={mailHeaderLayout}/>
+        <StyledView className="w-full h-24">
+            <BackButton title={"Home"} iconLayout={props.backIconLayout} buttonLayout={props.backButtonLayout}/>
+            <StyledView className={`flex-row ${props.titleLayout.top} ${props.titleLayout.left}`}>
+                <StyledText className="text-midnight-green text-lg italic font-bold">{props.title}</StyledText>
+                <MailHeaderIcon layoutDetails={props.mailIconLayout}/>
             </StyledView>
         </StyledView>
     );

@@ -68,7 +68,7 @@ const StyledView = styled(ScrollView);
 
 export default function DailyDevotionsScreen(){
     return(
-        <StyledView className='h-full w-full bg-sky-950'>
+        <StyledView className='h-full w-full bg-dark-green'>
             <ThumbnailNavigationCard navigationCards={navigationCards}/>
         </StyledView>
     );

@@ -11,8 +11,12 @@ const StyledPressable = styled(Pressable);
 export default function ImageButton(props: {title: string, imageDetail: any, url: string, isOutgoingUrl: boolean, imageLayout: ComponentLayout, textLayout: ComponentLayout}){
 
     if(props.isOutgoingUrl){
-        const handlePress = () => {
-            Linking.openURL(props.url);
+        const handlePress = async () => {
+            try{
+                await Linking.openURL(props.url);
+            }catch(error){
+                console.error(`Something went wrong: ${error}`)
+            }
         };
         return(
             <StyledPressable className="max-w-[45%] m-2" onPress={handlePress}>
