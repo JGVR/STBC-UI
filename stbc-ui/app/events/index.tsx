@@ -29,7 +29,40 @@ const DATA = [
       title: 'Third Item',
       optionalMsg: "Thur, Sep 12 • 6:30pm - 7:30pm"
     },
+    {
+      id: '58694a0f-3da1-471f-bd96-145571e29d76',
+      title: 'Fourth Item',
+      optionalMsg: "Thur, Sep 12 • 6:30pm - 7:30pm"
+    },
+    {
+        id: '58694a0f-3da1-471f-bd96-145571e29d75',
+        title: 'Fifth Item',
+        optionalMsg: "Thur, Sep 12 • 6:30pm - 7:30pm"
+    },
+    {
+        id: '58694a0f-3da1-471f-bd96-145571e29d74',
+        title: 'Sixth Item',
+        optionalMsg: "Thur, Sep 12 • 6:30pm - 7:30pm"
+    },
+    {
+        id: '58694a0f-3da1-471f-bd96-145571e29d78',
+        title: 'Seventh Item',
+        optionalMsg: "Thur, Sep 12 • 6:30pm - 7:30pm"
+    },
+    {
+        id: '58694a0f-3da1-471f-bd96-145571e29d79',
+        title: 'eithth Item',
+        optionalMsg: "Thur, Sep 12 • 6:30pm - 7:30pm"
+    },
+    {
+        id: '58694a0f-3da1-471f-bd96-145571e29d80',
+        title: 'nineth Item',
+        optionalMsg: "Thur, Sep 12 • 6:30pm - 7:30pm"
+    },
 ];
+const itemImgLayout = "h-14 w-24 rounded-lg mb-4";
+const itemTitleLayout = "h-5 text-white mb-1";
+const itemOptMsgLayout = "h-5 text-white"
 
 export default function EventsScreen(){
     const router = useRouter();
@@ -50,7 +83,7 @@ export default function EventsScreen(){
         <StyledView className="bg-midnight-green">
             <BgImageScreenHeader router={router} backButtonShown={false} buttonTitle="" backButtonLayout="" backIconLayout="" headerTitle='Upcoming Events' headerOptionalMsg="" imageLayout={imageLayout} containerLayout={containerLayout} titleLayout={titleLayout} optionalMsgLayout={optionalMsgLayout}/>
             <StyledView className='bg-midnight-green h-3/4 w-full top-8'>
-                <ItemsList data={DATA}/>
+                <ItemsList data={DATA} imageLayout={itemImgLayout} titleLayout={itemTitleLayout} optionalMsgLayout={itemOptMsgLayout}/>
             </StyledView>
         </StyledView>
     );
