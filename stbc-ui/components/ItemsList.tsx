@@ -9,7 +9,7 @@ export default function ItemsList(props: {data: any[], imageLayout: string, titl
         <StyledView className="h-[85%] w-full">
             <FlatList
                 data={props.data}
-                renderItem={({item}) => <Item title={item.title} optionalMsg={item.optionalMsg} imageLayout={props.imageLayout} titleLayout={props.titleLayout} optionalMsgLayout={props.optionalMsgLayout}/>}
+                renderItem={({item}) => <Item title={item.title} screenUrl={item.screenUrl} optionalMsg={item.optionalMsg} imageLayout={props.imageLayout} titleLayout={props.titleLayout} optionalMsgLayout={props.optionalMsgLayout}/>}
                 />
         </StyledView>
     );
