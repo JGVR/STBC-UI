@@ -1,7 +1,7 @@
 import {View, Text, Image, ScrollView} from 'react-native';
 import {styled} from 'nativewind';
-import Feather from '@expo/vector-icons/Feather';
-import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
+import ShareButton from '@/components/buttons/ShareButton';
+import CalendarButton from '@/components/buttons/CalendarButton';
 
 const StyledScrollView = styled(ScrollView);
 const StyledView = styled(View);
@@ -17,16 +17,8 @@ export default function EventScreen(){
                 <StyledText className='text-teal-400 text-2xl font-bold text-left ml-6'>Homecoming 2024!</StyledText>
                 <StyledText className='text-teal-400 text-left ml-6'>Wed, Sep 4 • 6:30pm - 7:30pm</StyledText>
                 <StyledView className='flex-row'>
-                    <StyledView className='h-12 w-12 ml-20 mt-6 mb-6 bg-white rounded-full'>
-                        <StyledView className='m-3'>
-                            <Feather name="share" size={24} color="#002626"/>
-                        </StyledView>
-                    </StyledView>
-                    <StyledView className='h-12 w-12 ml-40 mt-6 mb-6 bg-white rounded-full'>
-                        <StyledView className='m-3'>
-                        <FontAwesome6 name="calendar-plus" size={24} color="#002626" />
-                        </StyledView>
-                    </StyledView>
+                    <ShareButton/>
+                    <CalendarButton/>
                 </StyledView>
                 <StyledText className='text-white text-lg mt-1 ml-5 mr-3 mb-2'>{"Celebrating 14 year of faithful ministry. One combined Service under the Tent. Everyone welcome, inflatabes and games for kids. Launch will be catered following the Service. \nSpecial Speaker: Pastor Dunnie Humphrey"}</StyledText>
                 <StyledView>
