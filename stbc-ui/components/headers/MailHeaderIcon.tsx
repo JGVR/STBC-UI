@@ -7,7 +7,7 @@ const StyledView = styled(View);
 
 export default function MailHeaderIcon(props: {layoutDetails: ComponentLayout}){
     return (
-        <StyledView className={props.layoutDetails ? `${props.layoutDetails.position} ${props.layoutDetails.top} ${props.layoutDetails.bottom} ${props.layoutDetails.left} ${props.layoutDetails.right}` : ""}>
+        <StyledView className={props.layoutDetails ? `${props.layoutDetails.position} ${props.layoutDetails.top} ${props.layoutDetails.bottom} ${props.layoutDetails.left} ${props.layoutDetails.right} ${props.layoutDetails.height} ${props.layoutDetails.width}` : ""}>
             <Ionicons name="mail-sharp" size={30} color={props.layoutDetails.color}/>
         </StyledView>
     );

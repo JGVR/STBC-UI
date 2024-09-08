@@ -14,12 +14,12 @@ const iconLayout = new ComponentLayout({height:"", width:"", top:"top-14", left:
 const buttonLayout = new ComponentLayout({height:"", width:"", top:"top-12", right:"right-[5%]", color:"#0E4749"});
 const imageLayout = new ComponentLayout({height:"h-64", width:"w-full", opacity:"opacity-80"});
 const titleLayout = new ComponentLayout({height:"", width:"", bottom:"bottom-40", size:"text-2xl", color:"text-midnight-green"});
-const optionalMsgLayout = new ComponentLayout({height:"", width:"", bottom:"bottom-36", color: "text-midnight-green"})
+const optionalMsgLayout = new ComponentLayout({height:"", width:"", bottom:"bottom-36", color: "text-midnight-green"});
 
 export default function DevotionScreen(){
     const [isCompleted, setIsCompleted] = useState(false);
     const [devotions, setDevotions] = useState([]);
-    const url = "http://192.168.1.15:8000/find?type=devotion&churchId=1";
+    const url = "http://10.0.0.133:8000/find?type=devotion&churchId=1";
     const {day} = useLocalSearchParams();
     const router = useRouter();
     

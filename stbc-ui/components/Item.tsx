@@ -8,7 +8,6 @@ const StyledText = styled(Text);
 const StyledImage = styled(Image);
 
 export default function Item(props: {title: string, screenUrl: string, optionalMsg: string, imageLayout: string, titleLayout: string, optionalMsgLayout: string}){
-
     return(
         <Link href={props.screenUrl} asChild>
             <Pressable>

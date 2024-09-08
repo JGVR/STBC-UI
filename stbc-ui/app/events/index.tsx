@@ -6,11 +6,13 @@ import { useCallback } from 'react';
 import { useFocusEffect } from 'expo-router';
 import { styled } from 'nativewind';
 import ItemsList from '@/components/ItemsList';
+import MailHeaderIcon from '@/components/headers/MailHeaderIcon';
 
 const StyledView = styled(View);
 const containerLayout = new ComponentLayout({height:"h-60", width:"w-full", color:"bg-dark-green"});
 const imageLayout = new ComponentLayout({height: "h-40", width: "w-96", left:"left-6", top:"top-28", border:"border rounded-2xl"});
 const titleLayout = new ComponentLayout({height:"", width:"", bottom:"bottom-28", size:"text-xl", color:"text-white"});
+const mailHeaderLayout = new ComponentLayout({height: "h-6", width:"w-8", bottom:"bottom-[20%]", left:"left-[88%]", color:"white"})
 const optionalMsgLayout = new ComponentLayout({height:"", width:""});
 const DATA = [
     {
@@ -90,7 +92,8 @@ export default function EventsScreen(){
     return(
         <StyledView className="bg-midnight-green">
             <BgImageScreenHeader router={router} backButtonShown={false} buttonTitle="" backButtonLayout="" backIconLayout="" headerTitle='Upcoming Events' headerOptionalMsg="" imageLayout={imageLayout} containerLayout={containerLayout} titleLayout={titleLayout} optionalMsgLayout={optionalMsgLayout}/>
-            <StyledView className='bg-midnight-green h-3/4 w-full top-8'>
+            <MailHeaderIcon layoutDetails={mailHeaderLayout}/>
+            <StyledView className='bg-midnight-green h-3/4 w-full'>
                 <ItemsList data={DATA} imageLayout={itemImgLayout} titleLayout={itemTitleLayout} optionalMsgLayout={itemOptMsgLayout}/>
             </StyledView>
         </StyledView>
