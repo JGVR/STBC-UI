@@ -8,6 +8,7 @@ const StyledView = styled(View);
 const StyledText = styled(Text);
 const StyledImage = styled(Image);
 const imageUrl = require("@/assets/cross.jpeg");
+const eventUrl = "https://docs.google.com/forms/d/e/1FAIpQLSep8ViJwn-9R48MHy446HXCOYDPOZImThSaZEeFmsvabQ_fbw/viewform";
 
 export default function EventScreen(){
     return(
@@ -17,7 +18,7 @@ export default function EventScreen(){
                 <StyledText className='text-teal-400 text-2xl font-bold text-left ml-6'>Homecoming 2024!</StyledText>
                 <StyledText className='text-teal-400 text-left ml-6'>Wed, Sep 4 • 6:30pm - 7:30pm</StyledText>
                 <StyledView className='flex-row'>
-                    <ShareButton/>
+                    <ShareButton url={eventUrl}/>
                     <CalendarButton/>
                 </StyledView>
                 <StyledText className='text-white text-lg mt-1 ml-5 mr-3 mb-2'>{"Celebrating 14 year of faithful ministry. One combined Service under the Tent. Everyone welcome, inflatabes and games for kids. Launch will be catered following the Service. \nSpecial Speaker: Pastor Dunnie Humphrey"}</StyledText>
