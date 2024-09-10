@@ -4,12 +4,12 @@ import Item from './Item';
 
 const StyledView = styled(View);
 
-export default function ItemsList(props: {data: any[], imageLayout: string, titleLayout: string, optionalMsgLayout: string}){
+export default function ItemsList(props: {data: any[], imageLayout: string, titleLayout: string, description: string}){
     return(
         <StyledView className="h-[85%] w-full">
             <FlatList
                 data={props.data}
-                renderItem={({item}) => <Item title={item.title} screenUrl={item.screenUrl} optionalMsg={item.optionalMsg} imageLayout={props.imageLayout} titleLayout={props.titleLayout} optionalMsgLayout={props.optionalMsgLayout}/>}
+                renderItem={({item}) => <Item title={item.title} screenUrl={item.screenUrl} imageUrl={item.imageUrl} description={item.description} imageLayout={props.imageLayout} titleLayout={props.titleLayout} optionalMsgLayout={props.description}/>}
                 />
         </StyledView>
     );
