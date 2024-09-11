@@ -7,9 +7,12 @@ const StyledView = styled(View);
 const StyledText = styled(Text);
 const StyledImage = styled(Image);
 
-export default function Item(props: {title: string, screenUrl: string, imageUrl: string, description: string, imageLayout: string, titleLayout: string, optionalMsgLayout: string}){
+export default function Item(props: {title: string, screenUrl: string, imageUrl: string, description: string, location: string, imageLayout: string, titleLayout: string, optionalMsgLayout: string}){
     return(
-        <Link href={props.imageUrl} asChild>
+        <Link href={{
+            pathname: `/events/${props.title}`,
+            params: {title: props.title, description: props.description, eventUrl: props.imageUrl, location: props.location}
+        }} asChild>
             <Pressable>
                 <StyledView className='flex-row ml-3 mr-3 mt-5 border-b-2 border-b-white'>
                     <StyledImage source={require('@/assets/HomeComing - stbc.png')} className={`${props.imageLayout}`}/>

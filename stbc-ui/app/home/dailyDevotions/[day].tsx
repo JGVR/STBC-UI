@@ -19,7 +19,7 @@ const optionalMsgLayout = new ComponentLayout({height:"", width:"", bottom:"bott
 export default function DevotionScreen(){
     const [isCompleted, setIsCompleted] = useState(false);
     const [devotions, setDevotions] = useState([]);
-    const url = "http://172.20.10.2:8000/find?type=devotion&churchId=1";
+    const url = "http://192.168.1.15:8000/find?type=devotion&churchId=1";
     const {day} = useLocalSearchParams();
     const router = useRouter();
     
