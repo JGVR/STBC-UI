@@ -25,10 +25,13 @@ export default function EventScreen(){
                     <CalendarButton/>
                 </StyledView>
                 <StyledText className='text-white text-lg mt-1 ml-5 mr-3 mb-2'>{description}</StyledText>
-                <StyledView>
-                    <StyledText className='text-teal-400 font-bold ml-5 mt-3 mb-1 text-lg'>Location:</StyledText>
-                    <StyledText className='text-white ml-8'>{location}</StyledText>
-                </StyledView>
+                {
+                    location.length > 0 ?
+                    <StyledView>
+                        <StyledText className='text-teal-400 font-bold ml-5 mt-3 mb-1 text-lg'>Location:</StyledText>
+                        <StyledText className='text-white ml-8'>{location}</StyledText>
+                    </StyledView> : null
+                }
                 <StyledView>
                     <StyledText className='text-teal-400 font-bold ml-5 mt-3 mb-1 text-lg'>Contact:</StyledText>
                     <StyledText className='text-white ml-8'>•strongtowerbaptist@gmail.com</StyledText>

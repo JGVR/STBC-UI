@@ -22,7 +22,6 @@ const itemOptMsgLayout = "h-5 text-white";
 
 export default function EventsScreen(){
     const router = useRouter();
-    const [isFocused, setIsFocused] = useState(false);
     const [events, setEvents] = useState([]);
     const [isCompleted, setIsCompleted] = useState(false);
 
@@ -31,12 +30,10 @@ export default function EventsScreen(){
         useCallback(() => {
             // Set the status bar to light-content when the screen is focused
             StatusBar.setBarStyle('light-content');
-            setIsFocused(true);
 
             // When the screen loses focus, set it back to dark-content
             return () => {
                 StatusBar.setBarStyle('dark-content');
-                setIsFocused(false);
             };
         }, [])
     );
@@ -50,6 +47,7 @@ export default function EventsScreen(){
                 }
                 return response.json();
             }).then(data => {
+                console.log(`${new Date(data[0]["date"])}`);
                 setEvents(data);
                 setIsCompleted(true);
             }).catch(error => {
