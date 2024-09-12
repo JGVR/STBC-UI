@@ -8,18 +8,18 @@ const StyledScrollView = styled(ScrollView);
 const StyledView = styled(View);
 const StyledText = styled(Text);
 const StyledImage = styled(Image);
-const imageUrl = require("@/assets/cross.jpeg");
+const tempImageUrl = require("@/assets/cross.jpeg");
 
 export default function EventScreen(){
-    const {title, description, eventUrl, location} = useLocalSearchParams();
+    const {title, description, eventUrl, imageUrl, location, startDate, endDate} = useLocalSearchParams();
     const url = Array.isArray(eventUrl) ? eventUrl[0] : eventUrl || '';  // Ensure eventUrl is treated as a string
 
     return(
         <StyledScrollView className='bg-dark-green h-full w-full'>
-            <StyledImage className='h-60 w-96 mt-5 ml-5 mr-5 mb-1 rounded-2xl' source={imageUrl}/>
+            <StyledImage className='h-60 w-96 mt-5 ml-5 mr-5 mb-1 rounded-2xl' source={tempImageUrl}/>
             <StyledView>
                 <StyledText className='text-teal-400 text-2xl font-bold text-left ml-6'>{title}</StyledText>
-                <StyledText className='text-teal-400 text-left ml-6'>Wed, Sep 4 • 6:30pm - 7:30pm</StyledText>
+                <StyledText className='text-teal-400 text-left ml-6 text-xs'>{`${startDate} • ${endDate}`}</StyledText>
                 <StyledView className='flex-row'>
                     <ShareButton url={url}/>
                     <CalendarButton/>
