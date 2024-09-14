@@ -19,7 +19,7 @@ const optionalMsgLayout = new ComponentLayout({height:"", width:"", bottom:"bott
 
 export default function DevotionScreen(){
     const [isCompleted, setIsCompleted] = useState(false);
-    const [devotions, setDevotions] = useState({title: " ", memberId: " ", message: " "});
+    const [devotions, setDevotions] = useState<Devotion>();
     const {day} = useLocalSearchParams();
     const url = `http://192.168.1.12:8000/find?type=devotion&churchId=1&weekDay=${day}`;
     const router = useRouter();
@@ -34,11 +34,7 @@ export default function DevotionScreen(){
                 return response.json();
             }
         ).then(data => {
-            setDevotions({
-                title: data[0].title,
-                memberId: data[0].memberId,
-                message: data[0].message
-            });
+            setDevotions(new Devotion(data[0].title, data[0].message, data[0].memberId.toString(), data[0].weekDay));
             setIsCompleted(true);
         })
         .catch(error => {
@@ -47,14 +43,15 @@ export default function DevotionScreen(){
         })
     }, [])
 
+    //Render content once the API request has been fulfilled
     if(isCompleted){
         return(
             <StyledView className='h-[100%]'>
-                <BgImageScreenHeader router={router} buttonTitle='Devotions' headerTitle={devotions.title} headerOptionalMsg={devotions.memberId} containerLayout={containerLayout} backButtonLayout={buttonLayout} backIconLayout={iconLayout} backButtonShown={true} imageLayout={imageLayout} titleLayout={titleLayout} optionalMsgLayout={optionalMsgLayout}/>
+                <BgImageScreenHeader router={router} buttonTitle='Devotions' headerTitle={devotions ? devotions.title : ""} headerOptionalMsg={devotions ? devotions.author : ""} containerLayout={containerLayout} backButtonLayout={buttonLayout} backIconLayout={iconLayout} backButtonShown={true} imageLayout={imageLayout} titleLayout={titleLayout} optionalMsgLayout={optionalMsgLayout}/>
                 <StyledScrollView className="w-full h-80 bg-dark-green border rounded-tr-2xl rounded-tl-2xl overflow-hidden">
                     <StyledView className="w-full">
                         <StyledText className="text-white m-3 text-center text-base">
-                            {`${devotions.message}`}
+                            {`${devotions ? devotions.message : null}`}
                         </StyledText>
                     </StyledView>
                 </StyledScrollView>
@@ -62,6 +59,7 @@ export default function DevotionScreen(){
         );
     }
 
+    //Render loading screen while API request is in process
     return(
         <LoadingScreen/>
     );
