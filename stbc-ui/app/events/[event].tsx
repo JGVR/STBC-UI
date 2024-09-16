@@ -40,7 +40,7 @@ export default function EventScreen(){
                 <StyledText className='text-teal-400 text-2xl font-bold text-left ml-6'>{title}</StyledText>
                 <StyledText className='text-teal-400 text-left ml-6 text-xs'>{`${sDate} • ${eDate}`}</StyledText>
                 <StyledView className='flex-row'>
-                    <ShareButton url={url}/>
+                    <ShareButton url={url.length > 0 ? url : imgUrl}/>
                     <CalendarButton title={title} startDate={startDate} endDate={endDate} location={location}/>
                 </StyledView>
                 <StyledText className='text-white text-lg mt-1 ml-5 mr-3 mb-2'>{description}</StyledText>

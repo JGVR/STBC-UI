@@ -15,7 +15,7 @@ const StyledView = styled(View);
 const containerLayout = new ComponentLayout({height:"h-60", width:"w-full", color:"bg-dark-green"});
 const imageLayout = new ComponentLayout({height: "h-40", width: "w-96", left:"left-6", top:"top-24", border:"border rounded-2xl"});
 const titleLayout = new ComponentLayout({height:"", width:"", bottom:"bottom-28", size:"text-xl", color:"text-white"});
-const mailHeaderLayout = new ComponentLayout({height: "h-6", width:"w-8", bottom:"bottom-[20%]", left:"left-[88%]", color:"white"})
+const mailHeaderLayout = new ComponentLayout({height: "h-6", width:"w-8", bottom:"bottom-[20%]", left:"left-[88%]", color:"white"});
 const optionalMsgLayout = new ComponentLayout({height:"", width:""});
 const apiUrl = "http://192.168.1.9:8000/find?type=event&churchId=1";
 const itemImgLayout = "h-14 w-24 rounded-lg mb-4";
