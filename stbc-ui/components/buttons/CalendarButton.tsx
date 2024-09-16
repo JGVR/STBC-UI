@@ -6,7 +6,7 @@ import { useState } from 'react';
 
 const StyledView = styled(View);
 
-export default function CalendarButton(){
+export default function CalendarButton(props:{title: any, startDate: any, endDate: any, location: any}){
     const [hasCalendarPermission, setCalendarPermission] = useState(false);
 
     const requestCalendarPermission = async () => {
@@ -45,16 +45,15 @@ export default function CalendarButton(){
     
             // Now create the event using the default calendarId
             await Calendar.createEventAsync(calendarId, {
-                title: 'New Event',
-                startDate: new Date(),
-                endDate: new Date(Date.now() + 60 * 60 * 1000), // 1 hour later
-                timeZone: 'GMT',
-                location: 'Online',
-            });
-    
+                title: props.title,
+                startDate: new Date(props.startDate),
+                endDate: new Date(props.endDate),
+                timeZone: 'America/New_York',
+                location: props.location,
+            });        
             Alert.alert('Event Added', 'Your event has been added to the calendar.');
         }catch(error){
-            console.log(`Something went wrong:${error}`);
+            Alert.alert('Something Went Wrong!', 'The event could not be added to you calendar, try again later.');
         };
     }
 

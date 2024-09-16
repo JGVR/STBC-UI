@@ -5,7 +5,7 @@ import LoadingScreen from '@/components/loadingScreen';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import BgImageScreenHeader from '@/components/headers/BgImageScreenHeader';
 import ComponentLayout from '@/utils/ComponentLayout';
-import Devotion from '@/utils/Devotion';
+import Devotion from '@/model/Devotion';
 
 const StyledView = styled(View);
 const StyledScrollView = styled(ScrollView);
@@ -21,7 +21,7 @@ export default function DevotionScreen(){
     const [isCompleted, setIsCompleted] = useState(false);
     const [devotions, setDevotions] = useState<Devotion>();
     const {day} = useLocalSearchParams();
-    const url = `http://192.168.1.12:8000/find?type=devotion&churchId=1&weekDay=${day}`;
+    const url = `http://192.168.1.9:8000/find?type=devotion&churchId=1&weekDay=${day}`;
     const router = useRouter();
     
     //Extract the correct devotion from STBC-Api

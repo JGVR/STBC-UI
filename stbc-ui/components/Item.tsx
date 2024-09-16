@@ -8,7 +8,7 @@ const StyledText = styled(Text);
 const StyledImage = styled(Image);
 
 export default function Item(props: {title: string, url: string, imageUrl: string, description: string, location: string, startDate: string, endDate: string, imageLayout: string, titleLayout: string, optionalMsgLayout: string}){
-
+    
     const sDate = new Date(props.startDate).toLocaleString('en-US', {
         weekday: 'short',
         year: 'numeric',
@@ -27,10 +27,11 @@ export default function Item(props: {title: string, url: string, imageUrl: strin
         minute: '2-digit',
         hour12: true
    });
+
     return(
         <Link href={{
             pathname: `/events/${props.title}`,
-            params: {title: props.title, description: props.description, eventUrl: props.url, imageUrl: props.imageUrl, location: props.location, startDate: sDate, endDate: eDate}
+            params: {title: props.title, description: props.description, eventUrl: props.url, imageUrl: props.imageUrl, location: props.location, startDate: props.startDate, endDate: props.endDate}
         }} asChild>
             <Pressable>
                 <StyledView className='flex-row ml-3 mr-3 mt-5 border-b-2 border-b-white'>
