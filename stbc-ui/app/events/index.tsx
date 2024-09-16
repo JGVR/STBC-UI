@@ -8,6 +8,8 @@ import { styled } from 'nativewind';
 import ItemsList from '@/components/ItemsList';
 import MailHeaderIcon from '@/components/headers/MailHeaderIcon';
 import LoadingScreen from '@/components/loadingScreen';
+import { DefaultAzureCredential } from '@azure/identity';
+import { BlobServiceClient } from '@azure/storage-blob';
 
 const StyledView = styled(View);
 const containerLayout = new ComponentLayout({height:"h-60", width:"w-full", color:"bg-dark-green"});

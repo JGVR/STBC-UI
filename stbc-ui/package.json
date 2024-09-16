@@ -9,7 +9,10 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@azure/identity": "^4.4.1",
+    "@azure/storage-blob": "^12.24.0",
     "expo": "~51.0.31",
+    "expo-calendar": "~13.0.5",
     "expo-constants": "~16.0.2",
     "expo-linking": "~6.3.1",
     "expo-router": "~3.5.23",
@@ -21,8 +24,7 @@
     "react-native-screens": "3.31.1",
     "react-native-webview": "^13.8.6",
     "react-native-youtube-iframe": "^2.3.0",
-    "typescript": "~5.3.3",
-    "expo-calendar": "~13.0.5"
+    "typescript": "~5.3.3"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

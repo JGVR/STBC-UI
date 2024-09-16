@@ -31,10 +31,11 @@ export default function EventScreen(){
         minute: '2-digit',
         hour12: true
    }) : "";
+   const imgUrl = typeof imageUrl === "string" ? imageUrl : "";
 
     return(
         <StyledScrollView className='bg-dark-green h-full w-full'>
-            <StyledImage className='h-60 w-96 mt-5 ml-5 mr-5 mb-1 rounded-2xl' source={tempImageUrl}/>
+            <StyledImage className='h-60 w-96 mt-5 ml-5 mr-5 mb-1 rounded-2xl' src={imgUrl}/>
             <StyledView>
                 <StyledText className='text-teal-400 text-2xl font-bold text-left ml-6'>{title}</StyledText>
                 <StyledText className='text-teal-400 text-left ml-6 text-xs'>{`${sDate} • ${eDate}`}</StyledText>

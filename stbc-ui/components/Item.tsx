@@ -35,7 +35,7 @@ export default function Item(props: {title: string, url: string, imageUrl: strin
         }} asChild>
             <Pressable>
                 <StyledView className='flex-row ml-3 mr-3 mt-5 border-b-2 border-b-white'>
-                    <StyledImage source={require('@/assets/HomeComing - stbc.png')} className={`${props.imageLayout}`}/>
+                    <StyledImage src={props.imageUrl} className={`${props.imageLayout}`}/>
                     <StyledView className='flex-1 ml-3 mt-3'>
                         <StyledText className={`${props.titleLayout}`}>{props.title}</StyledText>
                         {props.startDate.length > 0 ? <StyledText className={`${props.optionalMsgLayout}`}>{`${sDate}•${eDate}`}</StyledText> : null}
