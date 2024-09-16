@@ -1,4 +1,4 @@
-import {View, Text, Image, FlatList} from 'react-native';
+import {View, FlatList} from 'react-native';
 import {styled} from 'nativewind';
 import Item from './Item';
 

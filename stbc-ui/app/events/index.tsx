@@ -2,7 +2,7 @@ import {View, StatusBar} from 'react-native';
 import BgImageScreenHeader from '@/components/headers/BgImageScreenHeader';
 import { useRouter } from 'expo-router';
 import ComponentLayout from '@/utils/ComponentLayout';
-import { useCallback, useState, useEffect } from 'react';
+import { useCallback, useState } from 'react';
 import { useFocusEffect } from 'expo-router';
 import { styled } from 'nativewind';
 import ItemsList from '@/components/ItemsList';

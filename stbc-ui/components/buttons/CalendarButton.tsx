@@ -1,4 +1,4 @@
-import {View, Pressable, Alert, Platform} from 'react-native';
+import {View, Pressable, Alert} from 'react-native';
 import {styled} from 'nativewind';
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import * as Calendar from 'expo-calendar';

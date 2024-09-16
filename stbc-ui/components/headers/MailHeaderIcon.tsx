@@ -1,4 +1,4 @@
-import {View, Text} from 'react-native';
+import {View} from 'react-native';
 import {styled} from 'nativewind';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import ComponentLayout from '@/utils/ComponentLayout';

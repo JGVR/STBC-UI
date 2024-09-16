@@ -1,4 +1,4 @@
-import {View, Image, Animated, Easing} from 'react-native';
+import {View, Animated, Easing} from 'react-native';
 import {styled} from 'nativewind';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { useEffect, useRef } from 'react';
