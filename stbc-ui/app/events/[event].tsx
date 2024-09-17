@@ -8,7 +8,6 @@ const StyledScrollView = styled(ScrollView);
 const StyledView = styled(View);
 const StyledText = styled(Text);
 const StyledImage = styled(Image);
-const tempImageUrl = require("@/assets/cross.jpeg");
 
 export default function EventScreen(){
     const {title, description, eventUrl, imageUrl, location, startDate, endDate} = useLocalSearchParams();
