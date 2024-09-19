@@ -7,7 +7,7 @@ const StyledView = styled(View);
 const StyledText = styled(Text);
 const StyledImage = styled(Image);
 
-export default function Item(props: {item: any, imageLayout: string, titleLayout: string, optionalMsgLayout: string, isDynamicScreen: boolean}){
+export default function Item(props: {item: any, imageLayout: string, titleLayout: string, optionalMsgLayout: string, iconLayout: string, isDynamicScreen: boolean}){
     
     const sDate = new Date(props.item.startDate).toLocaleString('en-US', {
         weekday: 'short',
@@ -40,7 +40,7 @@ export default function Item(props: {item: any, imageLayout: string, titleLayout
                         <StyledText className={`${props.titleLayout}`}>{props.item.title}</StyledText>
                         {props.item.startDate.length > 0 ? <StyledText className={`${props.optionalMsgLayout}`}>{`${sDate}•${eDate}`}</StyledText> : null}
                     </StyledView>
-                    <StyledView className="mt-4">
+                    <StyledView className={props.iconLayout}>
                         <MaterialIcons name="navigate-next" size={26} color="white" />
                     </StyledView>
                 </StyledView>

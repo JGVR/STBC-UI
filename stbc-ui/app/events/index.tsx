@@ -16,10 +16,11 @@ const imageLayout = new ComponentLayout({height: "h-40", width: "w-96", left:"le
 const titleLayout = new ComponentLayout({height:"", width:"", bottom:"bottom-28", size:"text-xl", color:"text-white"});
 const mailHeaderLayout = new ComponentLayout({height: "h-6", width:"w-8", bottom:"bottom-[20%]", left:"left-[88%]", color:"white"});
 const optionalMsgLayout = new ComponentLayout({height:"", width:""});
-const apiUrl = "http://172.20.10.2:8000/find?type=event&churchId=1";
+const apiUrl = "http://10.0.0.134:8000/find?type=event&churchId=1";
 const itemImgLayout = "h-14 w-24 rounded-lg mb-4";
 const itemTitleLayout = "h-5 text-white mb-1";
 const itemOptMsgLayout = "h-5 text-white";
+const iconLayout = "mt-4";
 
 export default function EventsScreen(){
     const router = useRouter();
@@ -66,10 +67,10 @@ export default function EventsScreen(){
     if(isCompleted){
         return(
             <StyledView className="bg-midnight-green">
-                <BgImageScreenHeader router={router} backButtonShown={false} buttonTitle="" backButtonLayout="" backIconLayout="" headerTitle='Upcoming Events' headerOptionalMsg="" imageLayout={imageLayout} containerLayout={containerLayout} titleLayout={titleLayout} optionalMsgLayout={optionalMsgLayout}/>
+                <BgImageScreenHeader router={router} imageUrl="https://stbc.blob.core.windows.net/stbc-events/Homecoming 2024" backButtonShown={false} buttonTitle="" backButtonLayout="" backIconLayout="" headerTitle='Upcoming Events' headerOptionalMsg="" imageLayout={imageLayout} containerLayout={containerLayout} titleLayout={titleLayout} optionalMsgLayout={optionalMsgLayout}/>
                 <MailHeaderIcon layoutDetails={mailHeaderLayout}/>
                 <StyledView className='bg-midnight-green h-3/4 w-full'>
-                    <ItemsList data={events} imageLayout={itemImgLayout} titleLayout={itemTitleLayout} description={itemOptMsgLayout} isDynamicScreen={true}/>
+                    <ItemsList data={events} imageLayout={itemImgLayout} titleLayout={itemTitleLayout} iconLayout={iconLayout} description={itemOptMsgLayout} isDynamicScreen={true}/>
                 </StyledView>
             </StyledView>
         );

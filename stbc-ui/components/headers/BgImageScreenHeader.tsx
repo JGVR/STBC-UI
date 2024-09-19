@@ -7,7 +7,7 @@ const StyledView = styled(View);
 const StyledText = styled(Text);
 const StyledBgImg = styled(ImageBackground);
 
-export default function BgImageScreenHeader(props: {router: any, buttonTitle: string, headerTitle: string, headerOptionalMsg: string|null, containerLayout: ComponentLayout, backButtonLayout: ComponentLayout|any, backIconLayout: ComponentLayout|any, backButtonShown: boolean, imageLayout: ComponentLayout, titleLayout: ComponentLayout, optionalMsgLayout: ComponentLayout}){
+export default function BgImageScreenHeader(props: {router: any, imageUrl: string, buttonTitle: string, headerTitle: string, headerOptionalMsg: string|null, containerLayout: ComponentLayout, backButtonLayout: ComponentLayout|any, backIconLayout: ComponentLayout|any, backButtonShown: boolean, imageLayout: ComponentLayout, titleLayout: ComponentLayout, optionalMsgLayout: ComponentLayout}){
     return(
         <StyledView className={`
                                 ${props.containerLayout.height} 
@@ -31,7 +31,7 @@ export default function BgImageScreenHeader(props: {router: any, buttonTitle: st
                      ${props.imageLayout.border} 
                      ${props.imageLayout.opacity}
                      overflow-hidden`
-                } source={require('@/assets/cross.jpeg')}>
+                } src={props.imageUrl}>
                 {props.backButtonShown ? <BackButton title={props.buttonTitle} iconLayout={props.backIconLayout} buttonLayout={props.backButtonLayout}/> : null}
                 </StyledBgImg>
                 <StyledText className={`

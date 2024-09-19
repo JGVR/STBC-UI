@@ -15,15 +15,16 @@ const imageLayout = new ComponentLayout({height: "h-40", width: "w-96", left:"le
 const titleLayout = new ComponentLayout({height:"", width:"", bottom:"bottom-28", size:"text-xl", color:"text-white"});
 const mailHeaderLayout = new ComponentLayout({height: "h-6", width:"w-8", bottom:"bottom-[20%]", left:"left-[88%]", color:"white"});
 const optionalMsgLayout = new ComponentLayout({height:"", width:""});
-const itemImgLayout = "h-14 w-24 rounded-lg mb-4";
+const itemImgLayout = "h-10 w-24 rounded-lg mb-4";
 const itemTitleLayout = "h-5 text-white mb-1";
 const itemOptMsgLayout = "h-5 text-white";
+const iconLayout = "mt-2"
 const data = [
     {
         title: "Ministries",
         description: "",
         url: "",
-        imageUrl: require("@/assets/cross.jpeg"),
+        imageUrl: "https://stbc.blob.core.windows.net/stbc-events/strong-tower.png",
         location: "",
         startDate: "",
         endDate: ""
@@ -32,7 +33,7 @@ const data = [
         title: "Sunday School",
         description: "",
         url: "",
-        imageUrl: require("@/assets/cross.jpeg"),
+        imageUrl: "https://stbc.blob.core.windows.net/stbc-events/strong-tower.png",
         location: "",
         startDate: "",
         endDate: ""
@@ -41,7 +42,7 @@ const data = [
         title: "Children's Church",
         description: "",
         url: "",
-        imageUrl: require("@/assets/cross.jpeg"),
+        imageUrl: "https://stbc.blob.core.windows.net/stbc-events/strong-tower.png",
         location: "",
         startDate: "",
         endDate: ""
@@ -64,12 +65,12 @@ export default function ConnectTab(){
     );
 
     return(
-        <View>
-            <BgImageScreenHeader router={router} backButtonShown={false} buttonTitle="" backButtonLayout="" backIconLayout="" headerTitle='Connect' headerOptionalMsg="" imageLayout={imageLayout} containerLayout={containerLayout} titleLayout={titleLayout} optionalMsgLayout={optionalMsgLayout}/>
+        <StyledView className="bg-midnight-green">
+            <BgImageScreenHeader router={router} imageUrl="https://stbc.blob.core.windows.net/stbc-events/Homecoming 2024" backButtonShown={false} buttonTitle="" backButtonLayout="" backIconLayout="" headerTitle='Connect' headerOptionalMsg="" imageLayout={imageLayout} containerLayout={containerLayout} titleLayout={titleLayout} optionalMsgLayout={optionalMsgLayout}/>
             <MailHeaderIcon layoutDetails={mailHeaderLayout}/>
             <StyledView className='bg-midnight-green h-3/4 w-full'>
-                <ItemsList data={data} imageLayout={itemImgLayout} titleLayout={itemTitleLayout} description={itemOptMsgLayout} isDynamicScreen={false}/>
+                <ItemsList data={data} imageLayout={itemImgLayout} titleLayout={itemTitleLayout} iconLayout={iconLayout} description={itemOptMsgLayout} isDynamicScreen={false}/>
             </StyledView>
-        </View>
+        </StyledView>
     );
 }

@@ -21,7 +21,7 @@ export default function DevotionScreen(){
     const [isCompleted, setIsCompleted] = useState(false);
     const [devotions, setDevotions] = useState<Devotion>();
     const {day} = useLocalSearchParams();
-    const url = `http://172.20.10.2:8000/find?type=devotion&churchId=1&weekDay=${day}`;
+    const url = `http://10.0.0.134:8000/find?type=devotion&churchId=1&weekDay=${day}`;
     const router = useRouter();
     
     //Extract the correct devotion from STBC-Api
