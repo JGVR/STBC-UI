@@ -48,7 +48,13 @@ export default function EventsScreen(){
                 }
                 return response.json();
             }).then(data => {
-                setEvents(data);
+                const events = data.map((event: any) => {
+                    return {
+                        ...event,
+                        targetScreen: "events"
+                    };
+                });
+                setEvents(events);
                 setIsCompleted(true);
             }).catch(error => {
                 console.log(`Something went wrong with the API request ${error}`);

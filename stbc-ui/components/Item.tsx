@@ -30,7 +30,7 @@ export default function Item(props: {item: any, imageLayout: string, titleLayout
 
     return(
         <Link href={{
-            pathname: `/events/${props.item.title}`,
+            pathname: `/${props.item.targetScreen}/${props.item.title}`,
             params: {title: props.item.title, description: props.item.description, eventUrl: props.item.url, imageUrl: props.item.imageUrl, location: props.item.location, startDate: props.item.startDate, endDate: props.item.endDate}
         }} asChild>
             <Pressable>
