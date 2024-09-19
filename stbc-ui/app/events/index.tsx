@@ -69,7 +69,7 @@ export default function EventsScreen(){
                 <BgImageScreenHeader router={router} backButtonShown={false} buttonTitle="" backButtonLayout="" backIconLayout="" headerTitle='Upcoming Events' headerOptionalMsg="" imageLayout={imageLayout} containerLayout={containerLayout} titleLayout={titleLayout} optionalMsgLayout={optionalMsgLayout}/>
                 <MailHeaderIcon layoutDetails={mailHeaderLayout}/>
                 <StyledView className='bg-midnight-green h-3/4 w-full'>
-                    <ItemsList data={events} imageLayout={itemImgLayout} titleLayout={itemTitleLayout} description={itemOptMsgLayout}/>
+                    <ItemsList data={events} imageLayout={itemImgLayout} titleLayout={itemTitleLayout} description={itemOptMsgLayout} isDynamicScreen={true}/>
                 </StyledView>
             </StyledView>
         );

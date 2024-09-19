@@ -15,6 +15,38 @@ const imageLayout = new ComponentLayout({height: "h-40", width: "w-96", left:"le
 const titleLayout = new ComponentLayout({height:"", width:"", bottom:"bottom-28", size:"text-xl", color:"text-white"});
 const mailHeaderLayout = new ComponentLayout({height: "h-6", width:"w-8", bottom:"bottom-[20%]", left:"left-[88%]", color:"white"});
 const optionalMsgLayout = new ComponentLayout({height:"", width:""});
+const itemImgLayout = "h-14 w-24 rounded-lg mb-4";
+const itemTitleLayout = "h-5 text-white mb-1";
+const itemOptMsgLayout = "h-5 text-white";
+const data = [
+    {
+        title: "Ministries",
+        description: "",
+        url: "",
+        imageUrl: require("@/assets/cross.jpeg"),
+        location: "",
+        startDate: "",
+        endDate: ""
+    },
+    {
+        title: "Sunday School",
+        description: "",
+        url: "",
+        imageUrl: require("@/assets/cross.jpeg"),
+        location: "",
+        startDate: "",
+        endDate: ""
+    },
+    {
+        title: "Children's Church",
+        description: "",
+        url: "",
+        imageUrl: require("@/assets/cross.jpeg"),
+        location: "",
+        startDate: "",
+        endDate: ""
+    }
+]
 
 export default function ConnectTab(){
     const router = useRouter();
@@ -35,7 +67,9 @@ export default function ConnectTab(){
         <View>
             <BgImageScreenHeader router={router} backButtonShown={false} buttonTitle="" backButtonLayout="" backIconLayout="" headerTitle='Connect' headerOptionalMsg="" imageLayout={imageLayout} containerLayout={containerLayout} titleLayout={titleLayout} optionalMsgLayout={optionalMsgLayout}/>
             <MailHeaderIcon layoutDetails={mailHeaderLayout}/>
-            <Text>Hello!</Text>
+            <StyledView className='bg-midnight-green h-3/4 w-full'>
+                <ItemsList data={data} imageLayout={itemImgLayout} titleLayout={itemTitleLayout} description={itemOptMsgLayout} isDynamicScreen={false}/>
+            </StyledView>
         </View>
     );
 }

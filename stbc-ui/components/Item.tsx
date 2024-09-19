@@ -7,7 +7,7 @@ const StyledView = styled(View);
 const StyledText = styled(Text);
 const StyledImage = styled(Image);
 
-export default function Item(props: {item: any, imageLayout: string, titleLayout: string, optionalMsgLayout: string}){
+export default function Item(props: {item: any, imageLayout: string, titleLayout: string, optionalMsgLayout: string, isDynamicScreen: boolean}){
     
     const sDate = new Date(props.item.startDate).toLocaleString('en-US', {
         weekday: 'short',
@@ -30,7 +30,7 @@ export default function Item(props: {item: any, imageLayout: string, titleLayout
 
     return(
         <Link href={{
-            pathname: `/${props.item.targetScreen}/${props.item.title}`,
+            pathname: props.isDynamicScreen ? `/${props.item.targetScreen}/${props.item.title}` : `/${props.item.targetScreen}`,
             params: {title: props.item.title, description: props.item.description, eventUrl: props.item.url, imageUrl: props.item.imageUrl, location: props.item.location, startDate: props.item.startDate, endDate: props.item.endDate}
         }} asChild>
             <Pressable>
