@@ -31,7 +31,7 @@ export default function Item(props: {item: any, imageLayout: string, titleLayout
     return(
         <Link href={{
             pathname: props.isDynamicScreen ? `/${props.item.targetScreen}/${props.item.title}` : `/${props.item.targetScreen}`,
-            params: {title: props.item.title, description: props.item.description, eventUrl: props.item.url, imageUrl: props.item.imageUrl, location: props.item.location, startDate: props.item.startDate, endDate: props.item.endDate}
+            params: {title: props.item.title, description: props.item.description, url: props.item.url, imageUrl: props.item.imageUrl, location: props.item.location, startDate: props.item.startDate, endDate: props.item.endDate}
         }} asChild>
             <Pressable>
                 <StyledView className='flex-row ml-3 mr-3 mt-5 border-b-2 border-b-white'>

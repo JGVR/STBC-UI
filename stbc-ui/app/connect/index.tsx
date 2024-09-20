@@ -27,7 +27,8 @@ const data = [
         imageUrl: "https://stbc.blob.core.windows.net/stbc-events/strong-tower.png",
         location: "",
         startDate: "",
-        endDate: ""
+        endDate: "",
+        targetScreen: "connect/ministries"
     },
     {
         title: "Sunday School",
@@ -36,7 +37,8 @@ const data = [
         imageUrl: "https://stbc.blob.core.windows.net/stbc-events/strong-tower.png",
         location: "",
         startDate: "",
-        endDate: ""
+        endDate: "",
+        targetScreen: ""
     },
     {
         title: "Children's Church",
@@ -45,7 +47,8 @@ const data = [
         imageUrl: "https://stbc.blob.core.windows.net/stbc-events/strong-tower.png",
         location: "",
         startDate: "",
-        endDate: ""
+        endDate: "",
+        targetScreen: ""
     }
 ]
 

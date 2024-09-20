@@ -6,6 +6,9 @@ export default function ConnectLayout(){
             <Stack.Screen name="index" options={{
                 headerShown: false
             }}/>
+            <Stack.Screen name="ministries" options={{
+                headerShown: false
+            }}/>
         </Stack>
     );
 };
