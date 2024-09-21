@@ -2,19 +2,19 @@ interface MinistryStruct{
     name: string,
     description?: string,
     imageUrl: string,
-    registerUrl: string
+    url: string
 };
 
 export default class Ministry{
     name: string
     description: string
     imageUrl: string
-    registerUrl: string
+    url: string
 
-    constructor({name, description="", imageUrl="", registerUrl=""}: MinistryStruct){
+    constructor({name, description="", imageUrl="", url=""}: MinistryStruct){
         this.name = name;
         this.description = description;
         this.imageUrl = imageUrl;
-        this.registerUrl = registerUrl;
+        this.url = url;
     }
 }

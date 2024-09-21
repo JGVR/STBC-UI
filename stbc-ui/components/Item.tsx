@@ -37,7 +37,7 @@ export default function Item(props: {item: any, imageLayout: string, titleLayout
                 <StyledView className='flex-row ml-3 mr-3 mt-5 border-b-2 border-b-white'>
                     <StyledImage src={props.item.imageUrl} className={`${props.imageLayout}`}/>
                     <StyledView className='flex-1 ml-3 mt-3'>
-                        <StyledText className={`${props.titleLayout}`}>{props.item.title}</StyledText>
+                        <StyledText className={`${props.titleLayout}`}>{props.item.title || props.item.name}</StyledText>
                         {props.item.startDate.length > 0 ? <StyledText className={`${props.optionalMsgLayout}`}>{`${sDate}•${eDate}`}</StyledText> : null}
                     </StyledView>
                     <StyledView className={props.iconLayout}>
