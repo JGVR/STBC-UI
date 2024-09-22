@@ -37,7 +37,7 @@ export default function MinistriesScreen(){
                     ...newMinistry,
                     startDate: "",
                     endDate: "",
-                    targetScreen: "ministries"
+                    targetScreen: `connect/ministries`
                 };
             });
             setMinistries(ministries);
@@ -51,7 +51,7 @@ export default function MinistriesScreen(){
     if(isCompleted){
         return(
             <StyledView className='bg-midnight-green h-full w-full'>
-                <ItemsList data={ministries} imageLayout={itemImgLayout} titleLayout={itemTitleLayout} iconLayout={iconLayout} description={itemOptMsgLayout} isDynamicScreen={false}/>
+                <ItemsList data={ministries} imageLayout={itemImgLayout} titleLayout={itemTitleLayout} iconLayout={iconLayout} description={itemOptMsgLayout} isDynamicScreen={true}/>
             </StyledView>
         );
     };

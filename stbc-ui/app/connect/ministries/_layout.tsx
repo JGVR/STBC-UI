@@ -13,6 +13,9 @@ export default function MinistriesLayout(){
             <Stack.Screen name="index" options={{
                 header: () => <GeneralScreenHeader title="Ministries" backButtonTitle="Connect" mailIconLayout={mailIconLayout} backButtonLayout={buttonLayout} titleLayout={titleLayout} backIconLayout={iconLayout}/>
             }}/>
+            <Stack.Screen name="[ministry]" options={{
+                headerShown: false
+            }}/>
         </Stack>
     );
 }

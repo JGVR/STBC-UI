@@ -30,7 +30,7 @@ export default function Item(props: {item: any, imageLayout: string, titleLayout
 
     return(
         <Link href={{
-            pathname: props.isDynamicScreen ? `/${props.item.targetScreen}/${props.item.title}` : `/${props.item.targetScreen}`,
+            pathname: props.isDynamicScreen ? `/${props.item.targetScreen}/${props.item.title || props.item.name}` : `/${props.item.targetScreen}`,
             params: {title: props.item.title || props.item.name, description: props.item.description, url: props.item.url, imageUrl: props.item.imageUrl, location: props.item.location, startDate: props.item.startDate, endDate: props.item.endDate}
         }} asChild>
             <Pressable>
