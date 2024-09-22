@@ -16,7 +16,7 @@ const imageLayout = new ComponentLayout({height: "h-40", width: "w-96", left:"le
 const titleLayout = new ComponentLayout({height:"", width:"", bottom:"bottom-28", size:"text-xl", color:"text-white"});
 const mailHeaderLayout = new ComponentLayout({height: "h-6", width:"w-8", bottom:"bottom-[20%]", left:"left-[88%]", color:"white"});
 const optionalMsgLayout = new ComponentLayout({height:"", width:""});
-const apiUrl = "http://192.168.1.12:8000/find?type=event&churchId=1";
+const apiUrl = "http://192.168.1.8:8000/find?type=event&churchId=1";
 const itemImgLayout = "h-14 w-24 rounded-lg mb-4";
 const itemTitleLayout = "h-5 text-white mb-1";
 const itemOptMsgLayout = "h-5 text-white";

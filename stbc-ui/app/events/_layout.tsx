@@ -14,7 +14,7 @@ export default function HomeLayout(){
                 headerShown: false
             }}/>
             <Stack.Screen name="[event]" options={{
-                header: () => <GeneralScreenHeader title="" backIconLayout={iconLayout} backButtonLayout={buttonLayout} mailIconLayout={mailIconLayout} titleLayout={titleLayout}/>
+                header: () => <GeneralScreenHeader title="" backButtonTitle="Events" backIconLayout={iconLayout} backButtonLayout={buttonLayout} mailIconLayout={mailIconLayout} titleLayout={titleLayout}/>
             }} />
         </Stack>
     );
