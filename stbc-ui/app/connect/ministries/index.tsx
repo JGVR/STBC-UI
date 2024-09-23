@@ -31,7 +31,7 @@ export default function MinistriesScreen(){
                     name: ministry["name"],
                     description: ministry["description"],
                     imageUrl: ministry["imageUrl"],
-                    url: ministry["url"]
+                    url: ministry["registerUrl"]
                 });
                 return {
                     ...newMinistry,
