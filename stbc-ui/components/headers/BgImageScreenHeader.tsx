@@ -32,8 +32,8 @@ export default function BgImageScreenHeader(props: {router: any, imageUrl: strin
                      ${props.imageLayout.opacity}
                      overflow-hidden`
                 } src={props.imageUrl}>
-                {props.backButtonShown ? <BackButton title={props.buttonTitle} iconLayout={props.backIconLayout} buttonLayout={props.backButtonLayout}/> : null}
                 </StyledBgImg>
+                {props.backButtonShown ? <BackButton title={props.buttonTitle} iconLayout={props.backIconLayout} buttonLayout={props.backButtonLayout}/> : null}
                 <StyledText className={`
                                         ${props.titleLayout.height} 
                                         ${props.titleLayout.width} 
