@@ -72,7 +72,7 @@ export default function ConnectTab(){
             <BgImageScreenHeader router={router} imageUrl="https://stbc.blob.core.windows.net/stbc-events/Homecoming 2024" backButtonShown={false} buttonTitle="" backButtonLayout="" backIconLayout="" headerTitle='Connect' headerOptionalMsg="" imageLayout={imageLayout} containerLayout={containerLayout} titleLayout={titleLayout} optionalMsgLayout={optionalMsgLayout}/>
             <MailHeaderIcon layoutDetails={mailHeaderLayout}/>
             <StyledView className='bg-midnight-green h-3/4 w-full'>
-                <ItemsList data={data} imageLayout={itemImgLayout} titleLayout={itemTitleLayout} iconLayout={iconLayout} description={itemOptMsgLayout} isDynamicScreen={false}/>
+                <ItemsList data={data} imageLayout={itemImgLayout} titleLayout={itemTitleLayout} iconLayout={iconLayout} description={itemOptMsgLayout} isDynamicScreen={false} isDynamicList={false} handleMoreData=""/>
             </StyledView>
         </StyledView>
     );
