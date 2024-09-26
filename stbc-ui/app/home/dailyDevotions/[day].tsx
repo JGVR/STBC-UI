@@ -13,7 +13,7 @@ const StyledText = styled(Text);
 const containerLayout = new ComponentLayout({height:"h-60", width:"w-full"});
 const iconLayout = new ComponentLayout({height:"", width:"", bottom:"bottom-[48.5%]", left:"left-3", color:"#0E4749"});
 const buttonLayout = new ComponentLayout({height:"", width:"", bottom:"bottom-[50%]", right:"right-[5%]", color:"#0E4749"});
-const imageLayout = new ComponentLayout({height:"h-64", width:"w-full", opacity:"opacity-80"});
+const imageLayout = new ComponentLayout({height:"h-64", width:"w-full", opacity:"opacity-60"});
 const titleLayout = new ComponentLayout({height:"", width:"", bottom:"bottom-52", size:"text-2xl", color:"text-midnight-green"});
 const optionalMsgLayout = new ComponentLayout({height:"", width:"", bottom:"bottom-48", color: "text-midnight-green"});
 
@@ -21,7 +21,7 @@ export default function DevotionScreen(){
     const [isCompleted, setIsCompleted] = useState(false);
     const [devotions, setDevotions] = useState<Devotion>();
     const {day} = useLocalSearchParams();
-    const url = `http://192.168.1.8:8000/find?type=devotion&churchId=1&weekDay=${day}`;
+    const url = `http://192.168.1.9:8000/find?type=devotion&churchId=1&weekDay=${day}`;
     const router = useRouter();
     
     //Extract the correct devotion from STBC-Api
@@ -47,8 +47,8 @@ export default function DevotionScreen(){
     if(isCompleted){
         return(
             <StyledView className='h-[100%]'>
-                <BgImageScreenHeader router={router} imageUrl="https://stbc.blob.core.windows.net/stbc-events/Homecoming 2024" buttonTitle='Devotions' headerTitle={devotions ? devotions.title : ""} headerOptionalMsg={devotions ? devotions.author : ""} containerLayout={containerLayout} backButtonLayout={buttonLayout} backIconLayout={iconLayout} backButtonShown={true} imageLayout={imageLayout} titleLayout={titleLayout} optionalMsgLayout={optionalMsgLayout}/>
-                <StyledScrollView className="w-full h-80 bg-dark-green border rounded-tr-2xl rounded-tl-2xl overflow-hidden">
+                <BgImageScreenHeader router={router} imageUrl="https://stbc.blob.core.windows.net/stbc-mobile-app-images/Devotion-bg-Image.webp" buttonTitle='Devotions' headerTitle={devotions ? devotions.title : ""} headerOptionalMsg={devotions ? devotions.author : ""} containerLayout={containerLayout} backButtonLayout={buttonLayout} backIconLayout={iconLayout} backButtonShown={true} imageLayout={imageLayout} titleLayout={titleLayout} optionalMsgLayout={optionalMsgLayout}/>
+                <StyledScrollView className="w-full h-80 bg-dark-green rounded-tr-2xl rounded-tl-2xl overflow-hidden">
                     <StyledView className="w-full">
                         <StyledText className="text-white m-3 text-center text-base">
                             {`${devotions ? devotions.message : null}`}

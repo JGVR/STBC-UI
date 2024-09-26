@@ -8,7 +8,7 @@ import LoadingScreen from '@/components/loadingScreen';
 import ComponentLayout from '@/utils/ComponentLayout';
 
 const StyledView = styled(View);
-const apiUrl = "http://192.168.1.8:8000/find?type=ministry&churchId=1";
+const apiUrl = "http://192.168.1.9:8000/find?type=ministry&churchId=1";
 const itemImgLayout = "h-14 w-24 rounded-lg mb-4";
 const itemTitleLayout = "h-5 text-white mt-2";
 const itemOptMsgLayout = "h-5 text-white";
