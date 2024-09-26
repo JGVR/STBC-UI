@@ -15,7 +15,7 @@ const iconLayout = "mt-4";
 
 
 export default function MinistriesScreen(){
-    const [maxDocs, setMaxDocs] = useState(5);
+    const [maxDocs, setMaxDocs] = useState(6);
     const apiUrl = `http://192.168.1.9:8000/find?type=ministry&churchId=1&maxDocs=${maxDocs}`;
     const [ministries, setMinistries] = useState<Ministry[]>([]);
     const [isCompleted, setIsCompleted] = useState(false);
