@@ -12,57 +12,65 @@ const itemImgLayout = "h-14 w-24 rounded-lg mb-4";
 const itemTitleLayout = "h-5 text-white mt-2";
 const itemOptMsgLayout = "h-5 text-white";
 const iconLayout = "mt-4";
-
+const containerLayout = "h-[95%] w-full";
 
 export default function MinistriesScreen(){
-    const [maxDocs, setMaxDocs] = useState(6);
-    const apiUrl = `http://192.168.1.9:8000/find?type=ministry&churchId=1&maxDocs=${maxDocs}`;
+    const [maxDocs, setMaxDocs] = useState(5);
+    const [hasMoreData, setHasMoreData] = useState(true);
+    const [docNum, setDocNum] = useState(0);
     const [ministries, setMinistries] = useState<Ministry[]>([]);
     const [isCompleted, setIsCompleted] = useState(false);
-    const fetchMinistries = async() => {
+    const fetchMinistries = async(newDocNum: number) => {
         try{
-            const resp = await fetch(apiUrl)
+            const apiUrl = `http://192.168.1.9:8000/find?type=ministry&churchId=1&maxDocs=${maxDocs}&recordId=${newDocNum}`;
+            const resp = await fetch(apiUrl);
             if(!resp.ok){
                 throw new Error("Something went wrong with the API request");
             }
             const data = await resp.json();
-            const ministries = data.map((ministry: any) => {
-                const newMinistry = new Ministry({
-                    id: ministry["id"],
-                    name: ministry["name"],
-                    description: ministry["description"],
-                    imageUrl: ministry["imageUrl"],
-                    url: ministry["registerUrl"]
+            
+            if(data.length >= 1){
+                const ministries = data.map((ministry: any) => {
+                    const newMinistry = new Ministry({
+                        id: ministry["recordId"],
+                        name: ministry["name"],
+                        description: ministry["description"],
+                        imageUrl: ministry["imageUrl"],
+                        url: ministry["registerUrl"]
+                    });
+                    return newMinistry
                 });
-                return newMinistry
-            });
-            setMinistries(prevData => [...prevData, ...ministries]);
-            setIsCompleted(true);
-            console.log(ministries[0].name);
-            console.log(data[0].name);
+                setMinistries(prevData => [...prevData, ...ministries]);
+                setIsCompleted(true);
+            }
+            else{
+                setHasMoreData(false);
+            }
         }catch(error: any) {
             console.log(`Something went wrong! ${error}`);
-            setIsCompleted(false);
         }
-    }
+    };
 
     //Extract 5 more ministries once the user reaches the end of the list
     const handleLoadMoreData = () => {
-        if(isCompleted){
-            setMaxDocs(maxDocs + 5);
-            fetchMinistries();
-            console.log(maxDocs);
-        }
-    }
+        if(isCompleted && hasMoreData){
+            setDocNum((prevDocNum) => {
+                const newDocNum = prevDocNum + 5;
+                fetchMinistries(newDocNum);
+                return newDocNum
+            });
+            console.log(docNum);
+        };
+    };
  
     useEffect(() => {
-        fetchMinistries();
+        fetchMinistries(docNum);
     }, []);
 
     if(isCompleted){
         return(
             <StyledView className='bg-midnight-green h-full w-full'>
-                <ItemsList data={ministries} imageLayout={itemImgLayout} titleLayout={itemTitleLayout} iconLayout={iconLayout} description={itemOptMsgLayout} isDynamicScreen={true} isDynamicList={true} handleMoreData={handleLoadMoreData}/>
+                <ItemsList data={ministries} imageLayout={itemImgLayout} containerLayout={containerLayout} titleLayout={itemTitleLayout} iconLayout={iconLayout} description={itemOptMsgLayout} isDynamicScreen={true} isDynamicList={true} handleMoreData={handleLoadMoreData} hasMoreData={hasMoreData}/>
             </StyledView>
         );
     };
