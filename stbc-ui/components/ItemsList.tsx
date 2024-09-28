@@ -4,7 +4,7 @@ import Item from './Item';
 
 const StyledView = styled(View);
 
-export default function ItemsList(props: {data: any[], imageLayout: string, containerLayout: string, titleLayout: string, iconLayout: string, description: string, isDynamicScreen: boolean, isDynamicList: boolean, handleMoreData: any, hasMoreData: boolean}){
+export default function ItemsList(props: {data: any[], imageLayout: string, containerLayout: string, titleLayout: string, iconLayout: string, description: string, isDynamicScreen: boolean, isDynamicList: boolean, onScroll: any, isLoading: boolean}){
     if(!props.isDynamicList)
     {
         return(
@@ -22,9 +22,9 @@ export default function ItemsList(props: {data: any[], imageLayout: string, cont
                 data={props.data}
                 renderItem={({item}) => !item ? null : <Item item={item} imageLayout={props.imageLayout} titleLayout={props.titleLayout} iconLayout={props.iconLayout} optionalMsgLayout={props.description} isDynamicScreen={props.isDynamicScreen}/>}
                 keyExtractor={(item) => item.id}
-                onEndReached={props.handleMoreData}
-                onEndReachedThreshold={0.2}
-                ListFooterComponent={() => props.hasMoreData ? <StyledView className="mt-2"><ActivityIndicator size="large" color="#FFFFFF"/></StyledView> : null}
+                onScroll={props.onScroll}
+                onEndReachedThreshold={0}
+                ListFooterComponent={() => props.isLoading ? <StyledView className="mt-2"><ActivityIndicator size="large" color="#FFFFFF"/></StyledView> : null}
                 />
         </StyledView>
     );

@@ -22,13 +22,13 @@ export default function MinistriesScreen(){
     const [isCompleted, setIsCompleted] = useState(false);
     const fetchMinistries = async(newDocNum: number) => {
         try{
-            const apiUrl = `http://192.168.1.6:8000/find?type=ministry&churchId=1&maxDocs=${maxDocs}&recordId=${newDocNum}`;
+            const apiUrl = `http://192.168.1.12:8000/find?type=ministry&churchId=1&maxDocs=${maxDocs}&recordId=${newDocNum}`;
             const resp = await fetch(apiUrl);
             if(!resp.ok){
                 throw new Error("Something went wrong with the API request");
             }
             const data = await resp.json();
-            
+    
             if(data.length >= 1){
                 const ministries = data.map((ministry: any) => {
                     const newMinistry = new Ministry({
