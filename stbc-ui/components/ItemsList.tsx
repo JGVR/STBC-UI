@@ -24,7 +24,7 @@ export default function ItemsList(props: {data: any[], imageLayout: string, cont
                 keyExtractor={(item) => item.id}
                 onScroll={props.onScroll}
                 onEndReachedThreshold={0}
-                ListFooterComponent={() => props.isLoading ? <StyledView className="mt-2"><ActivityIndicator size="large" color="#FFFFFF"/></StyledView> : null}
+                ListFooterComponent={() => props.isLoading ? <StyledView className="mt-2 mb-20"><ActivityIndicator size="large" color="#FFFFFF"/></StyledView> : null}
                 />
         </StyledView>
     );

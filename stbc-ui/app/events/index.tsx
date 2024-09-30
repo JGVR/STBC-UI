@@ -13,7 +13,7 @@ import Event from '@/model/Event';
 const StyledView = styled(View);
 const containerLayout = new ComponentLayout({height:"h-60", width:"w-full", color:"bg-dark-green"});
 const imageLayout = new ComponentLayout({height: "h-40", width: "w-96", left:"left-6", top:"top-24", border:"border rounded-2xl"});
-const titleLayout = new ComponentLayout({height:"", width:"", bottom:"bottom-28", size:"text-xl", color:"text-white"});
+const titleLayout = new ComponentLayout({height:"", width:"", top:"mt-4", bottom:"mb-4", left:"ml-[30%]", size:"text-xl", color:"text-white"});
 const mailHeaderLayout = new ComponentLayout({height: "h-6", width:"w-8", bottom:"bottom-[20%]", left:"left-[88%]", color:"white"});
 const optionalMsgLayout = new ComponentLayout({height:"", width:""});
 const itemImgLayout = "h-14 w-24 rounded-lg mb-4";
@@ -25,14 +25,15 @@ const itemListContainerLayout = "h-[95%] w-full";
 export default function EventsScreen(){
     const scrollPosition = useRef(0);
     const [loadingMore, setIsLoadingMore] = useState(false);
-    const [maxDocs, setMaxDocs] = useState(5);
+    const [maxDocs, setMaxDocs] = useState(10);
     const [docNum, setDocNum] = useState(0);
     const router = useRouter();
     const [events, setEvents] = useState<Event[]>([]);
     const [isCompleted, setIsCompleted] = useState(false);
+
     const fetchEvents = async(newDocNum: number) => {
         try{
-            const apiUrl = `http://192.168.1.12:8000/find?type=event&churchId=1&maxDocs=${maxDocs}&recordId=${newDocNum}`;
+            const apiUrl = `http://10.0.0.133:8000/find?type=event&churchId=1&maxDocs=${maxDocs}&recordId=${newDocNum}`;
             const resp = await fetch(apiUrl);
             if(!resp.ok){
                 throw new Error("Something went wrong with the API request");
@@ -54,6 +55,9 @@ export default function EventsScreen(){
                     });
                     return newEvent;
                 });
+                setDocNum((prevDocNum) => {
+                    return prevDocNum + data.length;
+                });
                 setEvents(prevData => [...prevData, ...events]);
                 setIsCompleted(true);
             }
@@ -63,24 +67,20 @@ export default function EventsScreen(){
             setIsLoadingMore(false);
         }
     };
+
+    //Extract more ministries once the user reaches the end of the list
     const handleMoreData = () => {
         if (loadingMore) return;
         setIsLoadingMore(true);
         if(isCompleted){
-            setDocNum((prevDocNum) => {
-                const newDocNum = prevDocNum + 5;
-                fetchEvents(newDocNum);
-                return newDocNum
-            });
-            console.log(docNum);
+            fetchEvents(docNum); 
         };
     };
 
-      // Track user's scroll to determine if they are scrolling down
+    // Track user's scroll to determine if they are scrolling down
     const handleScroll = (event: any) => {
         const currentOffset = event.nativeEvent.contentOffset.y;
         const scrollingDown = currentOffset > scrollPosition.current; // Check if user is scrolling down
-
         scrollPosition.current = currentOffset;
 
         if (scrollingDown) {

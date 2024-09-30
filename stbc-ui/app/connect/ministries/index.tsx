@@ -1,11 +1,9 @@
-import {View, Text} from 'react-native';
+import {View} from 'react-native';
 import { styled } from 'nativewind';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import ItemsList from '@/components/ItemsList';
-import Item from '@/components/Item';
 import Ministry from '@/model/Ministry';
 import LoadingScreen from '@/components/loadingScreen';
-import ComponentLayout from '@/utils/ComponentLayout';
 
 const StyledView = styled(View);
 const itemImgLayout = "h-14 w-24 rounded-lg mb-4";
@@ -15,20 +13,23 @@ const iconLayout = "mt-4";
 const containerLayout = "h-[95%] w-full";
 
 export default function MinistriesScreen(){
+    const scrollPosition = useRef(0);
+    const [loadingMore, setIsLoadingMore] = useState(false);
     const [maxDocs, setMaxDocs] = useState(5);
-    const [hasMoreData, setHasMoreData] = useState(true);
     const [docNum, setDocNum] = useState(0);
     const [ministries, setMinistries] = useState<Ministry[]>([]);
     const [isCompleted, setIsCompleted] = useState(false);
+
+    //fetch ministries
     const fetchMinistries = async(newDocNum: number) => {
         try{
-            const apiUrl = `http://192.168.1.12:8000/find?type=ministry&churchId=1&maxDocs=${maxDocs}&recordId=${newDocNum}`;
+            const apiUrl = `http://10.0.0.133:8000/find?type=ministry&churchId=1&maxDocs=${maxDocs}&recordId=${newDocNum}`;
             const resp = await fetch(apiUrl);
             if(!resp.ok){
                 throw new Error("Something went wrong with the API request");
             }
             const data = await resp.json();
-    
+
             if(data.length >= 1){
                 const ministries = data.map((ministry: any) => {
                     const newMinistry = new Ministry({
@@ -38,31 +39,50 @@ export default function MinistriesScreen(){
                         imageUrl: ministry["imageUrl"],
                         url: ministry["registerUrl"]
                     });
-                    return newMinistry
+                    return newMinistry;
+                });
+
+                //Increase docNum by the amout of data pulled from the API
+                setDocNum((prevDocNum) => {
+                    return prevDocNum + data.length;
                 });
                 setMinistries(prevData => [...prevData, ...ministries]);
                 setIsCompleted(true);
             }
-            else{
-                setHasMoreData(false);
-            }
-        }catch(error: any) {
-            console.log(`Something went wrong! ${error}`);
+        }catch(error){
+            console.log("something went wrong!" + error);
+        }finally{
+            setIsLoadingMore(false);
         }
     };
 
-    //Extract 5 more ministries once the user reaches the end of the list
-    const handleLoadMoreData = () => {
-        if(isCompleted && hasMoreData){
-            setDocNum((prevDocNum) => {
-                const newDocNum = prevDocNum + 5;
-                fetchMinistries(newDocNum);
-                return newDocNum
-            });
-            console.log(docNum);
+    //Extract more ministries once the user reaches the end of the list
+    const handleMoreData = () => {
+        if (loadingMore) return;
+        setIsLoadingMore(true);
+        if(isCompleted){
+            fetchMinistries(docNum);
+        };
+    };
+
+    // Track user's scroll to determine if they are scrolling down
+    const handleScroll = (event: any) => {
+        const currentOffset = event.nativeEvent.contentOffset.y;
+        const scrollingDown = currentOffset > scrollPosition.current; // Check if user is scrolling down
+        scrollPosition.current = currentOffset;
+
+        if (scrollingDown) {
+            // If the user is scrolling down and near the end, trigger handleMoreData
+            const isNearBottom =
+                event.nativeEvent.layoutMeasurement.height + currentOffset >=
+                event.nativeEvent.contentSize.height - 50;
+            if (isNearBottom) {
+                handleMoreData();
+            };
         };
     };
  
+    //Trigger the fetchMinistries upon screen rendering
     useEffect(() => {
         fetchMinistries(docNum);
     }, []);
@@ -70,7 +90,7 @@ export default function MinistriesScreen(){
     if(isCompleted){
         return(
             <StyledView className='bg-midnight-green h-full w-full'>
-                <ItemsList data={ministries} imageLayout={itemImgLayout} containerLayout={containerLayout} titleLayout={itemTitleLayout} iconLayout={iconLayout} description={itemOptMsgLayout} isDynamicScreen={true} isDynamicList={true} handleMoreData={handleLoadMoreData} hasMoreData={hasMoreData}/>
+                <ItemsList data={ministries} imageLayout={itemImgLayout} containerLayout={containerLayout} titleLayout={itemTitleLayout} iconLayout={iconLayout} description={itemOptMsgLayout} isDynamicScreen={true} isDynamicList={true} onScroll={handleScroll} isLoading={loadingMore}/>
             </StyledView>
         );
     };
