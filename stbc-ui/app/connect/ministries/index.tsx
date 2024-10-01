@@ -4,6 +4,7 @@ import { useEffect, useState, useRef } from 'react';
 import ItemsList from '@/components/ItemsList';
 import Ministry from '@/model/Ministry';
 import LoadingScreen from '@/components/loadingScreen';
+import ComponentLayout from '@/utils/ComponentLayout';
 
 const StyledView = styled(View);
 const itemImgLayout = "h-14 w-24 rounded-lg mb-4";

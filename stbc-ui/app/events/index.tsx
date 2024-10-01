@@ -12,8 +12,9 @@ import Event from '@/model/Event';
 
 const StyledView = styled(View);
 const containerLayout = new ComponentLayout({height:"h-60", width:"w-full", color:"bg-dark-green"});
-const imageLayout = new ComponentLayout({height: "h-40", width: "w-96", left:"left-6", top:"top-24", border:"border rounded-2xl"});
-const titleLayout = new ComponentLayout({height:"", width:"", top:"mt-4", bottom:"mb-4", left:"ml-[30%]", size:"text-xl", color:"text-white"});
+const subContainerLayout = new ComponentLayout({height:"flex-row flex-wrap", width:"", top:"mt-7"});
+const imageLayout = new ComponentLayout({height: "h-40", width: "w-96", left:"left-6", top:"mt-16", border:"border rounded-2xl"});
+const titleLayout = new ComponentLayout({height:"", width:"", top:"-mt-52", bottom:"mb-4", left:"ml-[30%]", size:"text-xl", color:"text-white"});
 const mailHeaderLayout = new ComponentLayout({height: "h-6", width:"w-8", bottom:"bottom-[20%]", left:"left-[88%]", color:"white"});
 const optionalMsgLayout = new ComponentLayout({height:"", width:""});
 const itemImgLayout = "h-14 w-24 rounded-lg mb-4";
@@ -119,7 +120,7 @@ export default function EventsScreen(){
     if(isCompleted){
         return(
             <StyledView className="bg-midnight-green">
-                <BgImageScreenHeader router={router} imageUrl="https://stbc.blob.core.windows.net/stbc-events/Homecoming 2024" backButtonShown={false} buttonTitle="" backButtonLayout="" backIconLayout="" headerTitle='Upcoming Events' headerOptionalMsg="" imageLayout={imageLayout} containerLayout={containerLayout} titleLayout={titleLayout} optionalMsgLayout={optionalMsgLayout}/>
+                <BgImageScreenHeader router={router} imageUrl="https://stbc.blob.core.windows.net/stbc-events/Homecoming 2024" backButtonShown={false} buttonTitle="" backButtonLayout="" backIconLayout="" headerTitle='Upcoming Events' headerOptionalMsg="" imageLayout={imageLayout} containerLayout={containerLayout} subContainerLayout={subContainerLayout} titleLayout={titleLayout} optionalMsgLayout={optionalMsgLayout}/>
                 <MailHeaderIcon layoutDetails={mailHeaderLayout}/>
                 <StyledView className='bg-midnight-green h-3/4 w-full'>
                     <ItemsList data={events} imageLayout={itemImgLayout} titleLayout={itemTitleLayout} iconLayout={iconLayout} description={itemOptMsgLayout} isDynamicScreen={true} isLoading={loadingMore} onScroll={handleScroll} containerLayout={itemListContainerLayout} isDynamicList={true}/>

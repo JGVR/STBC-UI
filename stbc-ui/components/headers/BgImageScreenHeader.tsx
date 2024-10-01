@@ -7,7 +7,7 @@ const StyledView = styled(View);
 const StyledText = styled(Text);
 const StyledBgImg = styled(ImageBackground);
 
-export default function BgImageScreenHeader(props: {router: any, imageUrl: string, buttonTitle: string, headerTitle: string, headerOptionalMsg: string|null, containerLayout: ComponentLayout, backButtonLayout: ComponentLayout|any, backIconLayout: ComponentLayout|any, backButtonShown: boolean, imageLayout: ComponentLayout, titleLayout: ComponentLayout, optionalMsgLayout: ComponentLayout}){
+export default function BgImageScreenHeader(props: {router: any, imageUrl: string, buttonTitle: string, headerTitle: string, headerOptionalMsg: string|null, containerLayout: ComponentLayout, subContainerLayout: ComponentLayout, backButtonLayout: ComponentLayout|any, backIconLayout: ComponentLayout|any, backButtonShown: boolean, imageLayout: ComponentLayout, titleLayout: ComponentLayout, optionalMsgLayout: ComponentLayout}){
     return(
         <StyledView className={`
                                 ${props.containerLayout.height} 
@@ -19,7 +19,20 @@ export default function BgImageScreenHeader(props: {router: any, imageUrl: strin
                                 ${props.containerLayout.position} 
                                 ${props.containerLayout.border} 
                                 ${props.containerLayout.color}`}>
-            <StyledView className="flex-row flex-wrap mt-7">
+            <StyledView className={`${props.subContainerLayout.height} ${props.subContainerLayout.width} ${props.subContainerLayout.top}`}>
+                <StyledBgImg className={
+                    `${props.imageLayout.height} 
+                     ${props.imageLayout.width} 
+                     ${props.imageLayout.position} 
+                     ${props.imageLayout.top} 
+                     ${props.imageLayout.bottom} 
+                     ${props.imageLayout.left} 
+                     ${props.imageLayout.right} 
+                     ${props.imageLayout.size} 
+                     ${props.imageLayout.border} 
+                     ${props.imageLayout.opacity}
+                     overflow-hidden`
+                } src={props.imageUrl}/>
                 {props.backButtonShown ? <BackButton title={props.buttonTitle} iconLayout={props.backIconLayout} buttonLayout={props.backButtonLayout}/> : null}
                 <StyledText className={`
                                             ${props.titleLayout.height} 
@@ -50,20 +63,6 @@ export default function BgImageScreenHeader(props: {router: any, imageUrl: strin
                                             italic font-bold text-left`}>
                         {props.headerOptionalMsg}
                 </StyledText>
-                <StyledBgImg className={
-                    `${props.imageLayout.height} 
-                     ${props.imageLayout.width} 
-                     ${props.imageLayout.position} 
-                     ${props.imageLayout.top} 
-                     ${props.imageLayout.bottom} 
-                     ${props.imageLayout.left} 
-                     ${props.imageLayout.right} 
-                     ${props.imageLayout.size} 
-                     ${props.imageLayout.border} 
-                     ${props.imageLayout.opacity}
-                     overflow-hidden`
-                } src={props.imageUrl}>
-                </StyledBgImg>
             </StyledView>
         </StyledView>
     );
