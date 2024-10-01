@@ -39,7 +39,7 @@ const data = [
         location: "",
         startDate: "",
         endDate: "",
-        targetScreen: ""
+        targetScreen: "connect/schools"
     },
     {
         title: "Children's Church",
