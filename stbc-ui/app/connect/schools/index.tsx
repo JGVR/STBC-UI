@@ -3,6 +3,7 @@ import { styled } from 'nativewind';
 import { useEffect, useState } from 'react';
 import ItemsList from '@/components/ItemsList';
 import ChurchClass from '@/model/ChurchClass';
+import LoadingScreen from '@/components/loadingScreen';
 
 const StyledView = styled(View);
 const StyledText = styled(Text);
@@ -60,9 +61,12 @@ export default function SundaySchoolsScreen(){
         fetchSundaySchoolClasses();
     }, [])
 
-    return(
-        <StyledView className='bg-midnight-green h-full w-full'>
-                <ItemsList data={classes} imageLayout={itemImgLayout} containerLayout={containerLayout} titleLayout={itemTitleLayout} iconLayout={iconLayout} description={itemOptMsgLayout} isDynamicScreen={true} isDynamicList={false} onScroll="" isLoading={false}/>
-        </StyledView>
-    );
+    if(isCompleted){
+        return(
+            <StyledView className='bg-midnight-green h-full w-full'>
+                    <ItemsList data={classes} imageLayout={itemImgLayout} containerLayout={containerLayout} titleLayout={itemTitleLayout} iconLayout={iconLayout} description={itemOptMsgLayout} isDynamicScreen={true} isDynamicList={false} onScroll="" isLoading={false}/>
+            </StyledView>
+        );
+    };
+    return <LoadingScreen/>;
 }
