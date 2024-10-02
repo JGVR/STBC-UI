@@ -13,6 +13,7 @@ export default function SundaySchoolLayout(){
             <Stack.Screen name="index" options={{
                 header: () => <GeneralScreenHeader title="Sunday School" backButtonTitle="Connect" mailIconLayout={mailIconLayout} backButtonLayout={buttonLayout} titleLayout={titleLayout} backIconLayout={iconLayout}/>
             }}/>
+            <Stack.Screen name="[class]"/>
         </Stack>
     );
 }

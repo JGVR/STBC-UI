@@ -36,10 +36,7 @@ export default function SundaySchoolsScreen(){
                         memberIds: sundayClass["memberIds"],
                         name: sundayClass["name"],
                         ages: sundayClass["ages"],
-                        imageUrl: "https://stbc.blob.core.windows.net/stbc-mobile-app-images/strong-tower.png",
-                        targetScreen: "",
-                        startDate: "",
-                        endDate: ""
+                        imageUrl: "https://stbc.blob.core.windows.net/stbc-mobile-app-images/strong-tower.png"
                     });
                     return newSundayClass;
                 });

@@ -17,7 +17,7 @@ export default class ChurchClass{
     startDate?: string
     endDate?: string
 
-    constructor({memberIds, name, ages="", imageUrl, targetScreen="", startDate="", endDate=""}: ClassStruct){
+    constructor({memberIds, name, ages="", imageUrl, targetScreen="connect/schools", startDate="", endDate=""}: ClassStruct){
         this.memberIds = memberIds;
         this.name = name;
         this.ages = ages;
