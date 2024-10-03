@@ -1,5 +1,5 @@
 interface MemberStruct{
-    memberId: string,
+    id: string,
     firstName: string,
     middleName?: string,
     lastName: string,
@@ -12,7 +12,7 @@ interface MemberStruct{
 }
 
 export default class Member{
-    memberId: string
+    id: string
     firstName: string
     middleName?: string
     lastName: string
@@ -23,8 +23,8 @@ export default class Member{
     startDate?: string
     endDate?: string
 
-    constructor({memberId, firstName, middleName="", lastName, title="", shortBio="", imageUrl="", targetScreen="", startDate="", endDate=""}: MemberStruct){
-        this.memberId = memberId
+    constructor({id, firstName, middleName="", lastName, title="", shortBio="", imageUrl="", targetScreen="", startDate="", endDate=""}: MemberStruct){
+        this.id = id
         this.firstName = firstName,
         this.middleName = middleName,
         this.lastName = lastName,
