@@ -6,7 +6,6 @@ import ChurchClass from '@/model/ChurchClass';
 import LoadingScreen from '@/components/loadingScreen';
 
 const StyledView = styled(View);
-const StyledText = styled(Text);
 const itemImgLayout = "h-14 w-24 rounded-lg mb-4";
 const itemTitleLayout = "h-5 text-white mt-2";
 const itemOptMsgLayout = "h-5 text-white";
@@ -14,9 +13,7 @@ const iconLayout = "mt-4";
 const containerLayout = "h-[95%] w-full";
 
 export default function SundaySchoolsScreen(){
-    const [isLoadingMore, setIsLoadingMore] = useState(false);
     const [classes, setClasses] = useState<ChurchClass[]>([]);
-    const [maxDoc, setMaxDoc] = useState(5);
     const [docNum, setDocNum] = useState(5);
     const [isCompleted, setIsCompleted] = useState(false);
     
@@ -49,8 +46,6 @@ export default function SundaySchoolsScreen(){
             }
         }catch(error){
             console.log("something went wrong!" + error)
-        }finally{
-            setIsLoadingMore(false);
         }
     };
 
