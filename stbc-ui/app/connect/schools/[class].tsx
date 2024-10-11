@@ -5,9 +5,9 @@ import { useState, useEffect } from 'react';
 import ChurchClass from '@/model/ChurchClass';
 import Member from '@/model/Member';
 import LoadingScreen from '@/components/loadingScreen';
-import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import BgImageScreenHeader from '@/components/headers/BgImageScreenHeader';
 import ComponentLayout from '@/utils/ComponentLayout';
+import SectionHeader from '@/components/SectionHeader';
 
 const StyledView = styled(View);
 const StyledText = styled(Text);
@@ -75,12 +75,7 @@ export default function ClassScreen(){
         return(
             <StyledScrollView className='bg-midnight-green h-full w-full'>
                 <BgImageScreenHeader router={router} imageUrl="https://stbc.blob.core.windows.net/stbc-mobile-app-images/Devotion-bg-Image.webp" buttonTitle='Sunday Class' headerTitle={sundayClass?.name ? sundayClass.name : ""} headerOptionalMsg={sundayClass?.ages ? sundayClass.ages : ""} containerLayout={containerLayout} subContainerLayout={subContainerLayout} backButtonLayout={buttonLayout} backIconLayout={iconLayout} backButtonShown={true} imageLayout={imageLayout} titleLayout={titleLayout} optionalMsgLayout={optionalMsgLayout}/>
-                <StyledView className='flex-row flex-nowrap'>
-                    <StyledText className='text-2xl text-white mt-8 mb-2 ml-2 font-bold italic'>Teacher</StyledText>
-                    <StyledView className='mt-9'>
-                        <MaterialIcons name="navigate-next" size={30} color="white" />
-                    </StyledView>
-                </StyledView>
+                <SectionHeader title='Teacher' containerLayout='flex-row flex-nowrap' titleLayout='text-2xl text-white mt-8 mb-2 ml-2 font-bold italic' iconLayout='mt-9'/>
                 <StyledScrollView className="flex-row flex-wrap border-white" horizontal={true} indicatorStyle='white'>
                     {members.map((member, idx) => {
                         return(
@@ -91,12 +86,7 @@ export default function ClassScreen(){
                         );
                     })}
                 </StyledScrollView>
-                <StyledView className='flex-row flex-nowrap'>
-                    <StyledText className='text-2xl text-white mb-2 ml-2 font-bold italic'>Description</StyledText>
-                    <StyledView className='mt-1'>
-                        <MaterialIcons name="navigate-next" size={30} color="white" />
-                    </StyledView>
-                </StyledView>
+                <SectionHeader title='Description' containerLayout='flex-row flex-nowrap' titleLayout='text-2xl text-white mb-2 ml-2 font-bold italic' iconLayout='mt-1'/>
                 <StyledView className='w-[95%] mt-3 ml-3 mr-5 mb-3 text-center bg-white rounded-xl'>
                     <StyledText className='text-lg text-dark-green m-3 text-center'>
                         This is where the description of the course will go. I will repeat the same stuff for design purpose. This is where the description of the course will go. I will repeat the same stuff for design purpose. This is where the description of the course will go. This is where the description of the course will go. I will repeat the same stuff for design purpose.
