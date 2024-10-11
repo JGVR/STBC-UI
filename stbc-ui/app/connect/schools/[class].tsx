@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import ChurchClass from '@/model/ChurchClass';
 import Member from '@/model/Member';
 import LoadingScreen from '@/components/loadingScreen';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
 const StyledView = styled(View);
 const StyledText = styled(Text);
@@ -14,13 +15,13 @@ const StyledScrollView = styled(ScrollView);
 export default function ClassScreen(){
     const {data} = useLocalSearchParams();
     const sundayClass = typeof data === "string" ? JSON.parse(data) as ChurchClass: null;
-    const apiUrl = "http://192.168.1.6:8000/find?type=member&churchId=1";
+    const apiUrl = "http://192.168.1.12:8000/find?type=member&churchId=1";
     const [members, setMembers] = useState<Member[]>([]);
     const [isCompleted, setIsCompleted] = useState(false);
 
     const fetchMembers = async(memberId: string) => {
         try{
-            const apiUrl = `http://192.168.1.6:8000/find?type=member&churchId=1&memberId=${memberId}`;
+            const apiUrl = `http://192.168.1.12:8000/find?type=member&churchId=1&memberId=${memberId}`;
             const resp = await fetch(apiUrl);
 
             if(!resp.ok){
@@ -64,22 +65,28 @@ export default function ClassScreen(){
                     <StyledText className='text-2xl text-dark-green text-center font-bold ml-28 mt-2'>{sundayClass?.name}</StyledText>
                     <StyledText className='text-base text-dark-green text-center font-bold mt-1 ml-32 mb-1'>{sundayClass?.ages}</StyledText>
                 </StyledView>
-                <StyledView>
+                <StyledView className='flex-row flex-nowrap'>
                     <StyledText className='text-2xl text-white mt-8 mb-2 ml-2 font-bold italic'>Teacher</StyledText>
+                    <StyledView className='mt-9'>
+                        <MaterialIcons name="navigate-next" size={30} color="white" />
+                    </StyledView>
                 </StyledView>
-                <StyledView className="flex-row flex-wrap border-white">
+                <StyledScrollView className="flex-row flex-wrap border-white" horizontal={true} indicatorStyle='white'>
                     {members.map((member, idx) => {
                         return(
-                            <StyledView className='flex-col flex-wrap ml-3 mr-2 bg-white rounded-lg h-96 w-48' key={idx}>
-                                <StyledText className='text-lg text-dark-green text-center font-bold mt-2 ml-4 h-16 w-40'>{`${member.firstName} ${member.lastName}`}</StyledText>
-                                <StyledImage className='h-44 w-44 ml-2' src={member.imageUrl}/>
+                            <StyledView className='flex-col flex-wrap rounded-lg h-56 w-36 border-black border-0' key={idx}>
+                                <StyledImage className='h-32 w-32 ml-3 mt-4' src={member.imageUrl}/>
+                                <StyledText className='text-sm text-white text-center font-bold mt-2 ml-4 h-16 w-32'>{`${member.firstName} ${member.lastName}`}</StyledText>
                             </StyledView>
                         );
                     })}
+                </StyledScrollView>
+                <StyledView>
+                    <StyledText className='text-2xl text-white mb-2 ml-2 font-bold italic'>Description</StyledText>
                 </StyledView>
-                <StyledView className='mt-5 ml-5 mr-5 mb-3 text-center'>
-                    <StyledText className='text-lg text-white'>
-                        This is where the description of the course will go. I will repeat the same stuff for design purpose. This is where the description of the course will go. I will repeat the same stuff for design purpose. This is where the description of the course will go. I will repeat the same stuff for design purpose. This is where the description of the course will go. I will repeat the same stuff for design purpose. This is where the description of the course will go. I will repeat the same stuff for design purpose. This is where the description of the course will go. I will repeat the same stuff for design purpose. This is where the description of the course will go. I will repeat the same stuff for design purpose.
+                <StyledView className='w-[95%] mt-3 ml-3 mr-5 mb-3 text-center bg-white rounded-xl'>
+                    <StyledText className='text-lg text-dark-green m-3 text-center'>
+                        This is where the description of the course will go. I will repeat the same stuff for design purpose. This is where the description of the course will go. I will repeat the same stuff for design purpose. This is where the description of the course will go.
                     </StyledText>
                 </StyledView>
             </StyledScrollView>

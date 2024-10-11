@@ -6,6 +6,7 @@ const iconLayout = new ComponentLayout({height:"", width:"", top:"top-[12.5%]", 
 const buttonLayout = new ComponentLayout({height:"", width:"", top:"top-[10.8%]", color:"#0E4749"});
 const titleLayout = new ComponentLayout({height:"", width:"", left:"left-36", top:"top-4"});
 const mailIconLayout = new ComponentLayout({height:"", width:"", left:"left-28", color:"#0E4749"});
+const classMailIconLayout = new ComponentLayout({height:"", width:"", left:"left-56", color:"#0E4749"});
 
 export default function SundaySchoolLayout(){
     return(
@@ -13,7 +14,9 @@ export default function SundaySchoolLayout(){
             <Stack.Screen name="index" options={{
                 header: () => <GeneralScreenHeader title="Sunday School" backButtonTitle="Connect" mailIconLayout={mailIconLayout} backButtonLayout={buttonLayout} titleLayout={titleLayout} backIconLayout={iconLayout}/>
             }}/>
-            <Stack.Screen name="[class]"/>
+            <Stack.Screen name="[class]" options={{
+                header: () => <GeneralScreenHeader title="" backButtonTitle="Sunday School" mailIconLayout={classMailIconLayout} backButtonLayout={buttonLayout} titleLayout={titleLayout} backIconLayout={iconLayout}/>
+            }}/>
         </Stack>
     );
 }
