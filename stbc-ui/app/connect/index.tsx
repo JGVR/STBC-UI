@@ -49,7 +49,7 @@ const data = [
         location: "",
         startDate: "",
         endDate: "",
-        targetScreen: ""
+        targetScreen: "connect/childrenChurch"
     }
 ]
 

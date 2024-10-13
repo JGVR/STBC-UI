@@ -19,7 +19,7 @@ export default function SundaySchoolsScreen(){
     
     const fetchSundaySchoolClasses = async() => {
         try{
-            const apiUrl = "http://192.168.1.12:8000/find?type=school&churchId=1";
+            const apiUrl = "http://10.0.0.133:8000/find?type=school&churchId=1";
             const resp = await fetch(apiUrl);
 
             if(!resp.ok){
