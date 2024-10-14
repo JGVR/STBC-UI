@@ -1,13 +1,15 @@
 import {View, Text, Image, ScrollView, Pressable} from 'react-native';
 import { styled } from 'nativewind';
 import { useRouter } from 'expo-router';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import School from '@/model/School';
 import BgImageScreenHeader from '@/components/headers/BgImageScreenHeader';
 import ComponentLayout from '@/utils/ComponentLayout';
 import SectionHeader from '@/components/SectionHeader';
 import Member from '@/model/Member';
 import ChurchClass from '@/model/ChurchClass';
+import DetailModal from '@/components/DetailModal';
+import LoadingScreen from '@/components/loadingScreen';
 
 const StyledView = styled(View);
 const StyledText = styled(Text);
@@ -26,8 +28,10 @@ const optionalMsgLayout = new ComponentLayout({height:"", width:"", bottom:"bott
 export default function ChildrenChurchScreen(){
     const [school, setSchool] = useState<School[]>([]);
     const [members, setMembers] = useState<Member[]>([]);
+    const chosenMember = useRef<Member>();
     const [isCompleted, setIsCompleted] = useState(false);
     const router = useRouter();
+    const [isModalVisible, setIsModalVisible] = useState(false);
 
     const fetchSchool = async() => {
         try{
@@ -59,9 +63,7 @@ export default function ChildrenChurchScreen(){
                 });
                 return newSchool;
             });
-            console.log(childrenSchool[0].classes[0].memberIds);
             setSchool(childrenSchool);
-            setIsCompleted(true);
         }catch(error){
             console.log("something went wrong!" + error);
         }
@@ -80,21 +82,27 @@ export default function ChildrenChurchScreen(){
 
             const members = data.map((member: any) => {
                 const newMember = new Member({
-                    id: data["memberId"],
-                    firstName: data["firstName"],
-                    lastName: data["lastName"],
-                    title: data["title"],
-                    shortBio: data["shortBio"],
-                    imageUrl: data["imageUrl"]
+                    id: member["memberId"],
+                    firstName: member["firstName"],
+                    lastName: member["lastName"],
+                    title: member["title"],
+                    shortBio: member["shortBio"],
+                    imageUrl: member["imageUrl"]
                 });
                 return newMember;
             });
-            console.log(data[0].memberId);
-            setMembers(members);
+            setMembers(prevData => [...prevData, ...members]);
+            setIsCompleted(true);
         }catch(error){
             console.log("something went wrong!" + error);
         }
     };
+
+    //Handle on press to display member modal
+    const handleOnPress = (member: Member) => {
+        chosenMember.current = member;
+        setIsModalVisible(true);
+    }
 
     //fetch children church data
     useEffect(() => {
@@ -112,10 +120,26 @@ export default function ChildrenChurchScreen(){
         }
     }, [school])
 
-    return(
-        <StyledScrollView className='bg-dark-green w-full h-full'>
-            <BgImageScreenHeader router={router} imageUrl="https://stbc.blob.core.windows.net/stbc-mobile-app-images/Devotion-bg-Image.webp" buttonTitle='Sunday Class' headerTitle={school[0]?.name ? school[0].name : ""} headerOptionalMsg={school[0]?.dateOfWeek && school[0]?.time ? `${school[0].dateOfWeek}|${school[0].time}` : ""} containerLayout={containerLayout} subContainerLayout={subContainerLayout} backButtonLayout={buttonLayout} backIconLayout={iconLayout} backButtonShown={true} imageLayout={imageLayout} titleLayout={titleLayout} optionalMsgLayout={optionalMsgLayout}/>
-            <SectionHeader title='Leaders' containerLayout='flex-row flex-nowrap' titleLayout='text-2xl text-white mt-8 mb-2 ml-4 font-bold italic' iconLayout='mt-9'/>
-        </StyledScrollView>
-    );
+    if(isCompleted){
+        return(
+            <StyledScrollView className='bg-dark-green w-full h-full'>
+                <BgImageScreenHeader router={router} imageUrl="https://stbc.blob.core.windows.net/stbc-mobile-app-images/Devotion-bg-Image.webp" buttonTitle='Sunday Class' headerTitle={school[0]?.name ? school[0].name : ""} headerOptionalMsg={school[0]?.dateOfWeek && school[0]?.time ? `${school[0].dateOfWeek}|${school[0].time}` : ""} containerLayout={containerLayout} subContainerLayout={subContainerLayout} backButtonLayout={buttonLayout} backIconLayout={iconLayout} backButtonShown={true} imageLayout={imageLayout} titleLayout={titleLayout} optionalMsgLayout={optionalMsgLayout}/>
+                <SectionHeader title='Leaders' containerLayout='flex-row flex-nowrap' titleLayout='text-2xl text-white mt-8 mb-2 ml-4 font-bold italic' iconLayout='mt-9'/>
+                <StyledScrollView className="flex-row flex-wrap border-white" horizontal={true} indicatorStyle='white'>
+                        {members.map((member, idx) => {
+                            return(
+                                <Pressable key={idx} onPress={() => handleOnPress(member)}>
+                                    <StyledView className='flex-col flex-wrap rounded-lg h-56 w-36 border-black border-0' >
+                                        <StyledImage className='h-32 w-32 ml-3 mt-4' src={member.imageUrl}/>
+                                        <StyledText className='text-sm text-white text-center font-bold mt-2 ml-4 h-16 w-32'>{`${member.firstName} ${member.lastName}`}</StyledText>
+                                    </StyledView>
+                                </Pressable>
+                            );
+                        })}
+                </StyledScrollView>
+                <DetailModal isVisible={isModalVisible} member={chosenMember} setIsVisible={setIsModalVisible}/>
+            </StyledScrollView>
+        );
+    }
+    return <LoadingScreen/>
 }
