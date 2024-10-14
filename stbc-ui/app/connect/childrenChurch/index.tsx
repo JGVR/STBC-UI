@@ -1,4 +1,4 @@
-import {View, Text, Image, ScrollView} from 'react-native';
+import {View, Text, Image, ScrollView, Pressable} from 'react-native';
 import { styled } from 'nativewind';
 import { useRouter } from 'expo-router';
 import { useState, useEffect } from 'react';
@@ -6,9 +6,11 @@ import School from '@/model/School';
 import BgImageScreenHeader from '@/components/headers/BgImageScreenHeader';
 import ComponentLayout from '@/utils/ComponentLayout';
 import SectionHeader from '@/components/SectionHeader';
+import Member from '@/model/Member';
 
 const StyledView = styled(View);
 const StyledText = styled(Text);
+const StyledImage = styled(Image);
 const StyledScrollView = styled(ScrollView);
 const apiUrl = "http://192.168.1.12:8000/find?type=school&churchId=1&schoolId=1";
 
@@ -22,6 +24,7 @@ const optionalMsgLayout = new ComponentLayout({height:"", width:"", bottom:"bott
 
 export default function ChildrenChurchScreen(){
     const [school, setSchool] = useState<School[]>([]);
+    const [members, setMembers] = useState<Member[]>([]);
     const [isCompleted, setIsCompleted] = useState(false);
     const router = useRouter();
 
@@ -54,13 +57,41 @@ export default function ChildrenChurchScreen(){
         }
     };
 
+    //fetch members data
+    const fetchMembers = async(id: string) => {
+        try{
+            const apiUrl = `http://192.168.1.12:8000/find?type=member&churchId=1&memberId=${id}`;
+            const resp = await fetch(apiUrl);
+
+            if(!resp.ok){
+                throw new Error("Something went wrong with the API request");
+            }
+            const data = await resp.json();
+
+            const members = data.map((member: any) => {
+                const newMember = new Member({
+                    id: data["memberId"],
+                    firstName: data["firstName"],
+                    lastName: data["lastName"],
+                    title: data["title"],
+                    shortBio: data["shortBio"],
+                    imageUrl: data["imageUrl"]
+                });
+                return newMember;
+            });
+            setMembers(members);
+        }catch(error){
+            console.log("something went wrong!" + error);
+        }
+    };
+
     useEffect(() => {
         fetchSchool();
     }, []);
 
     return(
         <StyledScrollView className='bg-dark-green w-full h-full'>
-            <BgImageScreenHeader router={router} imageUrl="https://stbc.blob.core.windows.net/stbc-mobile-app-images/Devotion-bg-Image.webp" buttonTitle='Sunday Class' headerTitle={school[0]?.name ? school[0].name : "ok"} headerOptionalMsg={school[0]?.dateOfWeek && school[0]?.time ? `${school[0].dateOfWeek}|${school[0].time}` : ""} containerLayout={containerLayout} subContainerLayout={subContainerLayout} backButtonLayout={buttonLayout} backIconLayout={iconLayout} backButtonShown={true} imageLayout={imageLayout} titleLayout={titleLayout} optionalMsgLayout={optionalMsgLayout}/>
+            <BgImageScreenHeader router={router} imageUrl="https://stbc.blob.core.windows.net/stbc-mobile-app-images/Devotion-bg-Image.webp" buttonTitle='Sunday Class' headerTitle={school[0]?.name ? school[0].name : ""} headerOptionalMsg={school[0]?.dateOfWeek && school[0]?.time ? `${school[0].dateOfWeek}|${school[0].time}` : ""} containerLayout={containerLayout} subContainerLayout={subContainerLayout} backButtonLayout={buttonLayout} backIconLayout={iconLayout} backButtonShown={true} imageLayout={imageLayout} titleLayout={titleLayout} optionalMsgLayout={optionalMsgLayout}/>
             <SectionHeader title='Leaders' containerLayout='flex-row flex-nowrap' titleLayout='text-2xl text-white mt-8 mb-2 ml-4 font-bold italic' iconLayout='mt-9'/>
         </StyledScrollView>
     );
