@@ -7,12 +7,13 @@ import BgImageScreenHeader from '@/components/headers/BgImageScreenHeader';
 import ComponentLayout from '@/utils/ComponentLayout';
 import SectionHeader from '@/components/SectionHeader';
 import Member from '@/model/Member';
+import ChurchClass from '@/model/ChurchClass';
 
 const StyledView = styled(View);
 const StyledText = styled(Text);
 const StyledImage = styled(Image);
 const StyledScrollView = styled(ScrollView);
-const apiUrl = "http://192.168.1.12:8000/find?type=school&churchId=1&schoolId=1";
+const apiUrl = "http://192.168.1.15:8000/find?type=school&churchId=1&schoolId=1";
 
 const containerLayout = new ComponentLayout({height:"h-60", width:"w-full"});
 const subContainerLayout = new ComponentLayout({height: "", width: ""});
@@ -46,10 +47,19 @@ export default function ChildrenChurchScreen(){
                     dateOfWeek: school["dateOfWeek"],
                     time: school["time"],
                     imageUrl: school["imageUrl"],
-                    classes: school["classes"]
+                    classes: school["classes"].map((churchClass: any) => {
+                        const newChurchClass = new ChurchClass({
+                            memberIds: churchClass["memberIds"],
+                            name: churchClass["name"],
+                            ages: churchClass["ages"],
+                            imageUrl: school["imageUrl"]
+                        });
+                        return newChurchClass;
+                    })
                 });
                 return newSchool;
             });
+            console.log(childrenSchool[0].classes[0].memberIds);
             setSchool(childrenSchool);
             setIsCompleted(true);
         }catch(error){
@@ -60,7 +70,7 @@ export default function ChildrenChurchScreen(){
     //fetch members data
     const fetchMembers = async(id: string) => {
         try{
-            const apiUrl = `http://192.168.1.12:8000/find?type=member&churchId=1&memberId=${id}`;
+            const apiUrl = `http://192.168.1.15:8000/find?type=member&churchId=1&memberId=${id}`;
             const resp = await fetch(apiUrl);
 
             if(!resp.ok){
@@ -79,15 +89,28 @@ export default function ChildrenChurchScreen(){
                 });
                 return newMember;
             });
+            console.log(data[0].memberId);
             setMembers(members);
         }catch(error){
             console.log("something went wrong!" + error);
         }
     };
 
+    //fetch children church data
     useEffect(() => {
         fetchSchool();
     }, []);
+
+    //fetch members
+    useEffect(() => {
+        if(school.length > 0){
+            school[0].classes?.map((churchClass: any) => {
+                churchClass.memberIds.map((memberId: string) => {
+                    fetchMembers(memberId);
+                });
+            });
+        }
+    }, [school])
 
     return(
         <StyledScrollView className='bg-dark-green w-full h-full'>
