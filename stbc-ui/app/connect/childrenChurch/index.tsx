@@ -1,13 +1,14 @@
-import {View, Text, Image} from 'react-native';
+import {View, Text, Image, ScrollView} from 'react-native';
 import { styled } from 'nativewind';
 
 const StyledView = styled(View);
 const StyledText = styled(Text);
+const StyledScrollView = styled(ScrollView);
 
 export default function ChildrenChurchScreen(){
     return(
-        <StyledView>
+        <StyledScrollView>
             <StyledText>Hello!</StyledText>
-        </StyledView>
+        </StyledScrollView>
     );
 }

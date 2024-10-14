@@ -24,7 +24,7 @@ export default function MinistriesScreen(){
     //fetch ministries
     const fetchMinistries = async(newDocNum: number) => {
         try{
-            const apiUrl = `http://10.0.0.133:8000/find?type=ministry&churchId=1&maxDocs=${maxDocs}&recordId=${newDocNum}`;
+            const apiUrl = `http://192.168.1.12:8000/find?type=ministry&churchId=1&maxDocs=${maxDocs}&recordId=${newDocNum}`;
             const resp = await fetch(apiUrl);
             if(!resp.ok){
                 throw new Error("Something went wrong with the API request");

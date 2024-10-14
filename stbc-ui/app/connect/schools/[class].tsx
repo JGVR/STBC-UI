@@ -29,14 +29,14 @@ export default function ClassScreen(){
     const router = useRouter();
     const [isModalVisible, setIsModalVisible] = useState(false);
     const sundayClass = typeof data === "string" ? JSON.parse(data) as ChurchClass: null;
-    const apiUrl = "http://10.0.0.133:8000/find?type=member&churchId=1";
+    const apiUrl = "http://192.168.1.12:8000/find?type=member&churchId=1";
     const [members, setMembers] = useState<Member[]>([]);
     const chosenMember = useRef<Member>();
     const [isCompleted, setIsCompleted] = useState(false);
 
     const fetchMembers = async(memberId: string) => {
         try{
-            const apiUrl = `http://10.0.0.133:8000/find?type=member&churchId=1&memberId=${memberId}`;
+            const apiUrl = `http://192.168.1.12:8000/find?type=member&churchId=1&memberId=${memberId}`;
             const resp = await fetch(apiUrl);
 
             if(!resp.ok){
