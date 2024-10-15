@@ -11,7 +11,7 @@ const StyledPressable = styled(Pressable);
 export default function DetailModal(props: {member: any, isVisible: boolean, setIsVisible: any}){
     return(
         <Modal visible={props.isVisible} transparent={true} animationType='slide'>
-                <StyledView className="bg-dark-green bg-opacity-50 h-[60%] w-96 mt-40 ml-5 rounded-lg">
+                <StyledView className="bg-dark-green bg-opacity-50 h-[60%] w-96 mt-40 ml-5 rounded-lg border-teal-500 border">
                     <StyledView className='flex-row'>
                         <StyledText className="text-white text-center text-lg font-bold mb-4 ml-24 mt-2 w-52">{props.member.current?.firstName} {props.member.current?.lastName}</StyledText>
                         <StyledPressable className='mt-2 ml-[8%]' onPress={() => props.setIsVisible(false)}>
