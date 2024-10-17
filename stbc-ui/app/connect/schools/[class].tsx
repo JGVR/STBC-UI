@@ -36,7 +36,7 @@ export default function ClassScreen(){
 
     const fetchMembers = async(memberId: string) => {
         try{
-            const apiUrl = `http://192.168.1.14:8000/find?type=member&churchId=1&memberId=${memberId}`;
+            const apiUrl = `http://172.20.10.2:8000/find?type=member&churchId=1&memberId=${memberId}`;
             const resp = await fetch(apiUrl);
 
             if(!resp.ok){

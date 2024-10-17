@@ -16,10 +16,10 @@ export default class Event{
     description: string
     startDate: string
     endDate: string
-    url: string
-    targetScreen: string
+    url?: string
+    targetScreen?: string
     imageUrl: string
-    location: string
+    location?: string
 
     constructor({id, title, description="", startDate="", endDate="", url="", targetScreen="", imageUrl, location=""}: EventStruct){
         this.id = id;
