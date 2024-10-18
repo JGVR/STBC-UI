@@ -1,4 +1,4 @@
-import {View, Text} from 'react-native';
+import {View} from 'react-native';
 import {styled} from 'nativewind';
 import YoutubePlayer from "react-native-youtube-iframe";
 

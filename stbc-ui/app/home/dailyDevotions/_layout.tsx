@@ -15,7 +15,7 @@ export default function DailyDevotionsLayout(){
     return (
         <Stack>
             <Stack.Screen name="index" options={{
-                header: () => <GeneralScreenHeader title={headerDetails.title} backButtonLayout={buttonLayout} backIconLayout={iconLayout} titleLayout={titleLayout} mailIconLayout={mailIconLayout}/>,
+                header: () => <GeneralScreenHeader title={headerDetails.title} backButtonTitle="Home" backButtonLayout={buttonLayout} backIconLayout={iconLayout} titleLayout={titleLayout} mailIconLayout={mailIconLayout}/>,
             }}/>
             <Stack.Screen name="[day]" options={{
                 headerShown: false

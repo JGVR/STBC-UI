@@ -31,7 +31,7 @@ export default function ImageButton(props: {title: string, imageDetail: any, url
                                         ${props.imageLayout.right} 
                                         flex-none rounded-2xl opacity-70 border border-slate-300`
                                         } 
-                            source={props.imageDetail}
+                            src={props.imageDetail}
                         />
                         <StyledText 
                             className={`
@@ -67,7 +67,7 @@ export default function ImageButton(props: {title: string, imageDetail: any, url
                                     ${props.imageLayout.right} 
                                     flex-none rounded-2xl opacity-70 border border-slate-300`
                                     } 
-                        source={props.imageDetail}
+                        src={props.imageDetail}
                     />
                     <StyledText 
                         className={`
