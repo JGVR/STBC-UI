@@ -15,7 +15,7 @@ const StyledView = styled(View);
 const StyledText = styled(Text);
 const StyledImage = styled(Image);
 const StyledScrollView = styled(ScrollView);
-const apiUrl = "http://172.20.10.2:8000/find?type=school&churchId=1&schoolId=1";
+const apiUrl = "http://192.168.1.7:8000/find?type=school&churchId=1&schoolId=1";
 
 const containerLayout = new ComponentLayout({height:"h-60", width:"w-full"});
 const subContainerLayout = new ComponentLayout({height: "", width: ""});
@@ -72,7 +72,7 @@ export default function ChildrenChurchScreen(){
     //fetch members data
     const fetchMembers = async(id: string) => {
         try{
-            const apiUrl = `http://172.20.10.2:8000/find?type=member&churchId=1&memberId=${id}`;
+            const apiUrl = `http://192.168.1.7:8000/find?type=member&churchId=1&memberId=${id}`;
             const resp = await fetch(apiUrl);
 
             if(!resp.ok){

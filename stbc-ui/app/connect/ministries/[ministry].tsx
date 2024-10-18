@@ -4,6 +4,7 @@ import { useRouter, useLocalSearchParams } from 'expo-router';
 import { useEffect } from 'react';
 import BgImageScreenHeader from '@/components/headers/BgImageScreenHeader';
 import MailHeaderIcon from '@/components/headers/MailHeaderIcon';
+import SectionHeader from '@/components/SectionHeader';
 import ComponentLayout from '@/utils/ComponentLayout';
 import Ministry from '@/model/Ministry';
 
@@ -46,16 +47,18 @@ export default function MinistryScreen(){
 
     return(
         <StyledView className="bg-midnight-green h-full w-full">
-            <BgImageScreenHeader router={router} imageUrl="https://stbc.blob.core.windows.net/stbc-events/Homecoming 2024" backButtonShown={true} buttonTitle="Ministries" backButtonLayout={buttonLayout} backIconLayout={iconLayout} headerTitle={headerTitle ? headerTitle : ""} headerOptionalMsg="" imageLayout={imageLayout} containerLayout={containerLayout} subContainerLayout={subContainerLayout} titleLayout={titleLayout} optionalMsgLayout={optionalMsgLayout}/>
+            <BgImageScreenHeader router={router} imageUrl="https://stbc.blob.core.windows.net/stbc-events/Homecoming 2024" backButtonShown={true} buttonTitle="Ministries" backButtonLayout={buttonLayout} backIconLayout={iconLayout} headerTitle="" headerOptionalMsg="" imageLayout={imageLayout} containerLayout={containerLayout} subContainerLayout={subContainerLayout} titleLayout={titleLayout} optionalMsgLayout={optionalMsgLayout}/>
             <MailHeaderIcon layoutDetails={mailHeaderLayout}/>
             <StyledScrollView className="w-full mt-[49%]">
-                <StyledView className='bg-teal-500 h-16 w-52 rounded-2xl  ml-28'>
-                    <StyledPressable className='m-4 h-12' onPress={handlePress}>
-                        <StyledText className='text-center text-lg font-semibold text-white'>Register</StyledText>
+                <SectionHeader title={headerTitle ? headerTitle : ""} containerLayout='flex-row flex-nowrap' titleLayout='text-xl text-white mt-3 mb-5 ml-6 font-bold italic' iconLayout='mt-3'/>
+                <StyledView className='bg-teal-500 h-12 w-96 rounded-3xl  ml-6'>
+                    <StyledPressable className='m-2 h-8' onPress={handlePress}>
+                        <StyledText className='text-center text-xl font-semibold text-white'>Register</StyledText>
                     </StyledPressable>
                 </StyledView>
                 <StyledView className="m-4">
-                    <StyledText className="text-white text-lg m-1">
+                    <SectionHeader title='Description' containerLayout='flex-row flex-nowrap' titleLayout='text-2xl text-white mt-5 ml-2 font-bold italic' iconLayout='mt-6'/>
+                    <StyledText className="text-white text-lg m-4">
                         {ministry?.description}
                     </StyledText>
                 </StyledView>
