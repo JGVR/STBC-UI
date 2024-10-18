@@ -19,7 +19,15 @@ export default function Layout(){
         tabBarLabelStyle: { fontSize: 14 }, // Adjusts label font size if needed
         tabBarActiveTintColor: '#2DD4BF',  // Color of the tab when active
         tabBarInactiveTintColor: 'black', // Color of the tab when inactive
-        tabBarIcon: ({color}) => <MaterialIcons name="event" size={24} color="#002626"/>, 
+        tabBarIcon: ({color}) => <MaterialIcons name="event" size={28} color="#002626"/>, 
+        headerShown:false
+      }}/>
+      <Tabs.Screen name="connect" options={{
+        title: "Connect",
+        tabBarLabelStyle: { fontSize: 14 }, // Adjusts label font size if needed
+        tabBarActiveTintColor: '#2DD4BF',  // Color of the tab when active
+        tabBarInactiveTintColor: 'black', // Color of the tab when inactive
+        tabBarIcon: ({color}) => <MaterialIcons name="groups" size={28} color="#002626"/>, 
         headerShown:false
       }}/>
     </Tabs>

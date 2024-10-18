@@ -1,28 +1,34 @@
 interface EventStruct{
+    id: string,
     title: string,
     description?: string,
     startDate?: string,
     endDate?: string,
-    eventUrl?: string,
+    url?: string,
+    targetScreen?: string
     imageUrl: string,
     location?: string
 }
 
 export default class Event{
+    id: string
     title: string
     description: string
     startDate: string
     endDate: string
-    eventUrl: string
+    url?: string
+    targetScreen?: string
     imageUrl: string
-    location: string
+    location?: string
 
-    constructor({title, description="", startDate="", endDate="", eventUrl="", imageUrl, location=""}: EventStruct){
+    constructor({id, title, description="", startDate="", endDate="", url="", targetScreen="", imageUrl, location=""}: EventStruct){
+        this.id = id;
         this.title = title;
         this.description = description;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.eventUrl = eventUrl;
+        this.url = url;
+        this.targetScreen = targetScreen;
         this.imageUrl = imageUrl;
         this.location = location;
     }

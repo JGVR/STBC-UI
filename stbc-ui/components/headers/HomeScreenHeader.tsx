@@ -6,7 +6,7 @@ import ComponentLayout from '@/utils/ComponentLayout';
 const StyledView = styled(View);
 const StyledText = styled(Text);
 const StyledImage = styled(Image);
-const mailHeaderLayout = new ComponentLayout({height: "", width:"", top:"top-4", left:"left-[88%]", color:"#0E4749"})
+const mailHeaderLayout = new ComponentLayout({height: "", width:"", top:"top-4", left:"ml-[88%]", color:"#0E4749"})
 
 export default function HomeScreenHeader(props: {title: string, imageDetail: any}){
     return(
