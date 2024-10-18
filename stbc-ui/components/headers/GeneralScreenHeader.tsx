@@ -7,10 +7,10 @@ import ComponentLayout from '@/utils/ComponentLayout';
 const StyledView = styled(View);
 const StyledText = styled(Text);
 
-export default function GeneralScreenHeader(props: {title: string, backButtonLayout: ComponentLayout, backIconLayout: ComponentLayout, titleLayout: ComponentLayout, mailIconLayout: ComponentLayout}){
+export default function GeneralScreenHeader(props: {title: string, backButtonTitle: string, backButtonLayout: ComponentLayout, backIconLayout: ComponentLayout, titleLayout: ComponentLayout, mailIconLayout: ComponentLayout}){
     return(
         <StyledView className="w-full h-24">
-            <BackButton title={"Home"} iconLayout={props.backIconLayout} buttonLayout={props.backButtonLayout}/>
+            <BackButton title={props.backButtonTitle} iconLayout={props.backIconLayout} buttonLayout={props.backButtonLayout}/>
             <StyledView className={`flex-row ${props.titleLayout.top} ${props.titleLayout.left}`}>
                 <StyledText className="text-midnight-green text-lg italic font-bold">{props.title}</StyledText>
                 <MailHeaderIcon layoutDetails={props.mailIconLayout}/>

@@ -12,7 +12,7 @@ export default function HomeScreen(){
     const navigationCards = [
         {
             title: "First Time Visitor",
-            imageDetail: require('@/assets/getPluggedIn.png'),
+            imageDetail: 'https://stbc.blob.core.windows.net/stbc-mobile-app-images/getPluggedIn.png',
             url: "https://docs.google.com/forms/d/e/1FAIpQLSdoZK_3Zdw9EsiPCCVqHF8j9TYiCOVu4Dhfpb4qGQwiBCYfpw/viewform?pli=1",
             imageLayout: imageLayout,
             textLayout: textLayout,
@@ -20,7 +20,7 @@ export default function HomeScreen(){
         },
         {
             title: "How To Be Saved",
-            imageDetail: require('@/assets/HowToBeSaved.png'),
+            imageDetail: 'https://stbc.blob.core.windows.net/stbc-mobile-app-images/HowToBeSaved.png',
             url: "https://www.strongtowerbaptist.org/how-to-be-saved/",
             imageLayout: imageLayout,
             textLayout: textLayout,
@@ -28,7 +28,7 @@ export default function HomeScreen(){
         },
         {
             title: "Live",
-            imageDetail: require('@/assets/give.png'),
+            imageDetail: 'https://stbc.blob.core.windows.net/stbc-mobile-app-images/give.png',
             url: "/home/howToBeSaved",
             imageLayout: imageLayout,
             textLayout: textLayout,
@@ -36,7 +36,7 @@ export default function HomeScreen(){
         },
         {
             title: "Daily Devotions",
-            imageDetail: require('@/assets/calendar.png'),
+            imageDetail: 'https://stbc.blob.core.windows.net/stbc-mobile-app-images/calendar.png',
             url: "/home/dailyDevotions",
             imageLayout: imageLayout,
             textLayout: textLayout,
@@ -44,7 +44,7 @@ export default function HomeScreen(){
         },
         {
             title: "About",
-            imageDetail: require('@/assets/icon.png'),
+            imageDetail: 'https://stbc.blob.core.windows.net/stbc-mobile-app-images/give.png',
             url: "/home/about",
             imageLayout: imageLayout,
             textLayout: textLayout,
@@ -52,7 +52,7 @@ export default function HomeScreen(){
         },
         {
             title: "Contact Us",
-            imageDetail: require('@/assets/icon.png'),
+            imageDetail: 'https://stbc.blob.core.windows.net/stbc-mobile-app-images/give.png',
             url: "https://www.strongtowerbaptist.org/visit-us/",
             imageLayout: imageLayout,
             textLayout: textLayout,

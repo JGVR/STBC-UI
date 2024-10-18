@@ -1,38 +1,69 @@
 import { ImageBackground, Text, View} from "react-native";
 import {styled } from 'nativewind';
 import BackButton from "../buttons/BackButton";
-import { useEffect, useState } from 'react';
+import ComponentLayout from "@/utils/ComponentLayout";
 
 const StyledView = styled(View);
 const StyledText = styled(Text);
 const StyledBgImg = styled(ImageBackground);
-const iconLayout = {
-    top: "top-14",
-    left: "left-3",
-    right: "",
-    bottom: "",
-    color: "#0E4749"
-}
-const buttonLayout = {
-    top: "top-12",
-    left: "",
-    right: "right-[5%]",
-    bottom: "",
-    color: "#0E4749"
-}
 
-export default function BgImageScreenHeader(props: {router: any, buttonTitle: string, headerTitle: string, headerOptionalMsg: string|null}){
+export default function BgImageScreenHeader(props: {router: any, imageUrl: string, buttonTitle: string, headerTitle: string, headerOptionalMsg: string|null, containerLayout: ComponentLayout, subContainerLayout: ComponentLayout, backButtonLayout: ComponentLayout|any, backIconLayout: ComponentLayout|any, backButtonShown: boolean, imageLayout: ComponentLayout, titleLayout: ComponentLayout, optionalMsgLayout: ComponentLayout}){
     return(
-        <StyledView className="w-full h-60">
-            <StyledBgImg className="h-64 w-full opacity-60 z-10" source={require('@/assets/cross.jpeg')}>
-                <BackButton title={props.buttonTitle} iconLayout={iconLayout} buttonLayout={buttonLayout}/>
-                <StyledText className="text-2xl text-midnight-green m-3 italic font-bold top-16 text-center">
-                    {props.headerTitle}
+        <StyledView className={`
+                                ${props.containerLayout.height} 
+                                ${props.containerLayout.width} 
+                                ${props.containerLayout.top} 
+                                ${props.containerLayout.bottom} 
+                                ${props.containerLayout.left} 
+                                ${props.containerLayout.right} 
+                                ${props.containerLayout.position} 
+                                ${props.containerLayout.border} 
+                                ${props.containerLayout.color}`}>
+            <StyledView className={`${props.subContainerLayout.height} ${props.subContainerLayout.width} ${props.subContainerLayout.top}`}>
+                <StyledBgImg className={
+                    `${props.imageLayout.height} 
+                     ${props.imageLayout.width} 
+                     ${props.imageLayout.position} 
+                     ${props.imageLayout.top} 
+                     ${props.imageLayout.bottom} 
+                     ${props.imageLayout.left} 
+                     ${props.imageLayout.right} 
+                     ${props.imageLayout.size} 
+                     ${props.imageLayout.border} 
+                     ${props.imageLayout.opacity}
+                     overflow-hidden`
+                } src={props.imageUrl}/>
+                {props.backButtonShown ? <BackButton title={props.buttonTitle} iconLayout={props.backIconLayout} buttonLayout={props.backButtonLayout}/> : null}
+                <StyledText className={`
+                                            ${props.titleLayout.height} 
+                                            ${props.titleLayout.width} 
+                                            ${props.titleLayout.position} 
+                                            ${props.titleLayout.top} 
+                                            ${props.titleLayout.bottom} 
+                                            ${props.titleLayout.left} 
+                                            ${props.titleLayout.right} 
+                                            ${props.titleLayout.size} 
+                                            ${props.titleLayout.border} 
+                                            ${props.titleLayout.opacity} 
+                                            ${props.titleLayout.color} 
+                                            italic font-bold text-center`}>
+                        {props.headerTitle}
                 </StyledText>
-                <StyledText className=" text-midnight-green m-3 italic font-bold top-[25%] text-left">
-                    {props.headerOptionalMsg}
+                <StyledText className={`${props.optionalMsgLayout.height} 
+                                            ${props.optionalMsgLayout.width} 
+                                            ${props.optionalMsgLayout.position} 
+                                            ${props.optionalMsgLayout.top} 
+                                            ${props.optionalMsgLayout.bottom} 
+                                            ${props.optionalMsgLayout.left} 
+                                            ${props.optionalMsgLayout.right} 
+                                            ${props.optionalMsgLayout.size} 
+                                            ${props.optionalMsgLayout.border} 
+                                            ${props.optionalMsgLayout.opacity} 
+                                            ${props.optionalMsgLayout.color} 
+                                            italic font-bold text-left`}>
+                        {props.headerOptionalMsg}
                 </StyledText>
-            </StyledBgImg>
+            </StyledView>
         </StyledView>
     );
 }

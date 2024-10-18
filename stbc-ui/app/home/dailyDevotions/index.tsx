@@ -1,4 +1,4 @@
-import {ScrollView, Text} from 'react-native';
+import {ScrollView} from 'react-native';
 import {styled} from 'nativewind';
 import ThumbnailNavigationCard from '@/components/ThumbnailNavigationCard';
 import ComponentLayout from '@/utils/ComponentLayout';
@@ -9,7 +9,7 @@ const textLayout = new ComponentLayout({height: "", width: "w-26", position: "ab
 const navigationCards = [
     {
         title: "Monday",
-        imageDetail: require('@/assets/icon.png'),
+        imageDetail: 'https://stbc.blob.core.windows.net/stbc-mobile-app-images/monday-nag-car-img.webp',
         url: "/home/dailyDevotions/monday",
         imageLayout: imageLayout,
         textLayout: textLayout,
@@ -17,7 +17,7 @@ const navigationCards = [
     },
     {
         title: "Tuesday",
-        imageDetail: require('@/assets/icon.png'),
+        imageDetail: 'https://stbc.blob.core.windows.net/stbc-mobile-app-images/monday-nag-car-img.webp',
         url: "/home/dailyDevotions/tuesday",
         imageLayout: imageLayout,
         textLayout: textLayout,
@@ -25,7 +25,7 @@ const navigationCards = [
     },
     {
         title: "Wednesday",
-        imageDetail: require('@/assets/icon.png'),
+        imageDetail: 'https://stbc.blob.core.windows.net/stbc-mobile-app-images/monday-nag-car-img.webp',
         url: "/home/dailyDevotions/wednesday",
         imageLayout: imageLayout,
         textLayout: textLayout,
@@ -33,7 +33,7 @@ const navigationCards = [
     },
     {
         title: "Thursday",
-        imageDetail: require('@/assets/icon.png'),
+        imageDetail: 'https://stbc.blob.core.windows.net/stbc-mobile-app-images/monday-nag-car-img.webp',
         url: "/home/dailyDevotions/thursday",
         imageLayout: imageLayout,
         textLayout: textLayout,
@@ -41,7 +41,7 @@ const navigationCards = [
     },
     {
         title: "Friday",
-        imageDetail: require('@/assets/icon.png'),
+        imageDetail: 'https://stbc.blob.core.windows.net/stbc-mobile-app-images/monday-nag-car-img.webp',
         url: "/home/dailyDevotions/friday",
         imageLayout: imageLayout,
         textLayout: textLayout,
@@ -49,7 +49,7 @@ const navigationCards = [
     },
     {
         title: "Saturday",
-        imageDetail: require('@/assets/icon.png'),
+        imageDetail: 'https://stbc.blob.core.windows.net/stbc-mobile-app-images/monday-nag-car-img.webp',
         url: "/home/about",
         imageLayout: imageLayout,
         textLayout: textLayout,
@@ -57,7 +57,7 @@ const navigationCards = [
     },
     {
         title: "Sunday",
-        imageDetail: require('@/assets/icon.png'),
+        imageDetail: 'https://stbc.blob.core.windows.net/stbc-mobile-app-images/sunday-nag-car-img.webp',
         url: "/home/dailyDevotions/sunday",
         isOutgoingUrl: false,
         imageLayout: new ComponentLayout({height: "h-48", width: "w-80", left: "left-[55%]"}),
