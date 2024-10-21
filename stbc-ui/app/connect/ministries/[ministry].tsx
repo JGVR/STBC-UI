@@ -23,7 +23,7 @@ const buttonLayout = new ComponentLayout({height:"", width:"", top:"-mt-[180%]",
 const optionalMsgLayout = new ComponentLayout({height:"", width:""});
 
 export default function MinistryScreen(){
-    const {data} = useLocalSearchParams(); //{title, description, url}
+    const {data} = useLocalSearchParams();
     const ministry = typeof data === "string" ? JSON.parse(data) as Ministry : null;
     const headerTitle = ministry?.name;
     const registerUrl = typeof ministry?.url === 'string' ? ministry.url : "";

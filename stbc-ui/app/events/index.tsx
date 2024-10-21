@@ -34,7 +34,7 @@ export default function EventsScreen(){
 
     const fetchEvents = async(newDocNum: number) => {
         try{
-            const apiUrl = `http://192.168.1.7:8000/find?type=event&churchId=1&maxDocs=${maxDocs}&recordId=${newDocNum}`;
+            const apiUrl = `${process.env.EXPO_PUBLIC_STBC_API}type=event&churchId=1&maxDocs=${maxDocs}&recordId=${newDocNum}`;
             const resp = await fetch(apiUrl);
             if(!resp.ok){
                 throw new Error("Something went wrong with the API request");
