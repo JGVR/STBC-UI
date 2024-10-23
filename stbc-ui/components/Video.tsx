@@ -7,42 +7,17 @@ const StyledView = styled(View);
 const StyledText = styled(Text);
 const StyledImage = styled(Image);
 
-export default function Item(props: {item: any, imageLayout: string, titleLayout: string, optionalMsgLayout: string, iconLayout: string, isDynamicScreen: boolean}){
-    
-    const sDate = new Date(props.item.startDate).toLocaleString('en-US', {
-        weekday: 'short',
-        year: 'numeric',
-        month: 'short',
-        day: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit',
-        hour12: true
-   });
-    const eDate = new Date(props.item.endDate).toLocaleString('en-US', {
-        weekday: 'short',
-        year: 'numeric',
-        month: 'short',
-        day: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit',
-        hour12: true
-   });
-
+export default function VideoComp(props: {videoItm: any, isDynamicScreen: boolean}){
     return(
         <Link href={{
-            pathname: props.isDynamicScreen ? `/${props.item.targetScreen}/${props.item.title || props.item.name}` : `/${props.item.targetScreen}`,
-            params: {data: JSON.stringify(props.item)}//{title: props.item.title || props.item.name, description: props.item.description, url: props.item.url, imageUrl: props.item.imageUrl, location: props.item.location, startDate: props.item.startDate, endDate: props.item.endDate}
+            pathname: props.isDynamicScreen ? `/${props.videoItm.targetScreen}/${props.videoItm.title || props.videoItm.name}` : `/${props.videoItm.targetScreen}`,
+            params: {data: JSON.stringify(props.videoItm)}
         }} asChild>
             <Pressable>
-                <StyledView className='flex-row ml-3 mr-3 mt-5 border-b-2 border-b-white'>
-                    <StyledImage src={props.item.imageUrl} className={`${props.imageLayout}`}/>
-                    <StyledView className='flex-1 ml-3 mt-3'>
-                        <StyledText className={`${props.titleLayout}`}>{props.item.title || props.item.name}</StyledText>
-                        {props.item.startDate.length > 0 ? <StyledText className={`${props.optionalMsgLayout}`}>{`${sDate}•${eDate}`}</StyledText> : null}
-                    </StyledView>
-                    <StyledView className={props.iconLayout}>
-                        <MaterialIcons name="navigate-next" size={26} color="white" />
-                    </StyledView>
+                <StyledView>
+                    <StyledImage className='h-32 w-56 mt-5 ml-5 mr-5 mb-1 rounded-2xl border-2' src="https://i.ytimg.com/vi/VZ_PtLdpR9A/mqdefault.jpg" resizeMode='contain'/>
+                    <StyledText className='h-8 w-48 mt-2 ml-7 text-lg text-white font-bold italic'>{props.videoItm.title}</StyledText>
+                    <StyledText className='h-8 w-48 ml-7 text-sm text-white italic'>{props.videoItm.title}</StyledText>
                 </StyledView>
             </Pressable>
         </Link>
