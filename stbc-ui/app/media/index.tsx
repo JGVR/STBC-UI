@@ -4,13 +4,14 @@ import { useState, useEffect } from 'react';
 import Video from '@/model/Video';
 import YoutubeChannel from '@/model/YoutubeChannel';
 import LoadingScreen from '@/components/loadingScreen';
-import ItemsList from '@/components/ItemsList';
-import VideoComp from '@/components/Video';
+import VideosList from '@/components/VideosList';
 
-const StyledView = styled(View);
-const StyledText = styled(Text);
-const StyledImage = styled(Image);
 const StyledScrollView = styled(ScrollView);
+
+const videoImgLayout = "h-14 w-24 rounded-lg mb-4";
+const videoTitleLayout = "h-5 text-white mb-1";
+const videoDescLayout = "h-5 text-white";
+const videoListContainerLayout = "h-[95%] w-full";
 
 export default function MediaScreen(){
     const channel = new YoutubeChannel({id:process.env.EXPO_PUBLIC_STBC_CHANNEL_ID, url: process.env.EXPO_PUBLIC_YOUTUBE_API});
@@ -33,7 +34,8 @@ export default function MediaScreen(){
                     id: video["id"]["videoId"],
                     title: video["snippet"]["title"],
                     description: video["snippet"]["description"],
-                    thumbNailUrl: video["snippet"]["thumbnails"]["default"]["url"]
+                    thumbNailUrl: video["snippet"]["thumbnails"]["default"]["url"],
+                    targetScreen: "media"
                 });
                 return newVideo;
             });
@@ -51,6 +53,7 @@ export default function MediaScreen(){
     if(isCompleted){
         return(
             <StyledScrollView className='bg-midnight-green h-full w-full'>
+                <VideosList data={videos} imageLayout={videoImgLayout} titleLayout={videoTitleLayout} descriptionLayout={videoDescLayout} containerLayout={videoListContainerLayout} isDynamicScreen={true}/>
             </StyledScrollView>
         );
     }

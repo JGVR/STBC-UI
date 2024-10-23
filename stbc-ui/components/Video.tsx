@@ -7,17 +7,17 @@ const StyledView = styled(View);
 const StyledText = styled(Text);
 const StyledImage = styled(Image);
 
-export default function VideoComp(props: {videoItm: any, isDynamicScreen: boolean}){
+export default function VideoComp(props: {videoItm: any, isDynamicScreen: boolean, imageLayout: string, titleLayout: string, descriptionLayout: string}){
     return(
         <Link href={{
-            pathname: props.isDynamicScreen ? `/${props.videoItm.targetScreen}/${props.videoItm.title || props.videoItm.name}` : `/${props.videoItm.targetScreen}`,
+            pathname: props.isDynamicScreen ? `/${props.videoItm.targetScreen}/${props.videoItm.title.slice(0,5) || props.videoItm.name}` : `/${props.videoItm.targetScreen}`,
             params: {data: JSON.stringify(props.videoItm)}
         }} asChild>
             <Pressable>
-                <StyledView>
+                <StyledView className='mb-4'>
                     <StyledImage className='h-32 w-56 mt-5 ml-5 mr-5 mb-1 rounded-2xl border-2' src="https://i.ytimg.com/vi/VZ_PtLdpR9A/mqdefault.jpg" resizeMode='contain'/>
-                    <StyledText className='h-8 w-48 mt-2 ml-7 text-lg text-white font-bold italic'>{props.videoItm.title}</StyledText>
-                    <StyledText className='h-8 w-48 ml-7 text-sm text-white italic'>{props.videoItm.title}</StyledText>
+                    <StyledText className='h-12 w-48 mt-2 ml-7 text-base text-white font-bold italic'>{props.videoItm.title}</StyledText>
+                    <StyledText className='h-12 w-48 ml-7 text-sm text-white italic'>{props.videoItm.description}</StyledText>
                 </StyledView>
             </Pressable>
         </Link>
