@@ -15,9 +15,9 @@ export default function VideoComp(props: {videoItm: any, isDynamicScreen: boolea
         }} asChild>
             <Pressable>
                 <StyledView className='mb-4'>
-                    <StyledImage className='h-32 w-56 mt-5 ml-5 mr-5 mb-1 rounded-2xl border-2' src="https://i.ytimg.com/vi/VZ_PtLdpR9A/mqdefault.jpg" resizeMode='contain'/>
-                    <StyledText className='h-12 w-48 mt-2 ml-7 text-base text-white font-bold italic'>{props.videoItm.title}</StyledText>
-                    <StyledText className='h-12 w-48 ml-7 text-sm text-white italic'>{props.videoItm.description}</StyledText>
+                    <StyledImage className='h-32 w-56 mt-5 ml-3 mr-2 rounded-2xl border-2' src="https://i.ytimg.com/vi/VZ_PtLdpR9A/mqdefault.jpg" resizeMode='contain'/>
+                    <StyledText className='h-7 w-48 mt-2 ml-4 text-base text-white font-bold italic'>{props.videoItm.title}</StyledText>
+                    <StyledText className='h-7 w-48 ml-5 text-sm text-white italic' numberOfLines={1}>{`${props.videoItm.date} • ${props.videoItm.speaker}`}</StyledText>
                 </StyledView>
             </Pressable>
         </Link>

@@ -11,6 +11,8 @@ export default function VideosList(props: {data: any[], imageLayout: string, con
                 data={props.data}
                 horizontal={true}
                 renderItem={({item}) => !item ? null : <VideoComp videoItm={item} imageLayout={props.imageLayout} titleLayout={props.titleLayout} descriptionLayout={props.descriptionLayout} isDynamicScreen={props.isDynamicScreen}/>}
+                keyExtractor={(item) => item.id}
+                indicatorStyle='white'
                 />
         </StyledView>
     );

@@ -15,7 +15,7 @@ const videoListContainerLayout = "h-[95%] w-full";
 
 export default function MediaScreen(){
     const channel = new YoutubeChannel({id:process.env.EXPO_PUBLIC_STBC_CHANNEL_ID, url: process.env.EXPO_PUBLIC_YOUTUBE_API});
-    const youtubeApiUrl = `${channel.url}&channelId=${channel.id}&maxResults=5&order=date&key=${process.env.EXPO_PUBLIC_YOUTUBE_API_KEY}`;
+    const youtubeApiUrl = `${channel.url}&channelId=${channel.id}&maxResults=4&order=date&key=${process.env.EXPO_PUBLIC_YOUTUBE_API_KEY}`;
     const [videos, setVideos] = useState<Video[]>([]);
     const [isCompleted, setIsCompleted] = useState(false);
     const imgUrl = "https://stbc.blob.core.windows.net/stbc-mobile-app-images/STBC-Logo.png"
@@ -30,11 +30,21 @@ export default function MediaScreen(){
 
             const data = await resp.json();
             const videos = data["items"].map((video: any) => {
+                const descData = video["snippet"]["description"].split("///");
+                const dateStr = descData[1].replace(/.*(\d{2}\/\d{2}\/\d{2}).*/, "$1");
+                const [month, day, year] = dateStr.split("/").map(Number);
+
                 const newVideo = new Video({
                     id: video["id"]["videoId"],
-                    title: video["snippet"]["title"],
-                    description: video["snippet"]["description"],
+                    title: descData[2].replaceAll("\"", ""),
+                    description: descData[1],
                     thumbNailUrl: video["snippet"]["thumbnails"]["default"]["url"],
+                    speaker: descData[3].replace(/,?\s*\.{3}/, ""),
+                    date: new Date((year + 2000), (month-1), day).toLocaleString('en-US', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                   }),
                     targetScreen: "media"
                 });
                 return newVideo;
