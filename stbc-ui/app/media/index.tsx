@@ -1,4 +1,4 @@
-import {View, Text, Image, ScrollView} from 'react-native';
+import {View, Text, ImageBackground, ScrollView, Image} from 'react-native';
 import { styled } from 'nativewind';
 import { useState, useEffect } from 'react';
 import Video from '@/model/Video';
@@ -8,18 +8,21 @@ import VideosList from '@/components/VideosList';
 import SectionHeader from '@/components/SectionHeader';
 
 const StyledScrollView = styled(ScrollView);
+const StyledImageBg = styled(ImageBackground);
+const StyledText = styled(Text);
+const StyledView = styled(View);
+const StyledImage = styled(Image);
 
 const videoImgLayout = "h-14 w-24 rounded-lg mb-4";
 const videoTitleLayout = "h-5 text-white mb-1";
 const videoDescLayout = "h-5 text-white";
-const videoListContainerLayout = "h-[37%] w-full";
+const videoListContainerLayout = "h-[23%] w-full";
 
 export default function MediaScreen(){
     const channel = new YoutubeChannel({id:process.env.EXPO_PUBLIC_STBC_CHANNEL_ID, url: process.env.EXPO_PUBLIC_YOUTUBE_API});
     const [recentVideos, setRecentVideos] = useState<Video[]>([]);
     const [lastMonthVideos, setLastMonthVideos] = useState<Video[]>([]);
     const [isCompleted, setIsCompleted] = useState(false);
-    const imgUrl = "https://stbc.blob.core.windows.net/stbc-mobile-app-images/STBC-Logo.png";
 
     //Extract last 5 STBC services
     const fetchRecentVideos = async() => {
@@ -110,8 +113,18 @@ export default function MediaScreen(){
 
     if(isCompleted){
         return(
-            <StyledScrollView className='bg-midnight-green h-full w-full'>
-                <SectionHeader title='Recently Added' containerLayout='flex-row flex-nowrap' titleLayout='text-2xl text-white mt-8 ml-4 font-bold italic' iconLayout='mt-9'/>
+            <StyledScrollView className='bg-midnight-green h-[100%] w-full'>
+                <StyledView className='h-96 w-full'>
+                    <StyledImage className='h-full w-full opacity-50' src="https://stbc.blob.core.windows.net/stbc-mobile-app-images/monday-nag-car-img.webp"/>
+                    <StyledImage className='h-48 w-80 -mt-80 ml-14 rounded-2xl font-bold italic' src='https://i.ytimg.com/vi/Wh-zXcFFIu8/mqdefault.jpg'/>
+                    <StyledText className=' h-8 text-white text-center text-2xl mt-3 font-bold italic'>
+                        {recentVideos[0].title}
+                    </StyledText>
+                    <StyledText className=' h-8 text-white text-center mt-1 italic'>
+                        {`${recentVideos[0].date} • ${recentVideos[0].speaker}`}
+                    </StyledText>
+                </StyledView>
+                <SectionHeader title='Recently Added' containerLayout='flex-row flex-nowrap' titleLayout='text-2xl text-white mt-2 ml-4 font-bold italic' iconLayout='mt-3'/>
                 <VideosList data={recentVideos} imageLayout={videoImgLayout} titleLayout={videoTitleLayout} descriptionLayout={videoDescLayout} containerLayout={videoListContainerLayout} isDynamicScreen={true}/>
                 <SectionHeader title='Last Month' containerLayout='flex-row flex-nowrap' titleLayout='text-2xl text-white mt-8 ml-4 font-bold italic' iconLayout='mt-9'/>
                 <VideosList data={lastMonthVideos} imageLayout={videoImgLayout} titleLayout={videoTitleLayout} descriptionLayout={videoDescLayout} containerLayout={videoListContainerLayout} isDynamicScreen={true}/>
