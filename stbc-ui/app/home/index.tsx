@@ -6,7 +6,7 @@ import ComponentLayout from '@/utils/ComponentLayout';
 
 export default function HomeScreen(){
     const StyledScrollView = styled(ScrollView);
-    const imageLayout = new ComponentLayout({height:"h-48", width:"w-48"});
+    const imageLayout = new ComponentLayout({height:"h-48", width:"w-48", opacity:"opacity-70", border:"border-slate-300 rounded-2xl border"});
     const textLayout = new ComponentLayout({height: "", width: "w-26", position: "absolute", top: "top-20", size: "text-lg", color: "text-white"});
 
     const navigationCards = [
