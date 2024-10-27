@@ -1,17 +1,23 @@
-import {View, Text, ImageBackground, ScrollView, Image} from 'react-native';
+import {View, Text, ImageBackground, ScrollView, Image, StatusBar} from 'react-native';
 import { styled } from 'nativewind';
-import { useState, useEffect } from 'react';
+import { useFocusEffect } from 'expo-router';
+import { useState, useEffect, useCallback } from 'react';
 import Video from '@/model/Video';
 import YoutubeChannel from '@/model/YoutubeChannel';
 import LoadingScreen from '@/components/loadingScreen';
 import VideosList from '@/components/VideosList';
 import SectionHeader from '@/components/SectionHeader';
+import BgImageScreenHeader from '@/components/headers/BgImageScreenHeader';
+import ComponentLayout from '@/utils/ComponentLayout';
 
 const StyledScrollView = styled(ScrollView);
-const StyledImageBg = styled(ImageBackground);
-const StyledText = styled(Text);
 const StyledView = styled(View);
-const StyledImage = styled(Image);
+
+const containerLayout = new ComponentLayout({height:"h-96", width:"w-full"});
+const subContainerLayout = new ComponentLayout({height: "", width: ""});
+const imageLayout = new ComponentLayout({height:"h-96", width:"w-full", opacity:"opacity-60"});
+const titleLayout = new ComponentLayout({height:"", width:"", top: "mt-1", size:"text-2xl", color:"text-white"});
+const optionalMsgLayout = new ComponentLayout({height:"", width:"", top:"", left:"ml-20", color: "text-white"});
 
 const videoImgLayout = "h-14 w-24 rounded-lg mb-4";
 const videoTitleLayout = "h-5 text-white mb-1";
@@ -61,6 +67,7 @@ export default function MediaScreen(){
         }
     };
 
+    //
     const fetchLastMonthVideos = async() => {
         try{
             const today = new Date();
@@ -111,24 +118,29 @@ export default function MediaScreen(){
         }
     }, [])
 
+    //change status bar color
+    useFocusEffect(
+        useCallback(() => {
+            StatusBar.setBarStyle('light-content');
+            return () => {
+                StatusBar.setBarStyle('dark-content');
+            }
+        }, [])
+    );
+
     if(isCompleted){
         return(
-            <StyledScrollView className='bg-midnight-green h-[100%] w-full'>
-                <StyledView className='h-96 w-full'>
-                    <StyledImage className='h-full w-full opacity-50' src="https://stbc.blob.core.windows.net/stbc-mobile-app-images/monday-nag-car-img.webp"/>
-                    <StyledImage className='h-48 w-80 -mt-80 ml-14 rounded-2xl font-bold italic' src='https://i.ytimg.com/vi/Wh-zXcFFIu8/mqdefault.jpg'/>
-                    <StyledText className=' h-8 text-white text-center text-2xl mt-3 font-bold italic'>
-                        {recentVideos[0].title}
-                    </StyledText>
-                    <StyledText className=' h-8 text-white text-center mt-1 italic'>
-                        {`${recentVideos[0].date} • ${recentVideos[0].speaker}`}
-                    </StyledText>
-                </StyledView>
-                <SectionHeader title='Recently Added' containerLayout='flex-row flex-nowrap' titleLayout='text-2xl text-white mt-2 ml-4 font-bold italic' iconLayout='mt-3'/>
-                <VideosList data={recentVideos} imageLayout={videoImgLayout} titleLayout={videoTitleLayout} descriptionLayout={videoDescLayout} containerLayout={videoListContainerLayout} isDynamicScreen={true}/>
-                <SectionHeader title='Last Month' containerLayout='flex-row flex-nowrap' titleLayout='text-2xl text-white mt-8 ml-4 font-bold italic' iconLayout='mt-9'/>
-                <VideosList data={lastMonthVideos} imageLayout={videoImgLayout} titleLayout={videoTitleLayout} descriptionLayout={videoDescLayout} containerLayout={videoListContainerLayout} isDynamicScreen={true}/>
-            </StyledScrollView>
+            <StyledView>
+                <StyledScrollView className='bg-midnight-green h-[100%] w-full'>
+                    <StyledView className='h-96 w-full'>
+                        <BgImageScreenHeader router={null} imageUrl="https://stbc.blob.core.windows.net/stbc-mobile-app-images/monday-nag-car-img.webp" backButtonShown={false} buttonTitle="" backButtonLayout="" backIconLayout="" headerTitle={recentVideos[0].title} headerOptionalMsg={`${recentVideos[0].date} • ${recentVideos[0].speaker}`} imageLayout={imageLayout} containerLayout={containerLayout} subContainerLayout={subContainerLayout} titleLayout={titleLayout} optionalMsgLayout={optionalMsgLayout} thumbNailUrl='https://i.ytimg.com/vi/Wh-zXcFFIu8/mqdefault.jpg' thumbnailLayout='h-48 w-80 -mt-72 ml-14 rounded-2xl font-bold italic'/>
+                    </StyledView>
+                    <SectionHeader title='Recently Added' containerLayout='flex-row flex-nowrap' titleLayout='text-2xl text-white mt-4 ml-4 font-bold italic' iconLayout='mt-5'/>
+                    <VideosList data={recentVideos} imageLayout={videoImgLayout} titleLayout={videoTitleLayout} descriptionLayout={videoDescLayout} containerLayout={videoListContainerLayout} isDynamicScreen={true}/>
+                    <SectionHeader title='Last Month' containerLayout='flex-row flex-nowrap' titleLayout='text-2xl text-white mt-5 ml-4 font-bold italic' iconLayout='mt-6'/>
+                    <VideosList data={lastMonthVideos} imageLayout={videoImgLayout} titleLayout={videoTitleLayout} descriptionLayout={videoDescLayout} containerLayout={videoListContainerLayout} isDynamicScreen={true}/>
+                </StyledScrollView>
+            </StyledView>
         );
     }
     return <LoadingScreen/>;
