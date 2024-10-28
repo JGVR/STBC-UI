@@ -21,16 +21,13 @@ export default function VideoScreen(){
 
     useEffect(() => {
         StatusBar.setBarStyle('light-content');
-        return () => {
-            StatusBar.setBarStyle('dark-content');
-        }
-    }, [])
+    }, []);
 
     return(
         <StyledView className='bg-dark-green h-full w-full'>
             <GeneralScreenHeader title="" backButtonTitle="Media" titleLayout={titleLayout} backIconLayout={iconLayout} mailIconLayout={mailIconLayout} backButtonLayout={buttonLayout}/>
             <StyledView className='h-56 w-96 ml-5 top-6 border rounded-2xl overflow-hidden z-40'>
-                <YoutubeVideoPlayer videoId={video?.id} height={300} containerStyle=''/>
+                <YoutubeVideoPlayer videoId={video?.id} height={300} width={400} containerStyle=''/>
             </StyledView>
             <StyledView className='bg-midnight-green h-[80%] w-full'>
                 <StyledText className='text-white mt-12'>Hello!</StyledText>

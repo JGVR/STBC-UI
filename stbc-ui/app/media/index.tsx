@@ -81,7 +81,6 @@ export default function MediaScreen(){
         today.setMonth(today.getMonth() - 1); //substract a month from today's date
         const videos = await fetchVideos(`${channel.url}&channelId=${channel.id}&maxResults=4&order=date&publishedBefore=${today.toISOString()}&key=${process.env.EXPO_PUBLIC_YOUTUBE_API_KEY}`);
         setLastMonthVideos(prevData => [...prevData, ...videos]);
-        setIsCompleted(true);
     };
 
     useEffect(() => {
@@ -98,9 +97,6 @@ export default function MediaScreen(){
     useFocusEffect(
         useCallback(() => {
             StatusBar.setBarStyle('light-content');
-            return () => {
-                StatusBar.setBarStyle('dark-content');
-            }
         }, [])
     );
 

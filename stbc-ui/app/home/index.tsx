@@ -1,5 +1,7 @@
 import ThumbnailNavigationCard from '@/components/ThumbnailNavigationCard';
-import { ScrollView} from 'react-native';
+import { ScrollView, StatusBar} from 'react-native';
+import { useFocusEffect } from 'expo-router';
+import { useCallback } from 'react';
 import {styled} from 'nativewind';
 import YoutubeVideoPlayer from '@/components/YoutubeVideoPlayer';
 import ComponentLayout from '@/utils/ComponentLayout';
@@ -60,9 +62,15 @@ export default function HomeScreen(){
         }
     ];
 
+    useFocusEffect(
+        useCallback(() => {
+            StatusBar.setBarStyle('dark-content');
+        }, [])
+    );
+
     return (
         <StyledScrollView className='h-full w-full bg-dark-green'>
-            <YoutubeVideoPlayer videoId='CvHBOeoX3pI' height={300} containerStyle='w-full h-60 bg-white'/>
+            <YoutubeVideoPlayer videoId='CvHBOeoX3pI' height={300} width={450} containerStyle='w-full h-60 bg-white'/>
             <ThumbnailNavigationCard navigationCards={navigationCards}/>
         </StyledScrollView>
     );
