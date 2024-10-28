@@ -11,7 +11,7 @@ export default function GeneralScreenHeader(props: {title: string, backButtonTit
     return(
         <StyledView className="w-full h-24 bg-transparent">
             <BackButton title={props.backButtonTitle} iconLayout={props.backIconLayout} buttonLayout={props.backButtonLayout}/>
-            <StyledView className={`flex-row bg-red-500`}>
+            <StyledView className="flex-row">
                 <StyledText className={`text-midnight-green text-lg italic font-bold ${props.titleLayout.top} ${props.titleLayout.left}`}>{props.title}</StyledText>
                 <MailHeaderIcon layoutDetails={props.mailIconLayout}/>
             </StyledView>
