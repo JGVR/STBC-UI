@@ -18,7 +18,7 @@ const titleLayout = new ComponentLayout({height:"", width:""})
 const mailIconLayout = new ComponentLayout({height:"", width:"", top:"top-3", left:"left-96", color:"white"});
 
 export default function VideoScreen(){
-    const {data} = useLocalSearchParams(); //{title, description, url, imageUrl, location, startDate, endDate}
+    const {data} = useLocalSearchParams();
     const video = typeof data === "string" ? JSON.parse(data) as Video : JSON.parse(data[0]) as Video;
 
     useEffect(() => {

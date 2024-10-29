@@ -47,7 +47,7 @@ export default function MinistryScreen(){
 
     return(
         <StyledView className="bg-midnight-green h-full w-full">
-            <BgImageScreenHeader router={router} imageUrl="https://stbc.blob.core.windows.net/stbc-events/Homecoming 2024" backButtonShown={true} buttonTitle="Ministries" backButtonLayout={buttonLayout} backIconLayout={iconLayout} headerTitle="" headerOptionalMsg="" imageLayout={imageLayout} containerLayout={containerLayout} subContainerLayout={subContainerLayout} titleLayout={titleLayout} optionalMsgLayout={optionalMsgLayout} imageButtonData="" thumbNailUrl="" thumbnailLayout={new ComponentLayout({height:"", width:""})}/>
+            <BgImageScreenHeader router={router} imageUrl="https://stbc.blob.core.windows.net/stbc-mobile-app-images/sunday-nag-car-img.webp" backButtonShown={true} buttonTitle="Ministries" backButtonLayout={buttonLayout} backIconLayout={iconLayout} headerTitle="" headerOptionalMsg="" imageLayout={imageLayout} containerLayout={containerLayout} subContainerLayout={subContainerLayout} titleLayout={titleLayout} optionalMsgLayout={optionalMsgLayout} imageButtonData="" thumbNailUrl="" thumbnailLayout={new ComponentLayout({height:"", width:""})}/>
             <MailHeaderIcon layoutDetails={mailHeaderLayout}/>
             <StyledScrollView className="w-full mt-[49%]">
                 <SectionHeader title={headerTitle ? headerTitle : ""} containerLayout='flex-row flex-nowrap' titleLayout='text-xl text-white mt-3 mb-5 ml-6 font-bold italic' iconLayout='mt-3'/>
