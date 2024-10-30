@@ -14,9 +14,9 @@ const containerLayout = new ComponentLayout({height:"h-60", width:"w-full"});
 const subContainerLayout = new ComponentLayout({height: "", width: ""});
 const iconLayout = new ComponentLayout({height:"", width:"", bottom:"bottom-[48.5%]", left:"left-3", color:"#0E4749"});
 const buttonLayout = new ComponentLayout({height:"", width:"", bottom:"bottom-[50.5%]", right:"right-[5%]", color:"#0E4749"});
-const imageLayout = new ComponentLayout({height:"h-64", width:"w-full", opacity:"opacity-60", bottom:"bottom-1"});
+const imageLayout = new ComponentLayout({height:"h-64", width:"w-full", opacity:"opacity-50", bottom:"bottom-1"});
 const titleLayout = new ComponentLayout({height:"", width:"", bottom:"bottom-48", size:"text-2xl", color:"text-midnight-green"});
-const optionalMsgLayout = new ComponentLayout({height:"", width:"", bottom:"bottom-40", left:"left-2", color: "text-midnight-green"});
+const optionalMsgLayout = new ComponentLayout({height:"", width:"", bottom:"bottom-40", left:"left-7", color: "text-midnight-green", size:"text-lg"});
 
 export default function DevotionScreen(){
     const [isCompleted, setIsCompleted] = useState(false);
@@ -48,7 +48,7 @@ export default function DevotionScreen(){
     if(isCompleted){
         return(
             <StyledView className='h-[100%]'>
-                <BgImageScreenHeader router={router} imageUrl="https://stbc.blob.core.windows.net/stbc-mobile-app-images/Devotion-bg-Image.webp" buttonTitle='Devotions' headerTitle={devotions ? devotions.title : ""} headerOptionalMsg={devotions ? devotions.author : ""} containerLayout={containerLayout} subContainerLayout={subContainerLayout} backButtonLayout={buttonLayout} backIconLayout={iconLayout} backButtonShown={true} imageLayout={imageLayout} titleLayout={titleLayout} optionalMsgLayout={optionalMsgLayout} thumbNailUrl="" thumbnailLayout={new ComponentLayout({height:"", width:""})} imageButtonData=""/>
+                <BgImageScreenHeader router={router} imageUrl="https://stbc.blob.core.windows.net/stbc-mobile-app-images/Devotion-bg-Image.webp" buttonTitle='Devotions' headerTitle={devotions ? devotions.title : ""} headerOptionalMsg={devotions ? "Pastor Ancel Presnell Jr." : "Pastor Ancel Presnell Jr."} containerLayout={containerLayout} subContainerLayout={subContainerLayout} backButtonLayout={buttonLayout} backIconLayout={iconLayout} backButtonShown={true} imageLayout={imageLayout} titleLayout={titleLayout} optionalMsgLayout={optionalMsgLayout} thumbNailUrl="" thumbnailLayout={new ComponentLayout({height:"", width:""})} imageButtonData=""/>
                 <StyledScrollView className="w-full h-80 bg-dark-green rounded-tr-2xl rounded-tl-2xl overflow-hidden">
                     <StyledView className="w-full">
                         <StyledText className="text-white m-6 text-lg">

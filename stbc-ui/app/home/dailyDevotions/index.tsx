@@ -1,4 +1,5 @@
-import {ScrollView} from 'react-native';
+import {ScrollView, StatusBar} from 'react-native';
+import { useEffect } from 'react';
 import {styled} from 'nativewind';
 import ThumbnailNavigationCard from '@/components/ThumbnailNavigationCard';
 import ComponentLayout from '@/utils/ComponentLayout';
@@ -67,6 +68,11 @@ const navigationCards = [
 const StyledView = styled(ScrollView);
 
 export default function DailyDevotionsScreen(){
+
+    useEffect(() => {
+        StatusBar.setBarStyle('dark-content');
+    }, [])
+
     return(
         <StyledView className='h-full w-full bg-dark-green'>
             <ThumbnailNavigationCard navigationCards={navigationCards}/>
