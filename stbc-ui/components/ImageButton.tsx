@@ -8,7 +8,7 @@ const StyledImage= styled(Image);
 const StyledView = styled(View);
 const StyledPressable = styled(Pressable);
 
-export default function ImageButton(props: {title: string, imageDetail: any, url: string, isOutgoingUrl: boolean, imageLayout: ComponentLayout, textLayout: ComponentLayout}){
+export default function ImageButton(props: {title: string, imageDetail: any, url: string, isOutgoingUrl: boolean, imageLayout: ComponentLayout, textLayout: ComponentLayout, data: any}){
 
     if(props.isOutgoingUrl){
         const handlePress = async () => {
@@ -29,7 +29,9 @@ export default function ImageButton(props: {title: string, imageDetail: any, url
                                         ${props.imageLayout.bottom} 
                                         ${props.imageLayout.left} 
                                         ${props.imageLayout.right} 
-                                        flex-none rounded-2xl opacity-70 border border-slate-300`
+                                        ${props.imageLayout.opacity}
+                                        ${props.imageLayout.border}
+                                        flex-none`
                                         } 
                             src={props.imageDetail}
                         />
@@ -54,7 +56,10 @@ export default function ImageButton(props: {title: string, imageDetail: any, url
     }
 
     return(
-        <Link href={props.url} className="max-w-[45%] m-2" asChild>
+        <Link href={{
+            pathname: `${props.url}`,
+            params: {data: JSON.stringify(props.data)}
+        }} className="max-w-[45%] m-2" asChild>
             <Pressable>
                 <StyledView className='flex-row justify-center flex-wrap'>
                     <StyledImage 
@@ -65,7 +70,9 @@ export default function ImageButton(props: {title: string, imageDetail: any, url
                                     ${props.imageLayout.bottom} 
                                     ${props.imageLayout.left} 
                                     ${props.imageLayout.right} 
-                                    flex-none rounded-2xl opacity-70 border border-slate-300`
+                                    ${props.imageLayout.opacity}
+                                    ${props.imageLayout.border}
+                                    flex-none`
                                     } 
                         src={props.imageDetail}
                     />

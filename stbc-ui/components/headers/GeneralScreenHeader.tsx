@@ -9,10 +9,10 @@ const StyledText = styled(Text);
 
 export default function GeneralScreenHeader(props: {title: string, backButtonTitle: string, backButtonLayout: ComponentLayout, backIconLayout: ComponentLayout, titleLayout: ComponentLayout, mailIconLayout: ComponentLayout}){
     return(
-        <StyledView className="w-full h-24">
+        <StyledView className="w-full h-24 bg-transparent">
             <BackButton title={props.backButtonTitle} iconLayout={props.backIconLayout} buttonLayout={props.backButtonLayout}/>
-            <StyledView className={`flex-row ${props.titleLayout.top} ${props.titleLayout.left}`}>
-                <StyledText className="text-midnight-green text-lg italic font-bold">{props.title}</StyledText>
+            <StyledView className="flex-row">
+                <StyledText className={`text-midnight-green text-lg italic font-bold ${props.titleLayout.top} ${props.titleLayout.left}`}>{props.title}</StyledText>
                 <MailHeaderIcon layoutDetails={props.mailIconLayout}/>
             </StyledView>
         </StyledView>

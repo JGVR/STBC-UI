@@ -19,7 +19,7 @@ const mailHeaderLayout = new ComponentLayout({height: "h-6", width:"w-8", bottom
 const optionalMsgLayout = new ComponentLayout({height:"", width:""});
 const itemImgLayout = "h-14 w-24 rounded-lg mb-4";
 const itemTitleLayout = "h-5 text-white mb-1";
-const itemOptMsgLayout = "h-5 text-white";
+const itemOptMsgLayout = "h-5 w-68 text-white";
 const iconLayout = "mt-4";
 const itemListContainerLayout = "h-[95%] w-full";
 
@@ -34,7 +34,7 @@ export default function EventsScreen(){
 
     const fetchEvents = async(newDocNum: number) => {
         try{
-            const apiUrl = `http://192.168.1.7:8000/find?type=event&churchId=1&maxDocs=${maxDocs}&recordId=${newDocNum}`;
+            const apiUrl = `${process.env.EXPO_PUBLIC_STBC_API}type=event&churchId=1&maxDocs=${maxDocs}&recordId=${newDocNum}`;
             const resp = await fetch(apiUrl);
             if(!resp.ok){
                 throw new Error("Something went wrong with the API request");
@@ -120,7 +120,7 @@ export default function EventsScreen(){
     if(isCompleted){
         return(
             <StyledView className="bg-midnight-green">
-                <BgImageScreenHeader router={router} imageUrl="https://stbc.blob.core.windows.net/stbc-events/Homecoming 2024" backButtonShown={false} buttonTitle="" backButtonLayout="" backIconLayout="" headerTitle='Upcoming Events' headerOptionalMsg="" imageLayout={imageLayout} containerLayout={containerLayout} subContainerLayout={subContainerLayout} titleLayout={titleLayout} optionalMsgLayout={optionalMsgLayout}/>
+                <BgImageScreenHeader router={router} imageUrl="https://stbc.blob.core.windows.net/stbc-mobile-app-images/sunday-nag-car-img.webp" backButtonShown={false} buttonTitle="" backButtonLayout="" backIconLayout="" headerTitle='Upcoming Events' headerOptionalMsg="" imageLayout={imageLayout} containerLayout={containerLayout} subContainerLayout={subContainerLayout} titleLayout={titleLayout} optionalMsgLayout={optionalMsgLayout} imageButtonData="" thumbNailUrl="" thumbnailLayout={new ComponentLayout({height:"", width:""})}/>
                 <MailHeaderIcon layoutDetails={mailHeaderLayout}/>
                 <StyledView className='bg-midnight-green h-3/4 w-full'>
                     <ItemsList data={events} imageLayout={itemImgLayout} titleLayout={itemTitleLayout} iconLayout={iconLayout} description={itemOptMsgLayout} isDynamicScreen={true} isLoading={loadingMore} onScroll={handleScroll} containerLayout={itemListContainerLayout} isDynamicList={true}/>

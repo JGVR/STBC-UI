@@ -19,7 +19,7 @@ export default function SundaySchoolsScreen(){
     
     const fetchSundaySchoolClasses = async() => {
         try{
-            const apiUrl = "http://192.168.1.7:8000/find?type=school&churchId=1";
+            const apiUrl = `${process.env.EXPO_PUBLIC_STBC_API}type=school&churchId=1`;
             const resp = await fetch(apiUrl);
 
             if(!resp.ok){

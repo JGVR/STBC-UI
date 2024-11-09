@@ -4,10 +4,10 @@ import YoutubePlayer from "react-native-youtube-iframe";
 
 const StyledView = styled(View);
 
-export default function YoutubeVideoPlayer(){
+export default function YoutubeVideoPlayer(props: {videoId: string, height: number, width: number, containerStyle: string}){
     return (
-        <StyledView className="w-full h-60 bg-white">
-            <YoutubePlayer height={300} videoId='CvHBOeoX3pI' play={false}/>
+        <StyledView className={props.containerStyle}>
+            <YoutubePlayer height={props.height} width={props.width} videoId={props.videoId} play={false}/>
         </StyledView>
     );
 }
