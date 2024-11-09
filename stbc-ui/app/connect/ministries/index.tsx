@@ -16,7 +16,7 @@ const containerLayout = "h-[95%] w-full";
 export default function MinistriesScreen(){
     const scrollPosition = useRef(0);
     const [loadingMore, setIsLoadingMore] = useState(false);
-    const [maxDocs, setMaxDocs] = useState(5);
+    const [maxDocs, setMaxDocs] = useState(10);
     const [docNum, setDocNum] = useState(0);
     const [ministries, setMinistries] = useState<Ministry[]>([]);
     const [isCompleted, setIsCompleted] = useState(false);
