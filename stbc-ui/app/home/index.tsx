@@ -1,12 +1,14 @@
 import ThumbnailNavigationCard from '@/components/ThumbnailNavigationCard';
-import { ScrollView} from 'react-native';
+import { ScrollView, StatusBar} from 'react-native';
+import { useFocusEffect } from 'expo-router';
+import { useCallback } from 'react';
 import {styled} from 'nativewind';
 import YoutubeVideoPlayer from '@/components/YoutubeVideoPlayer';
 import ComponentLayout from '@/utils/ComponentLayout';
 
 export default function HomeScreen(){
     const StyledScrollView = styled(ScrollView);
-    const imageLayout = new ComponentLayout({height:"h-48", width:"w-48"});
+    const imageLayout = new ComponentLayout({height:"h-48", width:"w-48", opacity:"opacity-70", border:"border-slate-300 rounded-2xl border"});
     const textLayout = new ComponentLayout({height: "", width: "w-26", position: "absolute", top: "top-20", size: "text-lg", color: "text-white"});
 
     const navigationCards = [
@@ -60,9 +62,15 @@ export default function HomeScreen(){
         }
     ];
 
+    useFocusEffect(
+        useCallback(() => {
+            StatusBar.setBarStyle('dark-content');
+        }, [])
+    );
+
     return (
         <StyledScrollView className='h-full w-full bg-dark-green'>
-            <YoutubeVideoPlayer/>
+            <YoutubeVideoPlayer videoId='CvHBOeoX3pI' height={300} width={450} containerStyle='w-full h-60 bg-white'/>
             <ThumbnailNavigationCard navigationCards={navigationCards}/>
         </StyledScrollView>
     );

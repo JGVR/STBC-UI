@@ -1,13 +1,15 @@
-import { ImageBackground, Text, View} from "react-native";
+import { ImageBackground, Text, View, Image} from "react-native";
 import {styled } from 'nativewind';
 import BackButton from "../buttons/BackButton";
 import ComponentLayout from "@/utils/ComponentLayout";
+import ImageButton from "../ImageButton";
 
 const StyledView = styled(View);
 const StyledText = styled(Text);
 const StyledBgImg = styled(ImageBackground);
+const StyledImage = styled(Image);
 
-export default function BgImageScreenHeader(props: {router: any, imageUrl: string, buttonTitle: string, headerTitle: string, headerOptionalMsg: string|null, containerLayout: ComponentLayout, subContainerLayout: ComponentLayout, backButtonLayout: ComponentLayout|any, backIconLayout: ComponentLayout|any, backButtonShown: boolean, imageLayout: ComponentLayout, titleLayout: ComponentLayout, optionalMsgLayout: ComponentLayout}){
+export default function BgImageScreenHeader(props: {router: any, imageUrl: string, thumbNailUrl: string, buttonTitle: string, headerTitle: string, headerOptionalMsg: string|null, containerLayout: ComponentLayout, subContainerLayout: ComponentLayout, backButtonLayout: ComponentLayout|any, backIconLayout: ComponentLayout|any, backButtonShown: boolean, imageLayout: ComponentLayout, thumbnailLayout: ComponentLayout, titleLayout: ComponentLayout, optionalMsgLayout: ComponentLayout, imageButtonData: any}){
     return(
         <StyledView className={`
                                 ${props.containerLayout.height} 
@@ -34,6 +36,7 @@ export default function BgImageScreenHeader(props: {router: any, imageUrl: strin
                      overflow-hidden`
                 } src={props.imageUrl}/>
                 {props.backButtonShown ? <BackButton title={props.buttonTitle} iconLayout={props.backIconLayout} buttonLayout={props.backButtonLayout}/> : null}
+                {props.thumbNailUrl ? <ImageButton title="" data={props.imageButtonData} imageLayout={props.thumbnailLayout} imageDetail={props.thumbNailUrl} url={`/${props.imageButtonData.targetScreen}/${props.imageButtonData.title}`} isOutgoingUrl={false} textLayout={new ComponentLayout({height:"", width:""})}/> : null}
                 <StyledText className={`
                                             ${props.titleLayout.height} 
                                             ${props.titleLayout.width} 
