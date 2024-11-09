@@ -70,7 +70,7 @@ export default function ConnectTab(){
 
     return(
         <StyledView className="bg-midnight-green">
-            <BgImageScreenHeader router={router} imageUrl="https://stbc.blob.core.windows.net/stbc-events/Homecoming 2024" backButtonShown={false} buttonTitle="" backButtonLayout="" backIconLayout="" headerTitle='Connect' headerOptionalMsg="" imageLayout={imageLayout} containerLayout={containerLayout} subContainerLayout={subContainerLayout} titleLayout={titleLayout} optionalMsgLayout={optionalMsgLayout}/>
+            <BgImageScreenHeader router={router} imageUrl="https://stbc.blob.core.windows.net/stbc-mobile-app-images/sunday-nag-car-img.webp" backButtonShown={false} buttonTitle="" backButtonLayout="" backIconLayout="" headerTitle='Connect' headerOptionalMsg="" imageLayout={imageLayout} containerLayout={containerLayout} subContainerLayout={subContainerLayout} titleLayout={titleLayout} optionalMsgLayout={optionalMsgLayout} thumbNailUrl="" imageButtonData="" thumbnailLayout={new ComponentLayout({height:"", width:""})}/>
             <MailHeaderIcon layoutDetails={mailHeaderLayout}/>
             <StyledView className='bg-midnight-green h-[80%] w-full mt-[42%]'>
                 <ItemsList data={data} imageLayout={itemImgLayout} titleLayout={itemTitleLayout} iconLayout={iconLayout} description={itemOptMsgLayout} isDynamicScreen={false} isDynamicList={false} onScroll="" containerLayout={itemListContainerLayout} isLoading={false}/>

@@ -1,10 +1,11 @@
-import {View, Pressable, Alert} from 'react-native';
+import {View, Pressable, Alert, Text} from 'react-native';
 import {styled} from 'nativewind';
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import * as Calendar from 'expo-calendar';
 import { useState } from 'react';
 
 const StyledView = styled(View);
+const StyledText = styled(Text);
 
 export default function CalendarButton(props:{title: any, startDate: any, endDate: any, location: any}){
     const [hasCalendarPermission, setCalendarPermission] = useState(false);
@@ -62,6 +63,9 @@ export default function CalendarButton(props:{title: any, startDate: any, endDat
             <StyledView className='h-12 w-12 ml-40 mt-6 mb-6 bg-white rounded-full'>
                 <StyledView className='m-3'>
                     <FontAwesome6 name="calendar-plus" size={24} color="#002626" />
+                </StyledView>
+                <StyledView className='w-32 right-9 mt-2'>
+                    <StyledText className='text-base text-white text-center'>Add to Calendar</StyledText>
                 </StyledView>
             </StyledView>
         </Pressable>

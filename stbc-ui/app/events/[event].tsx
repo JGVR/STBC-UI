@@ -36,12 +36,14 @@ export default function EventScreen(){
 
     return(
         <StyledScrollView className='bg-dark-green h-full w-full'>
-            <StyledImage className='h-60 w-96 mt-5 ml-5 mr-5 mb-1 rounded-2xl' src={imgUrl}/>
+            <StyledView className='h-60 w-96 mt-5 ml-5 mr-5 mb-1 rounded-2xl overflow-hidden'>
+                <StyledImage className='h-60 w-96' src={imgUrl} resizeMode='cover'/>
+            </StyledView>
             <StyledView>
                 <StyledText className='text-teal-400 text-2xl font-bold text-left ml-6'>{event?.title}</StyledText>
                 <StyledText className='text-teal-400 text-left ml-6 text-xs'>{`${sDate} • ${eDate}`}</StyledText>
                 <StyledView className='flex-row'>
-                    <ShareButton url={eventUrl !== "" ? eventUrl : imgUrl}/>
+                    <ShareButton url={eventUrl !== "" ? eventUrl : imgUrl} containerStyle='h-12 w-12 ml-12 mt-6 mb-14 bg-white rounded-full' iconStyle='m-3' titleStyle='text-base text-white mt-2 text-center' iconSize={24}/>
                     <CalendarButton title={event?.title} startDate={event?.startDate} endDate={event?.endDate} location={event?.location}/>
                 </StyledView>
                 <StyledText className='text-white text-lg mt-1 ml-5 mr-3 mb-2'>{event?.description}</StyledText>
@@ -49,10 +51,10 @@ export default function EventScreen(){
                     event?.location ?
                     <StyledView>
                         <StyledText className='text-teal-400 font-bold ml-5 mt-3 mb-1 text-lg'>Location:</StyledText>
-                        <StyledText className='text-white ml-8'>{event?.location}</StyledText>
+                        <StyledText className='text-white ml-8' selectable>{event?.location}</StyledText>
                     </StyledView> : null
                 }
-                <StyledView>
+                <StyledView className='mb-4'>
                     <StyledText className='text-teal-400 font-bold ml-5 mt-3 mb-1 text-lg'>Contact:</StyledText>
                     <StyledText className='text-white ml-8'>•strongtowerbaptist@gmail.com</StyledText>
                 </StyledView>

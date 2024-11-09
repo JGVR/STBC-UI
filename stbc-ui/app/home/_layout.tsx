@@ -11,6 +11,7 @@ const iconLayout = new ComponentLayout({height:"", width:"", top:"top-14", left:
 const buttonLayout = new ComponentLayout({height:"", width:"", top:"top-12", right:"right-[5%]", color: "#0E4749"});
 const titleLayout = new ComponentLayout({height:"", width:"", left: "left-44", top: "top-4"})
 const mailIconLayout = new ComponentLayout({height:"", width:"", left:"left-36", color:"#0E4749"});
+const aboutMailIconLayout = new ComponentLayout({height:"", width:"", top:"top-4", left:"left-80", color:"#0E4749"});
 
 export default function HomeLayout(){
     return (
@@ -22,7 +23,7 @@ export default function HomeLayout(){
                 headerShown: false
             }}/>
             <Stack.Screen name="about" options={{
-                header: () => <GeneralScreenHeader title="About" backButtonTitle="Home" backButtonLayout={buttonLayout} backIconLayout={iconLayout} titleLayout={titleLayout} mailIconLayout={mailIconLayout}/>
+                header: () => <GeneralScreenHeader title="About" backButtonTitle="Home" backButtonLayout={buttonLayout} backIconLayout={iconLayout} titleLayout={titleLayout} mailIconLayout={aboutMailIconLayout}/>
             }}/>
         </Stack>
     );

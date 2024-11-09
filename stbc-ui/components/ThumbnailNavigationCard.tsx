@@ -11,7 +11,7 @@ export default function ThumbnailNavigationCard(props: {navigationCards: {title:
             {
                 props.navigationCards.map((card, index) => {
                     return(
-                        <ImageButton key={index} title={card.title} imageDetail={card.imageDetail} url={card.url} imageLayout={card.imageLayout} textLayout={card.textLayout} isOutgoingUrl={card.isOutgoingUrl}/>
+                        <ImageButton key={index} data={null} title={card.title} imageDetail={card.imageDetail} url={card.url} imageLayout={card.imageLayout} textLayout={card.textLayout} isOutgoingUrl={card.isOutgoingUrl}/>
                     );
                 })
             }

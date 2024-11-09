@@ -36,7 +36,7 @@ export default function ClassScreen(){
 
     const fetchMembers = async(memberId: string) => {
         try{
-            const apiUrl = `http://192.168.1.7:8000/find?type=member&churchId=1&memberId=${memberId}`;
+            const apiUrl = `${process.env.EXPO_PUBLIC_STBC_API}type=member&churchId=1&memberId=${memberId}`;
             const resp = await fetch(apiUrl);
 
             if(!resp.ok){
@@ -85,23 +85,25 @@ export default function ClassScreen(){
     if(isCompleted){
         return(
             <StyledScrollView className='bg-midnight-green h-full w-full'>
-                <BgImageScreenHeader router={router} imageUrl="https://stbc.blob.core.windows.net/stbc-mobile-app-images/Devotion-bg-Image.webp" buttonTitle='Sunday Class' headerTitle={sundayClass?.name ? sundayClass.name : ""} headerOptionalMsg={sundayClass?.ages ? sundayClass.ages : ""} containerLayout={containerLayout} subContainerLayout={subContainerLayout} backButtonLayout={buttonLayout} backIconLayout={iconLayout} backButtonShown={true} imageLayout={imageLayout} titleLayout={titleLayout} optionalMsgLayout={optionalMsgLayout}/>
+                <BgImageScreenHeader router={router} imageUrl="https://stbc.blob.core.windows.net/stbc-mobile-app-images/Devotion-bg-Image.webp" buttonTitle='Sunday Class' headerTitle={sundayClass?.name ? sundayClass.name : ""} headerOptionalMsg={sundayClass?.ages ? sundayClass.ages : ""} containerLayout={containerLayout} subContainerLayout={subContainerLayout} backButtonLayout={buttonLayout} backIconLayout={iconLayout} backButtonShown={true} imageLayout={imageLayout} titleLayout={titleLayout} optionalMsgLayout={optionalMsgLayout} imageButtonData="" thumbNailUrl="" thumbnailLayout={new ComponentLayout({height:"", width:""})}/>
                 <SectionHeader title='Instructor' containerLayout='flex-row flex-nowrap' titleLayout='text-2xl text-white mt-8 mb-2 ml-4 font-bold italic' iconLayout='mt-9'/>
                 <StyledScrollView className="flex-row flex-wrap border-white" horizontal={true} indicatorStyle='white'>
                     {members.map((member, idx) => {
                         return(
                             <Pressable key={idx} onPress={() => handleOnPress(member)}>
-                                <StyledView className='flex-col flex-wrap rounded-lg h-56 w-36 border-black border-0' >
+                                <StyledView className='flex-col flex-wrap rounded-lg h-52 w-36 border-black border-0' >
                                     <StyledImage className='h-32 w-32 ml-3 mt-4' src={member.imageUrl}/>
-                                    <StyledText className='text-sm text-white text-center font-bold mt-2 ml-4 h-16 w-32'>{`${member.firstName} ${member.lastName}`}</StyledText>
+                                    <StyledText className='text-sm text-white text-center font-bold mt-2 ml-4 h-4 w-32'>    
+                                        {`${member.firstName} ${member.lastName}`}
+                                    </StyledText>
                                 </StyledView>
                             </Pressable>
                         );
                     })}
                 </StyledScrollView>
                 <SectionHeader title='Description' containerLayout='flex-row flex-nowrap' titleLayout='text-2xl text-white mb-2 ml-4 font-bold italic' iconLayout='mt-1'/>
-                <StyledView className='w-[95%] mt-3 ml-3 mr-5 mb-3 text-center bg-white rounded-xl'>
-                    <StyledText className='text-lg text-dark-green m-3 text-left'>
+                <StyledView className='w-[95%] mt-1 ml-3 mr-5 mb-3'>
+                    <StyledText className='text-lg text-white ml-3 mr-3 mb-2 text-left'>
                         This is where the description of the course will go. I will repeat the same stuff for design purpose. This is where the description of the course will go. I will repeat the same stuff for design purpose. This is where the description of the course will go. This is where the description of the course will go. I will repeat the same stuff for design purpose.
                     </StyledText>
                 </StyledView>
