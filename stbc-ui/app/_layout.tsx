@@ -1,6 +1,7 @@
 import { Tabs } from "expo-router";
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import AntDesign from '@expo/vector-icons/AntDesign';
 
 export default function Layout(){
   return(
@@ -35,6 +36,13 @@ export default function Layout(){
         tabBarLabelStyle: { fontSize: 14 },
         tabBarActiveTintColor: '#2DD4BF',
         tabBarIcon: () => <MaterialIcons name="ondemand-video" size={24} color="#002626"/>,
+        headerShown: false
+      }}/>
+      <Tabs.Screen name="give" options={{
+        title: "Give",
+        tabBarLabelStyle: { fontSize: 14 },
+        tabBarActiveTintColor: '#2DD4BF',
+        tabBarIcon: () => <AntDesign name="heart" size={24} color="#002626" />,
         headerShown: false
       }}/>
     </Tabs>

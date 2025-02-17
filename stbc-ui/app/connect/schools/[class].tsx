@@ -14,12 +14,11 @@ const StyledView = styled(View);
 const StyledText = styled(Text);
 const StyledImage = styled(Image);
 const StyledScrollView = styled(ScrollView);
-const StyledPressable = styled(Pressable);
 
 const containerLayout = new ComponentLayout({height:"h-60", width:"w-full"});
 const subContainerLayout = new ComponentLayout({height: "", width: ""});
-const iconLayout = new ComponentLayout({height:"", width:"", bottom:"bottom-[48.5%]", left:"left-3", color:"white"});
-const buttonLayout = new ComponentLayout({height:"", width:"", bottom:"bottom-[50.5%]", right:"right-[5%]", color:"white"});
+const iconLayout = new ComponentLayout({height:"", width:"", bottom:"bottom-[550%]", left:"left-3", color:"white"});
+const buttonLayout = new ComponentLayout({height:"", width:"", bottom:"bottom-[565%]", right:"", color:"white"});
 const imageLayout = new ComponentLayout({height:"h-64", width:"w-full", opacity:"opacity-60", bottom:"bottom-1"});
 const titleLayout = new ComponentLayout({height:"", width:"", bottom:"bottom-48", size:"text-4xl", color:"text-white"});
 const optionalMsgLayout = new ComponentLayout({height:"", width:"", bottom:"bottom-48", left:"left-40", color: "text-white"});
@@ -29,7 +28,6 @@ export default function ClassScreen(){
     const router = useRouter();
     const [isModalVisible, setIsModalVisible] = useState(false);
     const sundayClass = typeof data === "string" ? JSON.parse(data) as ChurchClass: null;
-    const apiUrl = "http://192.168.1.7:8000/find?type=member&churchId=1";
     const [members, setMembers] = useState<Member[]>([]);
     const chosenMember = useRef<Member>();
     const [isCompleted, setIsCompleted] = useState(false);
