@@ -43,19 +43,16 @@ export default function MediaScreen(){
             const data = await resp.json();
             const videos = data["items"].map((video: any) => {
                 const descData = video["snippet"]["description"].split("///");
-                const dateStr = descData[1].replace(/.*?(\b\d{1,2}\/\d{1,2}\/\d{2}\b).*/, "$1");
-                const [month, day, year] = dateStr.split("/").map(Number);
-                console.log(dateStr)
-                console.log(month)
-                console.log(day)
-                console.log(year)
+                const title = video["snippet"]["title"].split(" ");
+                const [month, day, year] = title[title.length-1].split("/").map(Number);
+
 
                 const newVideo = new Video({
                     id: video["id"]["videoId"],
-                    title: descData[2].replaceAll("\"", ""),
+                    title: title[0],
                     description: descData[1],
                     thumbNailUrl: video["snippet"]["thumbnails"]["default"]["url"],
-                    speaker: descData[3].replace(/,?\s*\.{3}/, ""),
+                    speaker: descData[1],//descData[3].replace(/,?\s*\.{3}/, ""),
                     date: new Date((year + 2000), (month-1), day).toLocaleString('en-US', {
                         year: 'numeric',
                         month: 'long',
