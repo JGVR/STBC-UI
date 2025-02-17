@@ -13,7 +13,7 @@ const StyledView = styled(View);
 const StyledText = styled(Text);
 
 const iconLayout = new ComponentLayout({height:"", width:"", top:"top-14", left:"left-3", color:"white"});
-const buttonLayout = new ComponentLayout({height:"", width:"", top:"top-12", right:"right-[5%]", color: "white"});
+const buttonLayout = new ComponentLayout({height:"", width:"", top:"top-12", right:"", color: "white"});
 const titleLayout = new ComponentLayout({height:"", width:""})
 const mailIconLayout = new ComponentLayout({height:"", width:"", top:"top-3", left:"left-96", color:"white"});
 
