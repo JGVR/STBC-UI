@@ -19,8 +19,8 @@ const apiUrl = `${process.env.EXPO_PUBLIC_STBC_API}type=school&churchId=1&school
 
 const containerLayout = new ComponentLayout({height:"h-60", width:"w-full"});
 const subContainerLayout = new ComponentLayout({height: "", width: ""});
-const iconLayout = new ComponentLayout({height:"", width:"", bottom:"bottom-[48.5%]", left:"left-3", color:"white"});
-const buttonLayout = new ComponentLayout({height:"", width:"", bottom:"bottom-[50.5%]", right:"right-[5%]", color:"white"});
+const iconLayout = new ComponentLayout({height:"", width:"", bottom:"bottom-[555%]", left:"left-3", color:"white"});
+const buttonLayout = new ComponentLayout({height:"", width:"", bottom:"bottom-[575%]", right:"", color:"white"});
 const imageLayout = new ComponentLayout({height:"h-64", width:"w-full", opacity:"opacity-80", bottom:"bottom-1"});
 const titleLayout = new ComponentLayout({height:"", width:"", bottom:"bottom-48", size:"text-4xl", color:"text-white"});
 const optionalMsgLayout = new ComponentLayout({height:"", width:"", bottom:"bottom-48", left:"left-36", size:"text-lg", color: "text-white"});
