@@ -9,6 +9,7 @@ import VideosList from '@/components/VideosList';
 import SectionHeader from '@/components/SectionHeader';
 import BgImageScreenHeader from '@/components/headers/BgImageScreenHeader';
 import ComponentLayout from '@/utils/ComponentLayout';
+import VideoFetcher from '@/services/video-fetcher';
 
 const StyledScrollView = styled(ScrollView);
 const StyledView = styled(View);
@@ -27,51 +28,25 @@ const videoListContainerLayout = "h-[23%] w-full";
 
 export default function MediaScreen(){
     const channel = new YoutubeChannel({id:process.env.EXPO_PUBLIC_STBC_CHANNEL_ID, url: process.env.EXPO_PUBLIC_YOUTUBE_API});
-    const [recentVideos, setRecentVideos] = useState<Video[]>([]);
-    const [lastMonthVideos, setLastMonthVideos] = useState<Video[]>([]);
+    const [recentVideos, setRecentVideos] = useState<Array<Video>>([]);
+    const [lastMonthVideos, setLastMonthVideos] = useState<Array<Video>>([]);
     const [isCompleted, setIsCompleted] = useState(false);
+    const fetcher = new VideoFetcher();
 
     //fetch videos function
     const fetchVideos = async(url: string) => {
-        try{
-            const resp = await fetch(url);
-
-            if(!resp.ok){
-                throw new Error(`${resp.status} ${resp.statusText}`);
-            }
-
-            const data = await resp.json();
-            const videos = data["items"].map((video: any) => {
-                const descData = video["snippet"]["description"].split("///");
-                const title = video["snippet"]["title"].split(" ");
-                const [month, day, year] = title[title.length-1].split("/").map(Number);
-                const formattedDate = new Date((year + 2000), (month-1), day).toLocaleString('en-US', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric'
-               })
-
-                const newVideo = new Video({
-                    id: video["id"]["videoId"],
-                    title: `${title[0]} - ${formattedDate}`,
-                    description: descData[1],
-                    thumbNailUrl: video["snippet"]["thumbnails"]["default"]["url"],
-                    speaker: descData[1],//descData[3].replace(/,?\s*\.{3}/, ""),
-                    targetScreen: "media"
-                });
-                return newVideo;
-            });
-            return videos;
-        }catch(error){
-            console.log(`Something went wrong ${error}`);
-        }
+        return await fetcher.call(url, 10, 0);
     };
 
     //Extract last 5 STBC services
     const fetchRecentVideos = async() => {
-        const videos = await fetchVideos(`${channel.url}&channelId=${channel.id}&maxResults=4&order=date&key=${process.env.EXPO_PUBLIC_YOUTUBE_API_KEY}`);
-        setRecentVideos(prevData => [...prevData, ...videos]);
-        setIsCompleted(true);
+        try{
+            const videos = await fetchVideos(`${channel.url}&channelId=${channel.id}&maxResults=4&order=date&key=${process.env.EXPO_PUBLIC_YOUTUBE_API_KEY}`);
+            setRecentVideos(prevData => [...prevData, ...videos]);
+            setIsCompleted(true);
+        }catch(error){
+            console.log(`Something went wrong ${error}`)
+        }
     };
 
     //Extract 5 lastest STBC services from last month
