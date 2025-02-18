@@ -33,7 +33,7 @@ export default function VideoScreen(){
             </StyledView>
             <StyledView className='bg-midnight-green h-[80%] w-full'>
                 <StyledText className='text-white mt-9 ml-5 text-2xl font-bold italic'>{video.title}</StyledText>
-                <StyledText className='text-white mt-1 ml-7 text-base'>{video.date}</StyledText>
+                
                 <StyledView className='flex-row'>
                     <ShareButton url={`https://www.youtube.com/watch?v=${video.id}`} containerStyle='h-12 w-12 ml-12 mt-6 mb-6 bg-white rounded-full' iconStyle='m-3' titleStyle='text-base text-white mt-2 text-center' iconSize={24}/>
                     <GiveButton url="https://www.strongtowerbaptist.org/give/" containerStyle='h-12 w-12 ml-12 mt-6 mb-6 bg-white rounded-full' iconStyle='m-3' titleStyle='text-base text-white mt-2 text-center' iconSize={24}/>

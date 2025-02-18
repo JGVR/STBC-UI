@@ -1,29 +1,21 @@
-interface VideoStruct{
-    id: string,
-    title: string,
-    description: string,
-    thumbNailUrl: string,
-    targetScreen?: string,
-    speaker: string,
-    date: string
-}
+import IEntity from "@/contracts/entity.interface"
+import IVideo from "@/contracts/video.interface"
 
-export default class Video{
+
+export default class Video implements IEntity{
     id: string
     title: string
     description: string
     thumbNailUrl: string
     targetScreen?: string
     speaker: string
-    date: string
 
-    constructor({id, title, description, thumbNailUrl, speaker, targetScreen="", date}: VideoStruct){
+    constructor({id, title, description, thumbNailUrl, speaker, targetScreen=""}: IVideo){
         this.id=id
         this.title=title
         this.description=description
         this.thumbNailUrl=thumbNailUrl
         this.speaker=speaker
-        this.date=date
         this.targetScreen=targetScreen
     }
 }

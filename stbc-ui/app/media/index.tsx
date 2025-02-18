@@ -45,19 +45,18 @@ export default function MediaScreen(){
                 const descData = video["snippet"]["description"].split("///");
                 const title = video["snippet"]["title"].split(" ");
                 const [month, day, year] = title[title.length-1].split("/").map(Number);
-
+                const formattedDate = new Date((year + 2000), (month-1), day).toLocaleString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+               })
 
                 const newVideo = new Video({
                     id: video["id"]["videoId"],
-                    title: title[0],
+                    title: `${title[0]} - ${formattedDate}`,
                     description: descData[1],
                     thumbNailUrl: video["snippet"]["thumbnails"]["default"]["url"],
                     speaker: descData[1],//descData[3].replace(/,?\s*\.{3}/, ""),
-                    date: new Date((year + 2000), (month-1), day).toLocaleString('en-US', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric'
-                   }),
                     targetScreen: "media"
                 });
                 return newVideo;
@@ -106,7 +105,7 @@ export default function MediaScreen(){
             <StyledView>
                 <StyledScrollView className='bg-midnight-green h-[100%] w-full'>
                     <StyledView className='h-96 w-full'>
-                        <BgImageScreenHeader router={null} imageUrl="https://stbc.blob.core.windows.net/stbc-mobile-app-images/monday-nag-car-img.webp" backButtonShown={false} buttonTitle="" backButtonLayout="" backIconLayout="" headerTitle={recentVideos[0].title} headerOptionalMsg={`${recentVideos[0].date} • ${recentVideos[0].speaker}`} imageLayout={imageLayout} containerLayout={containerLayout} subContainerLayout={subContainerLayout} titleLayout={titleLayout} optionalMsgLayout={optionalMsgLayout} thumbNailUrl='https://i.ytimg.com/vi/Wh-zXcFFIu8/mqdefault.jpg' thumbnailLayout={thumbnailLayout} imageButtonData={recentVideos[0]}/>
+                        <BgImageScreenHeader router={null} imageUrl="https://stbc.blob.core.windows.net/stbc-mobile-app-images/monday-nag-car-img.webp" backButtonShown={false} buttonTitle="" backButtonLayout="" backIconLayout="" headerTitle={recentVideos[0].title} headerOptionalMsg={`${recentVideos[0].speaker}`} imageLayout={imageLayout} containerLayout={containerLayout} subContainerLayout={subContainerLayout} titleLayout={titleLayout} optionalMsgLayout={optionalMsgLayout} thumbNailUrl='https://i.ytimg.com/vi/Wh-zXcFFIu8/mqdefault.jpg' thumbnailLayout={thumbnailLayout} imageButtonData={recentVideos[0]}/>
                     </StyledView>
                     <SectionHeader title='Recently Added' containerLayout='flex-row flex-nowrap' titleLayout='text-2xl text-white mt-4 ml-4 font-bold italic' iconLayout='mt-5'/>
                     <VideosList data={recentVideos} imageLayout={videoImgLayout} titleLayout={videoTitleLayout} descriptionLayout={videoDescLayout} containerLayout={videoListContainerLayout} isDynamicScreen={true}/>
