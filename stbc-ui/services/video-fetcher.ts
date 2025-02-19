@@ -4,7 +4,7 @@ import Video from "@/model/Video";
 
 export default class VideoFetcher implements IFetcher<Video>{
 
-    async call(source: string, max: number, skip: number): Promise<Array<Video>>{
+    async call(source: string, max: number = 0, skip: number = 0): Promise<Array<Video>>{
         try{
             const resp = await fetch(source);
 
@@ -22,22 +22,40 @@ export default class VideoFetcher implements IFetcher<Video>{
                 const descData = video["snippet"]["description"].split("///");
                 //Need to separate title by blank space to get the date of the sermon
                 const titleData = video["snippet"]["title"].split(" ");
-                //split the date into month, day, and year
-                const [month, day, year] = titleData[titleData.length-1].split("/").map(Number);
-                const formattedDate = new Date((year + 2000), (month-1), day).toLocaleString('en-US', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric'
-               })
+                let fullYear: number;
+                let formattedDate: string | null = null;
+                let newVideo: Video | null = null;
 
-                const newVideo = new Video({
+                //check if titleData is > 1
+                if(titleData.length > 1){
+                    //split the date into month, day, and year
+                    const [month, day, year] = titleData[titleData.length-1].split("/").map(Number);
+                    fullYear = Number(year) < 100 ? year + 2000 : year
+                    formattedDate = new Date(fullYear, (month-1), day).toLocaleString('en-US', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                   });
+
+                   newVideo = new Video({
                     id: video["id"]["videoId"],
                     title: `${titleData[0]} - ${formattedDate}`,
                     description: descData[1],
                     thumbNailUrl: video["snippet"]["thumbnails"]["default"]["url"],
                     speaker: descData[1],//descData[3].replace(/,?\s*\.{3}/, ""),
                     targetScreen: "media"
-                });
+                    });
+                }else{
+                    newVideo = new Video({
+                        id: video["id"]["videoId"],
+                        title: `${titleData[0]}`,
+                        description: descData[1],
+                        thumbNailUrl: video["snippet"]["thumbnails"]["default"]["url"],
+                        speaker: descData[1],//descData[3].replace(/,?\s*\.{3}/, ""),
+                        targetScreen: "media"
+                    });
+                }
+
                 return newVideo;
             });
 

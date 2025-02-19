@@ -35,13 +35,13 @@ export default function MediaScreen(){
 
     //fetch videos function
     const fetchVideos = async(url: string) => {
-        return await fetcher.call(url, 10, 0);
+        return await fetcher.call(url);
     };
 
     //Extract last 5 STBC services
     const fetchRecentVideos = async() => {
         try{
-            const videos = await fetchVideos(`${channel.url}&channelId=${channel.id}&maxResults=4&order=date&key=${process.env.EXPO_PUBLIC_YOUTUBE_API_KEY}`);
+            const videos = await fetchVideos(`${channel.url}&channelId=${channel.id}&maxResults=${5}&order=date&key=${process.env.EXPO_PUBLIC_YOUTUBE_API_KEY}`);
             setRecentVideos(prevData => [...prevData, ...videos]);
             setIsCompleted(true);
         }catch(error){
@@ -54,7 +54,8 @@ export default function MediaScreen(){
         const today = new Date();
         today.setUTCHours(0,0,0,0) //default time to midnight
         today.setMonth(today.getMonth() - 1); //substract a month from today's date
-        const videos = await fetchVideos(`${channel.url}&channelId=${channel.id}&maxResults=4&order=date&publishedBefore=${today.toISOString()}&key=${process.env.EXPO_PUBLIC_YOUTUBE_API_KEY}`);
+        const lastMonth = today.toISOString();
+        const videos = await fetchVideos(`${channel.url}&channelId=${channel.id}&maxResults=4&order=date&publishedBefore=${lastMonth}&key=${process.env.EXPO_PUBLIC_YOUTUBE_API_KEY}`);
         setLastMonthVideos(prevData => [...prevData, ...videos]);
     };
 
