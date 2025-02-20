@@ -24,7 +24,7 @@ const thumbnailLayout = new ComponentLayout({height:"h-48", width:"w-80", top:"-
 const videoImgLayout = "h-14 w-24 rounded-lg mb-4";
 const videoTitleLayout = "h-5 text-white mb-1";
 const videoDescLayout = "h-5 text-white";
-const videoListContainerLayout = "h-[23%] w-full";
+const videoListContainerLayout = "h-[40%] w-full";
 
 export default function MediaScreen(){
     const channel = new YoutubeChannel({id:process.env.EXPO_PUBLIC_STBC_CHANNEL_ID, url: process.env.EXPO_PUBLIC_YOUTUBE_API});
@@ -78,11 +78,8 @@ export default function MediaScreen(){
 
     if(isCompleted){
         return(
-            <StyledView>
-                <StyledScrollView className='bg-midnight-green h-[100%] w-full'>
-                    <StyledView className='h-96 w-full'>
-                        <BgImageScreenHeader router={null} imageUrl="https://stbc.blob.core.windows.net/stbc-mobile-app-images/monday-nag-car-img.webp" backButtonShown={false} buttonTitle="" backButtonLayout="" backIconLayout="" headerTitle={recentVideos[0].title} headerOptionalMsg={`${recentVideos[0].speaker}`} imageLayout={imageLayout} containerLayout={containerLayout} subContainerLayout={subContainerLayout} titleLayout={titleLayout} optionalMsgLayout={optionalMsgLayout} thumbNailUrl='https://i.ytimg.com/vi/Wh-zXcFFIu8/mqdefault.jpg' thumbnailLayout={thumbnailLayout} imageButtonData={recentVideos[0]}/>
-                    </StyledView>
+            <StyledView className='h-full w-full'>
+                <StyledScrollView className='bg-midnight-green h-full w-full'>
                     <SectionHeader title='Recently Added' containerLayout='flex-row flex-nowrap' titleLayout='text-2xl text-white mt-4 ml-4 font-bold italic' iconLayout='mt-5'/>
                     <VideosList data={recentVideos} imageLayout={videoImgLayout} titleLayout={videoTitleLayout} descriptionLayout={videoDescLayout} containerLayout={videoListContainerLayout} isDynamicScreen={true}/>
                     <SectionHeader title='Last Month' containerLayout='flex-row flex-nowrap' titleLayout='text-2xl text-white mt-5 ml-4 font-bold italic' iconLayout='mt-6'/>
@@ -93,3 +90,10 @@ export default function MediaScreen(){
     }
     return <LoadingScreen/>;
 }
+
+
+/*
+<StyledView className='h-96 w-full'>
+                        <BgImageScreenHeader router={null} imageUrl="https://stbc.blob.core.windows.net/stbc-mobile-app-images/monday-nag-car-img.webp" backButtonShown={false} buttonTitle="" backButtonLayout="" backIconLayout="" headerTitle={recentVideos[0].title} headerOptionalMsg={`${recentVideos[0].speaker}`} imageLayout={imageLayout} containerLayout={containerLayout} subContainerLayout={subContainerLayout} titleLayout={titleLayout} optionalMsgLayout={optionalMsgLayout} thumbNailUrl='https://i.ytimg.com/vi/Wh-zXcFFIu8/mqdefault.jpg' thumbnailLayout={thumbnailLayout} imageButtonData={recentVideos[0]}/>
+                    </StyledView>
+*/
