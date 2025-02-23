@@ -6,6 +6,7 @@ export default class VideoFetcher implements IFetcher<Video>{
 
     async call(source: string, max: number = 0, skip: number = 0): Promise<Array<Video>>{
         try{
+            //fetch data from source
             const resp = await fetch(source);
 
             //Check if any errors in response
