@@ -1,12 +1,12 @@
 import { Stack } from "expo-router";
-import GeneralScreenHeader from "@/components/headers/GeneralScreenHeader";
-import ComponentLayout from "@/utils/ComponentLayout";
+import SearchScreenHeader from "@/components/headers/SearchScreenHeader";
 
 export default function MediaLayout(){
     return(
         <Stack>
             <Stack.Screen name="index" options={{
-                headerShown: true
+                headerShown: true,
+                header: () => <SearchScreenHeader title="Media"/>
             }}/>
             <Stack.Screen name="[video]" options={{
                 headerShown: false
