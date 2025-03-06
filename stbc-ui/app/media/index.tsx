@@ -69,6 +69,13 @@ export default function MediaScreen(){
         }
     }, []);
 
+    useEffect(() => {
+        recentVideos.map((video) => {
+            console.log(video.title);
+            console.log(video.targetScreen ? video.targetScreen : "No target screen");
+        });
+    }, [recentVideos])
+
     //change status bar color
     useFocusEffect(
         useCallback(() => {

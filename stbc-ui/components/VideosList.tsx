@@ -1,6 +1,6 @@
 import {View, FlatList} from 'react-native';
 import {styled} from 'nativewind';
-import VideoComp from './Video';
+import VideoCard from './VideoCard';
 
 const StyledView = styled(View);
 
@@ -10,10 +10,10 @@ export default function VideosList(props: {data: any[], imageLayout: string, con
             <FlatList
                 data={props.data}
                 horizontal={true}
-                renderItem={({item}) => !item ? null : <VideoComp videoItm={item} imageLayout={props.imageLayout} titleLayout={props.titleLayout} descriptionLayout={props.descriptionLayout} isDynamicScreen={props.isDynamicScreen}/>}
+                renderItem={({item}) => !item ? null : <VideoCard videoData={item} imageLayout={props.imageLayout} titleLayout={props.titleLayout} descriptionLayout={props.descriptionLayout} isDynamicScreen={props.isDynamicScreen}/>}
                 keyExtractor={(item) => item.id}
                 indicatorStyle='white'
-                />
+            />
         </StyledView>
     );
 }
