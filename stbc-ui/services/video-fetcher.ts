@@ -44,7 +44,7 @@ export default class VideoFetcher implements IFetcher<Video>{
                     description: descData[1],
                     thumbNailUrl: video["snippet"]["thumbnails"]["default"]["url"],
                     speaker: descData[1],//descData[3].replace(/,?\s*\.{3}/, ""),
-                    targetScreen: "media"
+                    targetScreen: "/media/video"
                     });
                 }else{
                     newVideo = new Video({

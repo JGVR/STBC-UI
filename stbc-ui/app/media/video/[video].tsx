@@ -21,6 +21,7 @@ export default function VideoScreen(){
     const {data} = useLocalSearchParams();
     const video = typeof data === "string" ? JSON.parse(data) as Video : JSON.parse(data[0]) as Video;
 
+    //Set Bar style
     useEffect(() => {
         StatusBar.setBarStyle('light-content');
     }, []);

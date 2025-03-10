@@ -7,19 +7,10 @@ import YoutubeChannel from '@/model/YoutubeChannel';
 import LoadingScreen from '@/components/loadingScreen';
 import VideosList from '@/components/VideosList';
 import SectionHeader from '@/components/SectionHeader';
-import BgImageScreenHeader from '@/components/headers/BgImageScreenHeader';
-import ComponentLayout from '@/utils/ComponentLayout';
 import VideoFetcher from '@/services/video-fetcher';
 
 const StyledScrollView = styled(ScrollView);
 const StyledView = styled(View);
-
-const containerLayout = new ComponentLayout({height:"h-96", width:"w-full"});
-const subContainerLayout = new ComponentLayout({height: "", width: ""});
-const imageLayout = new ComponentLayout({height:"h-96", width:"w-full", opacity:"opacity-60"});
-const titleLayout = new ComponentLayout({height:"", width:"", top: "-mt-28", size:"text-2xl", color:"text-white"});
-const optionalMsgLayout = new ComponentLayout({height:"", width:"", top:"", left:"ml-16", color: "text-white"});
-const thumbnailLayout = new ComponentLayout({height:"h-48", width:"w-80", top:"-mt-72", left:"ml-56", border:"rounded-2xl border"});
 
 const videoImgLayout = "h-14 w-24 rounded-lg mb-4";
 const videoTitleLayout = "h-5 text-white mb-1";
@@ -68,20 +59,6 @@ export default function MediaScreen(){
             fetchLastMonthVideos();
         }
     }, []);
-
-    useEffect(() => {
-        recentVideos.map((video) => {
-            console.log(video.title);
-            console.log(video.targetScreen ? video.targetScreen : "No target screen");
-        });
-    }, [recentVideos])
-
-    //change status bar color
-    useFocusEffect(
-        useCallback(() => {
-            StatusBar.setBarStyle('light-content');
-        }, [])
-    );
 
     if(isCompleted){
         return(

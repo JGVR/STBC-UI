@@ -6,9 +6,9 @@ export default function MediaLayout(){
         <Stack>
             <Stack.Screen name="index" options={{
                 headerShown: true,
-                header: () => <SearchScreenHeader title="Media"/>
+                header: () => <SearchScreenHeader/>
             }}/>
-            <Stack.Screen name="[video]" options={{
+            <Stack.Screen name="video" options={{
                 headerShown: false
             }}/>
         </Stack>

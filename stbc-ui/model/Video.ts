@@ -10,7 +10,7 @@ export default class Video implements IEntity{
     targetScreen?: string
     speaker: string
 
-    constructor({id, title, description, thumbNailUrl, speaker, targetScreen="/video"}: IVideo){
+    constructor({id, title, description, thumbNailUrl, speaker, targetScreen="/media/video"}: IVideo){
         this.id=id
         this.title=title
         this.description=description
