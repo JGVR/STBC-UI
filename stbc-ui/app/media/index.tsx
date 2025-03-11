@@ -62,22 +62,19 @@ export default function MediaScreen(){
 
     if(isCompleted){
         return(
-            <StyledView className='h-full w-full'>
-                <StyledScrollView className='bg-midnight-green h-full w-full'>
-                    <SectionHeader title='Recently Added' containerLayout='flex-row flex-nowrap' titleLayout='text-2xl text-white mt-4 ml-4 font-bold italic' iconLayout='mt-5'/>
-                    <VideosList data={recentVideos} imageLayout={videoImgLayout} titleLayout={videoTitleLayout} descriptionLayout={videoDescLayout} containerLayout={videoListContainerLayout} isDynamicScreen={true}/>
-                    <SectionHeader title='Last Month' containerLayout='flex-row flex-nowrap' titleLayout='text-2xl text-white mt-5 ml-4 font-bold italic' iconLayout='mt-6'/>
-                    <VideosList data={lastMonthVideos} imageLayout={videoImgLayout} titleLayout={videoTitleLayout} descriptionLayout={videoDescLayout} containerLayout={videoListContainerLayout} isDynamicScreen={true}/>
-                </StyledScrollView>
-            </StyledView>
+            <StyledScrollView className='bg-midnight-green h-full w-full'>
+                {/*Recently Added Section*/}
+                <SectionHeader title='Recently Added' containerLayout='flex-row flex-nowrap' titleLayout='text-xl text-white mt-4 ml-4 font-bold italic' iconLayout='mt-4'/>
+                <VideosList data={recentVideos} imageLayout={videoImgLayout} titleLayout={videoTitleLayout} descriptionLayout={videoDescLayout} containerLayout={videoListContainerLayout} isDynamicScreen={true}/>
+
+                {/*Last Month Section*/}
+                <SectionHeader title='Last Month' containerLayout='flex-row flex-nowrap' titleLayout='text-xl text-white mt-5 ml-4 font-bold italic' iconLayout='mt-5'/>
+                <VideosList data={lastMonthVideos} imageLayout={videoImgLayout} titleLayout={videoTitleLayout} descriptionLayout={videoDescLayout} containerLayout={videoListContainerLayout} isDynamicScreen={true}/>
+
+                {/*Speaker Section*/}
+                {/*Add code here*/}
+            </StyledScrollView>
         );
     }
     return <LoadingScreen/>;
 }
-
-
-/*
-<StyledView className='h-96 w-full'>
-                        <BgImageScreenHeader router={null} imageUrl="https://stbc.blob.core.windows.net/stbc-mobile-app-images/monday-nag-car-img.webp" backButtonShown={false} buttonTitle="" backButtonLayout="" backIconLayout="" headerTitle={recentVideos[0].title} headerOptionalMsg={`${recentVideos[0].speaker}`} imageLayout={imageLayout} containerLayout={containerLayout} subContainerLayout={subContainerLayout} titleLayout={titleLayout} optionalMsgLayout={optionalMsgLayout} thumbNailUrl='https://i.ytimg.com/vi/Wh-zXcFFIu8/mqdefault.jpg' thumbnailLayout={thumbnailLayout} imageButtonData={recentVideos[0]}/>
-                    </StyledView>
-*/

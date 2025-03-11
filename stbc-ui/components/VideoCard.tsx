@@ -18,10 +18,17 @@ export default function VideoCard({videoData, isDynamicScreen, imageLayout, titl
                 params: {data: JSON.stringify(videoData)}
             }} asChild>
                 <Pressable>
-                    <StyledView className="h-96 w-60 flex flex-col mr-2 pt-2">
-                        <StyledImage className='h-56 w-52 ml-3 rounded-2xl border-2' src="https://i.ytimg.com/vi/VZ_PtLdpR9A/mqdefault.jpg"/>
-                        <StyledText className='mt-2 ml-4 text-base text-white font-bold italic'>{videoData.title}</StyledText>
-                        <StyledText className='w-48 ml-3 text-sm text-white italic' numberOfLines={1}>{`${videoData.speaker}`}</StyledText>
+                    <StyledView className="h-96 w-72 flex flex-col ml-2 mr-2 mt-2 overflow-hidden rounded-xl bg-dark-green">
+                        <StyledImage className='h-56 w-full' src="https://i.ytimg.com/vi/VZ_PtLdpR9A/mqdefault.jpg"/>
+                        <StyledText className='mt-2 ml-3 text-base text-white font-bold italic'>
+                            {videoData.title}
+                        </StyledText>
+                        <StyledText className='w-48 ml-3 mt-4 text-sm text-white italic' numberOfLines={1}>
+                            {videoData.speaker}
+                        </StyledText>
+                        <StyledText className='w-48 ml-3 mt-1 text-sm text-white italic' numberOfLines={1}>
+                            {videoData.description}
+                        </StyledText>
                     </StyledView>
                 </Pressable>
             </Link>
