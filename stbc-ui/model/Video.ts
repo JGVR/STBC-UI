@@ -5,17 +5,19 @@ import IVideo from "@/contracts/video.interface"
 export default class Video implements IEntity{
     id: string
     title: string
-    description: string
+    channelUrl: string
     thumbNailUrl: string
     targetScreen?: string
-    speaker: string
+    speakerId: string
+    topics?: Array<string>
 
-    constructor({id, title, description, thumbNailUrl, speaker, targetScreen="/media/video"}: IVideo){
+    constructor({id, title, channelUrl, thumbNailUrl, speakerId, targetScreen="/media/video", topics}: IVideo){
         this.id=id
         this.title=title
-        this.description=description
+        this.channelUrl=channelUrl
         this.thumbNailUrl=thumbNailUrl
-        this.speaker=speaker
+        this.speakerId=speakerId
         this.targetScreen=targetScreen
+        this.topics=topics
     }
 }

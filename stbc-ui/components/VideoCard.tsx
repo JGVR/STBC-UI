@@ -3,7 +3,6 @@ import { Link } from "expo-router";
 import { Pressable } from "react-native";
 import {styled} from 'nativewind';
 import { View, Image, Text} from "react-native";
-import { useEffect } from "react";
 
 const StyledView = styled(View);
 const StyledText = styled(Text);
@@ -11,7 +10,7 @@ const StyledImage = styled(Image);
 
 export default function VideoCard({videoData, isDynamicScreen, imageLayout, titleLayout, descriptionLayout}: IVideoCardProps){
 
-    if(videoData.speaker){
+    if(videoData.speakerId){
         return (
             <Link href={{
                 pathname: isDynamicScreen ? `${videoData.targetScreen}/${videoData.title.slice(0,5)}` : `${videoData.targetScreen}`,
@@ -24,10 +23,10 @@ export default function VideoCard({videoData, isDynamicScreen, imageLayout, titl
                             {videoData.title}
                         </StyledText>
                         <StyledText className='w-48 ml-3 mt-4 text-sm text-white italic' numberOfLines={1}>
-                            {videoData.speaker}
+                            {videoData.speakerId}
                         </StyledText>
                         <StyledText className='w-48 ml-3 mt-1 text-sm text-white italic' numberOfLines={1}>
-                            {videoData.description}
+                            {videoData.topics}
                         </StyledText>
                     </StyledView>
                 </Pressable>

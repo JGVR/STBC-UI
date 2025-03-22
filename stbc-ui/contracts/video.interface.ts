@@ -1,8 +1,9 @@
 export default interface IVideo{
     id: string,
     title: string,
-    description: string,
+    channelUrl: string,
     thumbNailUrl: string,
     targetScreen?: string,
-    speaker: string,
+    speakerId: string,
+    topics?: Array<string>
 }

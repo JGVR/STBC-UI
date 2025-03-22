@@ -18,45 +18,17 @@ export default class VideoFetcher implements IFetcher<Video>{
             const data = await resp.json();
 
             //convert data to an array of Video objects
-            const videos = data["items"].map((video: any) => {
-                //the description separates each section (speaker, sermon title) by ///
-                const descData = video["snippet"]["description"].split("///");
-                //Need to separate title by blank space to get the date of the sermon
-                const titleData = video["snippet"]["title"].split(" ");
-                let fullYear: number;
-                let formattedDate: string | null = null;
+            const videos = data.map((video: any) => {
                 let newVideo: Video | null = null;
-
-                //check if titleData is > 1
-                if(titleData.length > 1){
-                    //split the date into month, day, and year
-                    const [month, day, year] = titleData[titleData.length-1].split("/").map(Number);
-                    fullYear = Number(year) < 100 ? year + 2000 : year
-                    formattedDate = new Date(fullYear, (month-1), day).toLocaleString('en-US', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric'
-                   });
-
-                   newVideo = new Video({
-                    id: video["id"]["videoId"],
-                    title: `${titleData[0]} - ${formattedDate}`,
-                    description: descData[1],
-                    thumbNailUrl: video["snippet"]["thumbnails"]["default"]["url"],
-                    speaker: descData[1],//descData[3].replace(/,?\s*\.{3}/, ""),
-                    targetScreen: "/media/video"
-                    });
-                }else{
-                    newVideo = new Video({
-                        id: video["id"]["videoId"],
-                        title: `${titleData[0]}`,
-                        description: descData[1],
-                        thumbNailUrl: video["snippet"]["thumbnails"]["default"]["url"],
-                        speaker: descData[1],//descData[3].replace(/,?\s*\.{3}/, ""),
-                        targetScreen: "media"
-                    });
-                }
-
+                newVideo = new Video({
+                    id: "1", //Needs to change once API has been tweaked
+                    title: video["title"],
+                    channelUrl: "https://www.youtube.com/watch?v=PLpB4BrBVkY", //Needs to change once API has been tweaked
+                    thumbNailUrl: "https://stbc.blob.core.windows.net/stbc-mobile-app-images/sunday-nag-car-img.webp", //Needs to change once API has been tweaked,
+                    speakerId: video["speaker"],
+                    targetScreen: "media",
+                    topics: video["topics"] ? video["topics"] : []
+                });
                 return newVideo;
             });
 
